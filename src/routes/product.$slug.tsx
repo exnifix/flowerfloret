@@ -90,7 +90,7 @@ function ProductPage() {
                 </p>
                 <h3 className="font-serif text-xl mb-4">Composed with</h3>
                 <ul className="space-y-2">
-                  {bouquet.stems.map((s) => (
+                  {bouquet.stems.map((s: string) => (
                     <li key={s} className="flex items-start gap-3 text-sm text-ink/75">
                       <span className="mt-1.5 size-1.5 rounded-full bg-rose shrink-0" /> {s}
                     </li>
