@@ -85,21 +85,29 @@ function ContactPage() {
             </div>
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-8 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
+              disabled={status === "sending"}
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-8 py-4 text-sm tracking-wide hover:bg-rose transition-colors disabled:opacity-60"
             >
-              <Send className="size-4" /> Send Message
+              {status === "sending" ? (
+                <><Loader2 className="size-4 animate-spin" /> Sending…</>
+              ) : (
+                <><Send className="size-4" /> Place Your Order</>
+              )}
             </button>
-            {sent && (
+            {status === "sent" && (
               <p className="text-center text-sm text-rose font-italic italic animate-fade-up">
-                Thank you — your email is opening now. We'll bloom into your inbox very soon.
+                Thank you — your order has bloomed into our studio. We'll reach out within 24 hours.
               </p>
+            )}
+            {status === "error" && (
+              <p className="text-center text-sm text-red-600 animate-fade-up">{errorMsg}</p>
             )}
           </form>
 
           <div className="mt-10 grid sm:grid-cols-3 gap-4 text-center">
-            <InfoCard icon={<Mail className="size-4" />} label="Email" value={ORDER_EMAIL} />
-            <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value="@floret" />
-            <InfoCard icon={<MapPin className="size-4" />} label="Studio" value="By appointment" />
+            <InfoCard icon={<Mail className="size-4" />} label="Email" value={ORDER_EMAIL} href={`mailto:${ORDER_EMAIL}`} />
+            <InfoCard icon={<Phone className="size-4" />} label="Phone" value={ORDER_PHONE} href={`tel:+880${ORDER_PHONE.replace(/^0/, "")}`} />
+            <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value={`@${ORDER_INSTA}`} href={`https://instagram.com/${ORDER_INSTA}`} />
           </div>
         </div>
       </section>
