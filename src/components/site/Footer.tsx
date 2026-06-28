@@ -25,19 +25,30 @@ export function Footer() {
           </ul>
         </div>
         <div className="space-y-3">
-          <h4 className="text-[10px] uppercase tracking-[0.2em] text-ink/50">Follow</h4>
+          <h4 className="text-[10px] uppercase tracking-[0.2em] text-ink/50">Get In Touch</h4>
           <a
-            href="https://instagram.com/floret"
+            href="https://instagram.com/antoraken"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm hover:text-rose transition-colors"
+            className="flex items-center gap-2 text-sm hover:text-rose transition-colors"
           >
             <Instagram className="size-4" strokeWidth={1.5} />
-            @floret
+            @antoraken
           </a>
-          <p className="text-xs text-muted-foreground pt-2">
-            Studio open by appointment
-          </p>
+          <a
+            href="mailto:pusnojawadraiyan@gmail.com"
+            className="flex items-center gap-2 text-sm hover:text-rose transition-colors break-all"
+          >
+            <Mail className="size-4 shrink-0" strokeWidth={1.5} />
+            pusnojawadraiyan@gmail.com
+          </a>
+          <a
+            href="tel:+8801718159391"
+            className="flex items-center gap-2 text-sm hover:text-rose transition-colors"
+          >
+            <Phone className="size-4" strokeWidth={1.5} />
+            01718159391
+          </a>
         </div>
       </div>
       <div className="border-t border-border/60">
