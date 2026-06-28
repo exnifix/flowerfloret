@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Mail, MapPin, Send } from "lucide-react";
+import { Instagram, Mail, Phone, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
+import { supabase } from "@/integrations/supabase/client";
 
 const ORDER_EMAIL = "pusnojawadraiyan@gmail.com";
+const ORDER_PHONE = "01718159391";
+const ORDER_INSTA = "antoraken";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -18,22 +21,31 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const name = fd.get("name") || "";
-    const email = fd.get("email") || "";
-    const phone = fd.get("phone") || "";
-    const occasion = fd.get("occasion") || "";
-    const message = fd.get("message") || "";
-    const subject = encodeURIComponent(`Floret order from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nOccasion: ${occasion}\n\n${message}`
-    );
-    window.location.href = `mailto:${ORDER_EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
+    setStatus("sending");
+    setErrorMsg("");
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || "").trim(),
+      email: String(fd.get("email") || "").trim(),
+      phone: String(fd.get("phone") || "").trim() || null,
+      occasion: String(fd.get("occasion") || "").trim() || null,
+      message: String(fd.get("message") || "").trim() || null,
+    };
+
+    const { error } = await supabase.from("orders").insert(payload);
+    if (error) {
+      setStatus("error");
+      setErrorMsg("Something went wrong. Please try again, or reach us on Instagram @antoraken.");
+      return;
+    }
+    setStatus("sent");
+    form.reset();
   };
 
   return (
@@ -73,21 +85,29 @@ function ContactPage() {
             </div>
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-8 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
+              disabled={status === "sending"}
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-8 py-4 text-sm tracking-wide hover:bg-rose transition-colors disabled:opacity-60"
             >
-              <Send className="size-4" /> Send Message
+              {status === "sending" ? (
+                <><Loader2 className="size-4 animate-spin" /> Sending…</>
+              ) : (
+                <><Send className="size-4" /> Place Your Order</>
+              )}
             </button>
-            {sent && (
+            {status === "sent" && (
               <p className="text-center text-sm text-rose font-italic italic animate-fade-up">
-                Thank you — your email is opening now. We'll bloom into your inbox very soon.
+                Thank you — your order has bloomed into our studio. We'll reach out within 24 hours.
               </p>
+            )}
+            {status === "error" && (
+              <p className="text-center text-sm text-red-600 animate-fade-up">{errorMsg}</p>
             )}
           </form>
 
           <div className="mt-10 grid sm:grid-cols-3 gap-4 text-center">
-            <InfoCard icon={<Mail className="size-4" />} label="Email" value={ORDER_EMAIL} />
-            <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value="@floret" />
-            <InfoCard icon={<MapPin className="size-4" />} label="Studio" value="By appointment" />
+            <InfoCard icon={<Mail className="size-4" />} label="Email" value={ORDER_EMAIL} href={`mailto:${ORDER_EMAIL}`} />
+            <InfoCard icon={<Phone className="size-4" />} label="Phone" value={ORDER_PHONE} href={`tel:+880${ORDER_PHONE.replace(/^0/, "")}`} />
+            <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value={`@${ORDER_INSTA}`} href={`https://instagram.com/${ORDER_INSTA}`} />
           </div>
         </div>
       </section>
@@ -107,12 +127,17 @@ function Field({ label, ...rest }: { label: string } & React.InputHTMLAttributes
   );
 }
 
-function InfoCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
-  return (
-    <div className="rounded-2xl bg-cream-soft/60 p-5">
+function InfoCard({ icon, label, value, href }: { icon: React.ReactNode; label: string; value: string; href?: string }) {
+  const inner = (
+    <>
       <div className="mx-auto size-9 rounded-full bg-blush-soft grid place-items-center text-rose mb-2">{icon}</div>
       <p className="text-[10px] uppercase tracking-[0.2em] text-ink/55">{label}</p>
       <p className="font-serif text-lg text-ink break-all">{value}</p>
-    </div>
+    </>
+  );
+  return href ? (
+    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="block rounded-2xl bg-cream-soft/60 p-5 hover:bg-blush-soft/60 transition-colors">{inner}</a>
+  ) : (
+    <div className="rounded-2xl bg-cream-soft/60 p-5">{inner}</div>
   );
 }
