@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Mail, MapPin, Send } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
+import { supabase } from "@/integrations/supabase/client";
 
 const ORDER_EMAIL = "pusnojawadraiyan@gmail.com";
+const ORDER_PHONE = "01718159391";
+const ORDER_INSTA = "antoraken";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -18,22 +21,31 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const name = fd.get("name") || "";
-    const email = fd.get("email") || "";
-    const phone = fd.get("phone") || "";
-    const occasion = fd.get("occasion") || "";
-    const message = fd.get("message") || "";
-    const subject = encodeURIComponent(`Floret order from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nOccasion: ${occasion}\n\n${message}`
-    );
-    window.location.href = `mailto:${ORDER_EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
+    setStatus("sending");
+    setErrorMsg("");
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || "").trim(),
+      email: String(fd.get("email") || "").trim(),
+      phone: String(fd.get("phone") || "").trim() || null,
+      occasion: String(fd.get("occasion") || "").trim() || null,
+      message: String(fd.get("message") || "").trim() || null,
+    };
+
+    const { error } = await supabase.from("orders").insert(payload);
+    if (error) {
+      setStatus("error");
+      setErrorMsg("Something went wrong. Please try again, or reach us on Instagram @antoraken.");
+      return;
+    }
+    setStatus("sent");
+    form.reset();
   };
 
   return (
