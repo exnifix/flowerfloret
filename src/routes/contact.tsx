@@ -65,7 +65,7 @@ function ContactPage() {
           </form>
 
           <div className="mt-10 grid sm:grid-cols-3 gap-4 text-center">
-            <InfoCard icon={<Mail className="size-4" />} label="Email" value="hello@floret.studio" />
+            <InfoCard icon={<Mail className="size-4" />} label="Email" value="pusnojawadraiyan@gmail.com" />
             <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value="@floret" />
             <InfoCard icon={<MapPin className="size-4" />} label="Studio" value="By appointment" />
           </div>

@@ -44,23 +44,26 @@
   --color-rose: var(--rose);
   --color-sage: var(--sage);
   --color-ink: var(--ink);
+  --color-burgundy: var(--burgundy);
 
-  --font-serif: "DM Serif Display", "Cormorant Garamond", serif;
+  --font-serif: "Italiana", "Cormorant Garamond", serif;
   --font-italic: "Cormorant Garamond", serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Quicksand", "Inter", system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.75rem;
 
-  /* Brand palette */
-  --cream: oklch(0.985 0.012 85);          /* #fdfaf3 main background */
-  --cream-soft: oklch(0.965 0.018 50);     /* #f9efe7 alternating section */
-  --blush: oklch(0.86 0.07 15);            /* #f5b6b8 soft pink accent */
-  --blush-soft: oklch(0.93 0.045 18);      /* #f8d4d4 button bg */
-  --rose: oklch(0.78 0.13 10);             /* #f48fa4 strong pink */
-  --sage: oklch(0.86 0.04 145);            /* soft sage badge */
-  --ink: oklch(0.32 0.018 40);             /* #57534b warm ink */
+  /* Blume palette */
+  --cream: oklch(0.955 0.022 75);          /* #F5E9D7 warm cream background */
+  --cream-soft: oklch(0.92 0.028 60);      /* #EBDCC5 deeper cream section */
+  --blush: oklch(0.84 0.04 25);            /* #EAC3BF blush */
+  --blush-soft: oklch(0.90 0.028 30);      /* soft blush */
+  --rose: oklch(0.46 0.16 32);             /* #7F1F0E rust red accent */
+  --sage: oklch(0.74 0.045 30);            /* mauve #B98E89 */
+  --ink: oklch(0.24 0.07 30);              /* #3D0A05 deep burgundy */
+  --burgundy: oklch(0.24 0.07 30);
+
 
   /* shadcn semantic mapping */
   --background: var(--cream);
