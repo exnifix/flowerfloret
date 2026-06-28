@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Instagram, Mail, MapPin, Phone, Send, Loader2 } from "lucide-react";
+import { Instagram, Mail, Phone, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { supabase } from "@/integrations/supabase/client";
