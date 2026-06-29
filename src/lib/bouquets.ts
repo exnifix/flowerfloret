@@ -7,6 +7,7 @@ import heavenlyWhisperAsset from "@/assets/bouquet-heavenly-whisper.jpg.asset.js
 import nakedPrestigeAsset from "@/assets/bouquet-naked-prestige.jpg.asset.json";
 import amourRougeAsset from "@/assets/bouquet-amour-rouge.jpg.asset.json";
 import goldenGraceAsset from "@/assets/bouquet-golden-grace.jpg.asset.json";
+import whiteSnowAsset from "@/assets/bouquet-white-snow.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -17,6 +18,7 @@ const heavenlyWhisper = heavenlyWhisperAsset.url;
 const nakedPrestige = nakedPrestigeAsset.url;
 const amourRouge = amourRougeAsset.url;
 const goldenGrace = goldenGraceAsset.url;
+const whiteSnow = whiteSnowAsset.url;
 
 
 
@@ -128,6 +130,18 @@ export const bouquets: Bouquet[] = [
     description:
       "A tight, opulent crown of deep crimson roses — each bloom a small, velvet heart — gathered into a sharp matte-black cone wrap and finished with a single ribbon of vivid scarlet silk tied into a soft bow at the throat. The red rose has always been love's loudest word: passion, devotion, desire kept just barely behind the teeth. Dressed in black, that meaning sharpens into something cinematic — romance with a little danger in it, a confession made in candlelight. Each rose head is hand-selected for that dark, glossy red that almost drinks the light, petals layered tight like a kept secret, leaves tucked low so the colour does all the talking. \"Give a red rose and you've spoken; give a dozen, and you've sworn.\" Amour Rouge is for the moment you stop pretending you're casual about them.",
     stems: ["A dozen deep red roses", "Matte-black cone wrap", "Scarlet satin ribbon, hand-tied bow", "Natural green foliage at the base"],
+  },
+  {
+    slug: "white-snow",
+    name: "White Snow",
+    tagline: "Pink hearts, hushed in winter paper",
+    price: 699,
+    category: "Bouquets",
+    image: whiteSnow,
+    emotion: "For soft confessions and snow-quiet love",
+    description:
+      "A close gathering of white roses, each petal kissed at the very edge with a brushstroke of pink — as if the cold had blushed them. White-and-pink bicolour roses carry a meaning all their own: the purity and new-beginning of the white rose softened by the gentle, growing affection of the pink. Together they whisper the loveliest sentence in the flower language — \"I'm falling for you, quietly.\" The blooms are nested in crisp white tissue folded into tall, sharp petals of paper that frame the bouquet like falling snow, then cinched at the throat with a wide pink satin ribbon tied into a soft bow. \"Some love arrives like snowfall — pale, sudden, and impossible to ignore.\" White Snow is the bouquet for tender beginnings and the words you almost said.",
+    stems: ["A generous gathering of white roses with pink-blushed edges", "Crisp white tissue wrap folded into sharp petals", "Soft pink satin ribbon, hand-tied bow", "Natural green foliage at the base"],
   },
   {
     slug: "golden-grace",
