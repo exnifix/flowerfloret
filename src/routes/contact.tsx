@@ -152,6 +152,25 @@ function ContactPage() {
                 <option value="Custom / Build your own">Custom / Build your own</option>
               </select>
             </div>
+            <div>
+              <label className="text-xs uppercase tracking-[0.18em] text-ink/55">Payment method</label>
+              <div className="mt-2 grid sm:grid-cols-3 gap-3">
+                {[
+                  { value: "bKash", label: "bKash", hint: "Send to 01718159391" },
+                  { value: "Nagad", label: "Nagad", hint: "Send to 01718159391" },
+                  { value: "Cash on Delivery", label: "Cash on Delivery", hint: "Pay when it arrives" },
+                ].map((opt) => (
+                  <label
+                    key={opt.value}
+                    className="cursor-pointer rounded-2xl border border-border bg-cream/60 px-4 py-3 text-sm hover:border-rose transition-colors has-[:checked]:border-rose has-[:checked]:bg-blush-soft/50 has-[:checked]:shadow-sm"
+                  >
+                    <input type="radio" name="payment_method" value={opt.value} className="sr-only" required />
+                    <div className="font-serif text-base text-ink">{opt.label}</div>
+                    <div className="text-[11px] text-ink/55 mt-0.5">{opt.hint}</div>
+                  </label>
+                ))}
+              </div>
+            </div>
             <Field label="Occasion" name="occasion" placeholder="A birthday, an apology, a Tuesday…" />
             <div>
               <label htmlFor="message" className="text-xs uppercase tracking-[0.18em] text-ink/55">Tell us more</label>
