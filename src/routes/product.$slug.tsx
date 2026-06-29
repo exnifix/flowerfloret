@@ -94,7 +94,9 @@ function ProductPage() {
               <div className="absolute -inset-4 bg-blush/15 rounded-[2.5rem] blur-2xl" />
               <img
                 src={bouquet.image}
-                alt={bouquet.name}
+                alt={`${bouquet.name} — ${bouquet.tagline}, a hand-tied Floret bouquet`}
+                loading="eager"
+                fetchPriority="high"
                 width={800}
                 height={1000}
                 className="relative w-full rounded-[2rem] object-cover aspect-[4/5]"
