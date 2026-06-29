@@ -98,6 +98,9 @@ function HomePage() {
                   alt="A field of ranunculus in soft morning light"
                   width={1400}
                   height={1700}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="size-full object-cover transition-transform duration-[1200ms] hover:scale-105"
                 />
               </div>
