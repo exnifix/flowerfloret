@@ -24,6 +24,7 @@ const goldenGrace = goldenGraceAsset.url;
 const whiteSnow = whiteSnowAsset.url;
 const snowPetals = snowPetalsAsset.url;
 const petalsEmbrace = petalsEmbraceAsset.url;
+const romanceVelvet = romanceVelvetAsset.url;
 
 
 
