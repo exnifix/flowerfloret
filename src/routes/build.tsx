@@ -285,7 +285,7 @@ function BuildPage() {
                 </ul>
                 <div className="flex items-baseline justify-between pt-4 border-t border-border/60">
                   <span className="text-sm text-ink/60">Estimate</span>
-                  <span className="font-serif text-3xl text-rose">${total.toFixed(2)}</span>
+                  <span className="font-serif text-3xl text-rose">৳{total.toLocaleString("en-BD")}</span>
                 </div>
                 <Link
                   to="/contact"
