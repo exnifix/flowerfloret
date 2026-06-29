@@ -20,6 +20,7 @@ const nakedPrestige = nakedPrestigeAsset.url;
 const amourRouge = amourRougeAsset.url;
 const goldenGrace = goldenGraceAsset.url;
 const whiteSnow = whiteSnowAsset.url;
+const snowPetals = snowPetalsAsset.url;
 
 
 
