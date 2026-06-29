@@ -36,7 +36,7 @@ export function buildOrderPayload(fd: FormData): OrderFormResult {
     return {
       ok: false,
       error:
-        "Please enter a valid Bangladeshi phone number starting with +880 (e.g. +8801718159391).",
+        "Please enter a valid Bangladeshi phone number starting with +880 (e.g. +8801710538698).",
     };
   }
 
