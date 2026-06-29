@@ -76,7 +76,7 @@ function BuildPage() {
     const stemSum = stems.reduce((s, c) => s + c.price, 0);
     const wrapPrice = wraps.find((w) => w.id === wrap)?.price ?? 0;
     const mult = sizes.find((s) => s.id === size)?.mult ?? 1;
-    return Math.round((stemSum * mult + wrapPrice + 10) * 100) / 100;
+    return Math.round(stemSum * mult + wrapPrice + 200);
   }, [base, accent, wrap, size]);
 
   const previewStems = [
