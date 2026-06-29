@@ -13,6 +13,7 @@ import petalsEmbraceAsset from "@/assets/bouquet-petals-embrace.jpg.asset.json";
 import romanceVelvetAsset from "@/assets/bouquet-romance-velvet.jpg.asset.json";
 import redLetterAsset from "@/assets/bouquet-red-letter.jpg.asset.json";
 import rosettaAsset from "@/assets/rosetta.jpeg.asset.json";
+import blushingGraceAsset from "@/assets/blushing-grace.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -29,6 +30,7 @@ const petalsEmbrace = petalsEmbraceAsset.url;
 const romanceVelvet = romanceVelvetAsset.url;
 const redLetter = redLetterAsset.url;
 const rosetta = rosettaAsset.url;
+const blushingGrace = blushingGraceAsset.url;
 
 
 
@@ -56,6 +58,18 @@ export const bouquets: Bouquet[] = [
     description:
       "A single red rose — chosen for its perfect, unbruised head — stands tall inside a sheer cellophane sleeve, dressed in midnight-black crepe petals that flare around the stem like the skirt of a gown. Finished with a slim crimson satin ribbon tied into a soft bow, Rosetta is the bouquet that doesn't need to explain itself. One rose has always meant one thing — \"you, and only you\" — and the black wrap turns that whisper into a statement: serious, devoted, a little dramatic, deeply romantic. Hand it over on a first date, slip it into the seat of a car, leave it on a pillow. It's the smallest grand gesture in the shop.",
     stems: ["1 long-stem premium red rose", "Crystal-clear cellophane sleeve", "Black crepe paper wrap", "Crimson satin ribbon"],
+  },
+  {
+    slug: "blushing-grace",
+    name: "Blushing Grace",
+    tagline: "Soft as a first hello, sweet as a held hand",
+    price: 499,
+    category: "Bouquets",
+    image: blushingGrace,
+    emotion: "For tender beginnings and gentle confessions",
+    description:
+      "Ten plump pink rosebuds — each one caught at that perfect, just-about-to-open moment — cluster together like a circle of friends sharing a secret. Their petals carry that impossible bubblegum-pink that looks lit from within, framed by glossy emerald leaves that make the colour sing even louder. Pink roses, in the old floriographies, mean grace, admiration, and a happiness that's still a little shy of itself. The whole bouquet is cradled in two generous wraps of soft rose-pink crepe paper folded into a graceful cone, and finished with a striped grosgrain ribbon in cherry-red and white — the kind of bow that turns a delivery into an occasion. Send it for a first date, a sweet sixteen, a thank-you, or a Tuesday that deserved more than a text.",
+    stems: ["10 stems of premium pink roses (bud-stage)", "Fresh emerald foliage", "Double-layer rose-pink crepe wrap", "Cherry-and-white striped grosgrain ribbon"],
   },
   {
     slug: "seraphine",
