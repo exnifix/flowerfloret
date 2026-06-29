@@ -39,7 +39,7 @@ export const Route = createFileRoute("/contact")({
           email: "pusnojawadraiyan@gmail.com",
           telephone: "+8801718159391",
           priceRange: "$$",
-          sameAs: ["https://instagram.com/flo.rett"],
+          sameAs: ["https://instagram.com/flo.rettt"],
         }),
       },
     ],
