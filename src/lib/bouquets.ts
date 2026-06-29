@@ -4,6 +4,9 @@ import romance from "@/assets/bouquet-romance-bloom.jpg";
 import sunset from "@/assets/bouquet-sunset-serenade.jpg";
 import midnight from "@/assets/bouquet-midnight-velvet.jpg";
 import wildflower from "@/assets/bouquet-wildflower-sonnet.jpg";
+import seraphineAsset from "@/assets/bouquet-seraphine.jpg.asset.json";
+
+const seraphine = seraphineAsset.url;
 
 export type Bouquet = {
   slug: string;
