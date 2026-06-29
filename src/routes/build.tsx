@@ -32,7 +32,7 @@ export const Route = createFileRoute("/build")({
   component: BuildPage,
 });
 
-type Choice = { id: string; name: string; color: string; image: string; group?: string };
+type Choice = { id: string; name: string; color: string; image?: string; group?: string };
 
 const flowers: Choice[] = [
   // Rose
