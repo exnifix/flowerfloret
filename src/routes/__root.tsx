@@ -65,16 +65,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Floret — Where Emotions Bloom" },
-      { name: "description", content: "Hand-tied bouquets composed as gestures. Floret crafts floral arrangements that speak the language of unspoken feelings." },
-      { property: "og:title", content: "Floret — Where Emotions Bloom" },
-      { property: "og:description", content: "Hand-tied bouquets composed as gestures. Floret crafts floral arrangements that speak the language of unspoken feelings." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Floret" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Floret — Where Emotions Bloom" },
-      { name: "twitter:description", content: "Hand-tied bouquets composed as gestures. Floret crafts floral arrangements that speak the language of unspoken feelings." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fce57ac1-4615-4af7-92d9-13ff9b0a4177/id-preview-92112fd2--da013ce0-a7fa-495b-ae1c-8c4890277b1d.lovable.app-1782556626080.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fce57ac1-4615-4af7-92d9-13ff9b0a4177/id-preview-92112fd2--da013ce0-a7fa-495b-ae1c-8c4890277b1d.lovable.app-1782556626080.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -84,8 +77,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Karla:wght@300;400;500;600;700&display=swap",
       },
-
-
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Floret",
+          url: "https://flowerfloret.lovable.app",
+          description: "Hand-tied bouquets composed as gestures, crafted by a small floral studio in Bangladesh.",
+          email: "pusnojawadraiyan@gmail.com",
+          telephone: "+8801718159391",
+          sameAs: ["https://instagram.com/antoraken"],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
