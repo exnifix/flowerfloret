@@ -199,6 +199,18 @@ export const bouquets: Bouquet[] = [
       "A close, opulent crown of deep crimson spray roses gathers at the top of this bouquet — each bloom a small velvet heart, layered tight with smaller buds still half-curled, the colour so saturated it almost drinks the light around it. Red roses are love's oldest and loudest word — passion, devotion, desire spoken without apology — and the spray rose adds a softer chorus underneath, three or four little blooms on every stem so the whole crown reads as a single, living velvet pillow. The arrangement is sleeved in a tall sheet of champagne-cream matte paper folded into a clean architectural cone, the seam dropping into a soft fishtail at the base, and finished at the throat with a wide burgundy satin ribbon tied into a generous hand-knotted bow that spills down the front like a held sigh. \"Red roses are the heart's loudest whisper.\" Romance Velvet is the bouquet for the quiet, cinematic kind of love — the one that doesn't need fireworks, only a single look held a beat too long.",
     stems: ["A full gathering of deep red spray roses", "Natural green foliage at the collar", "Architectural champagne-cream matte wrap", "Wide burgundy satin ribbon, hand-tied bow"],
   },
+  {
+    slug: "red-letter",
+    name: "Red Letter",
+    tagline: "One rose, one page, one feeling",
+    price: 299,
+    category: "Single Stem",
+    image: redLetter,
+    emotion: "For the words you finally want to say",
+    description:
+      "A single long-stemmed red rose, hand-picked for that deep velvet red that almost glows from within, laid against a backdrop of old book pages — real printed paper, slightly yellowed at the edges, the kind that smells faintly of libraries and rainy afternoons. There is something almost unbearably romantic about pairing a rose with a page: the rose is the feeling, the page is the language, and together they say what a text message never could. The stem keeps its full dark-green foliage, the bloom is sleeved first in the printed page and then in a soft cone of honey-kraft paper, finished at the throat with a slim satin ribbon stamped \"JUST FOR YOU.\" The red rose has spoken for lovers across every century — passion, devotion, the heart laid open without apology — and as a single stem, it speaks more honestly than a dozen ever could. **A letter of your choice (or one written by us) will be tucked inside the wrap, so the flower arrives carrying your words for your loved one.** Red Letter is the bouquet for confessions, anniversaries kept small, apologies that mean it, and the simple, unforgettable act of saying \"I thought of you today.\"",
+    stems: ["1 long-stemmed red rose", "Natural green rose foliage", "Vintage printed book-page inner wrap", "Honey-kraft outer cone", "Clear cellophane sleeve", "\"Just For You\" satin ribbon", "A personal letter — yours or ours — tucked in with the flower"],
+  },
 ];
 
 
