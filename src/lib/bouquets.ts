@@ -1,10 +1,12 @@
 import seraphineAsset from "@/assets/bouquet-seraphine.jpg.asset.json";
 import fleurRoseAsset from "@/assets/bouquet-fleur-rose.jpg.asset.json";
 import cupidsBlossomAsset from "@/assets/bouquet-cupids-blossom.jpg.asset.json";
+import pinkRadianceAsset from "@/assets/bouquet-pink-radiance.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
 const cupidsBlossom = cupidsBlossomAsset.url;
+const pinkRadiance = pinkRadianceAsset.url;
 
 export type Bouquet = {
   slug: string;
