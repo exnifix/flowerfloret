@@ -57,6 +57,18 @@ export const bouquets: Bouquet[] = [
       "Pink lilies — the quiet romantics of the flower world — open at the centre of this bouquet like soft pink kisses caught in slow motion. In the old language of flowers, the pink lily means prosperity, admiration, and a love that's still learning its own name. Each petal carries that blush you only see at dawn, with golden freckles deep in the throat and a perfume that lingers on the room long after you've left it. Drifts of baby's breath float around them like little stars, and the whole bouquet is cradled in cloud-soft ivory paper and tied off with a ribbon of cupid-pink silk. It's a love letter you can hold.",
     stems: ["3 stems of pink Oriental lilies", "1 generous bunch of gypsophila (baby's breath)", "Layered ivory wrapping paper", "Hot-pink satin ribbon"],
   },
+  {
+    slug: "pink-radiance",
+    name: "Pink Radiance",
+    tagline: "Thirty small suns, all blushing at once",
+    price: 1250,
+    category: "Bouquets",
+    image: pinkRadiance,
+    emotion: "For joy that refuses to be quiet",
+    description:
+      "Thirty mini pink roses crowd together like a chorus mid-song — bright, fearless, impossibly cheerful. Pink roses have always carried the gentler half of love's vocabulary: gratitude, admiration, the kind of affection that doesn't need a reason. The miniature variety pushes it further — tiny rosettes packed petal-on-petal, each one a fingertip of fuchsia, together glowing like a single radiant heart. Wrapped in a crisp sheet of crystal-clear cellophane that catches the light like still water, and finished with a single satin ribbon that trails behind the stems like a held breath. It's the bouquet you give when you want someone's whole day to turn pink.",
+    stems: ["30 mini pink roses", "1 layer of premium wrapping", "1 satin ribbon"],
+  },
 ];
 
 export const getBouquet = (slug: string) => bouquets.find((b) => b.slug === slug);
