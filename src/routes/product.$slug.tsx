@@ -121,7 +121,7 @@ function ProductPage() {
                 <p className="text-xs uppercase tracking-[0.2em] text-rose mb-3 flex items-center gap-2">
                   <Sparkles className="size-3.5" /> {bouquet.emotion}
                 </p>
-                <h3 className="font-serif text-xl mb-4">Composed with</h3>
+                <h2 className="font-serif text-xl mb-4">Composed with</h2>
                 <ul className="space-y-2">
                   {bouquet.stems.map((s: string) => (
                     <li key={s} className="flex items-start gap-3 text-sm text-ink/75">
