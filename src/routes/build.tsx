@@ -269,7 +269,7 @@ function BuildPage() {
               <div className="p-6 space-y-4">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-ink/45">Your bouquet</p>
-                  <h3 className="font-serif text-2xl">A bespoke gesture</h3>
+                  <h2 className="font-serif text-2xl">A bespoke gesture</h2>
                 </div>
                 <ul className="text-sm text-ink/70 space-y-1.5">
                   {previewStems.map((s) => (
