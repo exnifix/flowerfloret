@@ -13,6 +13,7 @@ import petalsEmbraceAsset from "@/assets/bouquet-petals-embrace.jpg.asset.json";
 import romanceVelvetAsset from "@/assets/bouquet-romance-velvet.jpg.asset.json";
 import redLetterAsset from "@/assets/bouquet-red-letter.jpg.asset.json";
 import rosettaAsset from "@/assets/rosetta.jpeg.asset.json";
+import blushingGraceAsset from "@/assets/blushing-grace.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -29,6 +30,7 @@ const petalsEmbrace = petalsEmbraceAsset.url;
 const romanceVelvet = romanceVelvetAsset.url;
 const redLetter = redLetterAsset.url;
 const rosetta = rosettaAsset.url;
+const blushingGrace = blushingGraceAsset.url;
 
 
 
