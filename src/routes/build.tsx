@@ -306,12 +306,16 @@ function BuildPage() {
   );
 }
 
-function StepGroup({ step, label, children }: { step: string; label: string; children: React.ReactNode }) {
+function StepGroup({ step, label, children, htmlFor }: { step: string; label: string; children: React.ReactNode; htmlFor?: string }) {
   return (
     <div>
       <div className="flex items-baseline gap-3 mb-4">
         <span className="font-serif text-rose text-lg">{step}</span>
-        <h3 className="font-serif text-2xl text-ink">{label}</h3>
+        {htmlFor ? (
+          <label htmlFor={htmlFor} className="font-serif text-2xl text-ink">{label}</label>
+        ) : (
+          <h2 className="font-serif text-2xl text-ink">{label}</h2>
+        )}
       </div>
       {children}
     </div>
