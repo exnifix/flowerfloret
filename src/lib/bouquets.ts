@@ -72,6 +72,19 @@ export const bouquets: Bouquet[] = [
       "Thirty mini pink roses crowd together like a chorus mid-song — bright, fearless, impossibly cheerful. Pink roses have always carried the gentler half of love's vocabulary: gratitude, admiration, the kind of affection that doesn't need a reason. The miniature variety pushes it further — tiny rosettes packed petal-on-petal, each one a fingertip of fuchsia, together glowing like a single radiant heart. Wrapped in a crisp sheet of crystal-clear cellophane that catches the light like still water, and finished with a single satin ribbon that trails behind the stems like a held breath. It's the bouquet you give when you want someone's whole day to turn pink.",
     stems: ["30 mini pink roses", "1 layer of premium wrapping", "1 satin ribbon"],
   },
+  {
+    slug: "celestial-bloom",
+    name: "Celestial Bloom",
+    tagline: "Moonlight, wrapped in midnight",
+    price: 1200,
+    category: "Bouquets",
+    image: celestialBloom,
+    emotion: "For reverence, remembrance, and quiet awe",
+    description:
+      "White lilies open like small, slow moons at the heart of this bouquet — petals so pure they almost glow, golden anthers held inside like tiny lit lamps. The white lily has carried meaning for centuries: purity, majesty, the soul caught mid-flight. In old paintings, angels hand them to mortals; in older gardens, they were planted to mark the holy and the deeply loved. Surrounding them, baby's breath drifts like distant constellations, and the whole bouquet is cradled in cloud-white tissue and sheathed in dramatic matte-black wrap — night and starlight, held in one hand. \"The lily speaks where words kneel down.\" A gift for the moments too sacred for noise.",
+    stems: ["5 stems of white Oriental lilies", "1 generous bunch of gypsophila (baby's breath)", "Ivory inner wrap", "Matte-black outer wrap", "Hand-tied raffia"],
+  },
 ];
+
 
 export const getBouquet = (slug: string) => bouquets.find((b) => b.slug === slug);
