@@ -35,7 +35,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://instagram.com/antoraken"
+            href="https://instagram.com/flo.rett"
             target="_blank"
             rel="noreferrer"
             aria-label="Floret on Instagram"

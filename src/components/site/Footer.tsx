@@ -27,13 +27,13 @@ export function Footer() {
         <div className="space-y-3">
           <h4 className="text-[10px] uppercase tracking-[0.2em] text-ink/50">Get In Touch</h4>
           <a
-            href="https://instagram.com/antoraken"
+            href="https://instagram.com/flo.rett"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 text-sm hover:text-rose transition-colors"
           >
             <Instagram className="size-4" strokeWidth={1.5} />
-            @antoraken
+            @floret
           </a>
           <a
             href="mailto:pusnojawadraiyan@gmail.com"
