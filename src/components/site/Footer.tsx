@@ -43,11 +43,11 @@ export function Footer() {
             pusnojawadraiyan@gmail.com
           </a>
           <a
-            href="tel:+8801718159391"
+            href="tel:+8801710538698"
             className="flex items-center gap-2 text-sm hover:text-rose transition-colors"
           >
             <Phone className="size-4" strokeWidth={1.5} />
-            01718159391
+            01710538698
           </a>
         </div>
       </div>
