@@ -124,9 +124,11 @@ function ContactPage() {
           >
             <Field label="Your Name" name="name" placeholder="How shall we greet you?" required />
             <div className="grid sm:grid-cols-2 gap-5">
-              <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
-              <Field label="Phone" name="phone" placeholder="Optional" />
+            <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
+              <Field label="Phone (Bangladesh)" name="phone" type="tel" placeholder="+8801XXXXXXXXX" required pattern="^\+880\d{9,10}$|^0?1\d{9}$" />
             </div>
+            <Field label="Delivery Address" name="address" placeholder="House, road, area, city" required />
+            <Field label="Instagram (optional)" name="instagram" placeholder="@yourhandle" />
             <div>
               <label htmlFor="bouquet-select" className="text-xs uppercase tracking-[0.18em] text-ink/55">Which bouquet?</label>
               <select
