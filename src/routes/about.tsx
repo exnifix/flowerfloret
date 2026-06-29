@@ -5,12 +5,17 @@ import about from "@/assets/about-floret.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Floret" },
-      { name: "description", content: "Floret is a small floral studio that believes flowers are vessels of emotion." },
-      { property: "og:title", content: "About — Floret" },
+      { title: "About Floret — A Small Floral Studio for Emotional Gestures" },
+      { name: "description", content: "Floret is a small floral studio that believes flowers are vessels of emotion. Read our story, values, and the craft behind every hand-tied bouquet." },
+      { property: "og:title", content: "About Floret — A Small Floral Studio for Emotional Gestures" },
       { property: "og:description", content: "A small floral studio that believes flowers are vessels of emotion." },
+      { property: "og:url", content: "https://flowerfloret.lovable.app/about" },
       { property: "og:image", content: about },
+      { name: "twitter:title", content: "About Floret — A Small Floral Studio for Emotional Gestures" },
+      { name: "twitter:description", content: "A small floral studio that believes flowers are vessels of emotion." },
+      { name: "twitter:image", content: about },
     ],
+    links: [{ rel: "canonical", href: "https://flowerfloret.lovable.app/about" }],
   }),
   component: AboutPage,
 });
