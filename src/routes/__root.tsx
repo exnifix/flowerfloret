@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           url: "https://flowerfloret.lovable.app",
           description: "Hand-tied bouquets composed as gestures, crafted by a small floral studio in Bangladesh.",
           email: "pusnojawadraiyan@gmail.com",
-          telephone: "+8801718159391",
+          telephone: "+8801710538698",
           sameAs: ["https://www.instagram.com/flo.rettt/"],
         }),
       },
