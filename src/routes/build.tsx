@@ -232,77 +232,38 @@ function BuildPage() {
             </StepGroup>
           </div>
 
-          {/* Live Preview */}
+          {/* Summary */}
           <aside className="lg:sticky lg:top-28">
-            <div className="rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[0_30px_80px_-40px_rgba(180,120,120,0.25)]">
-              <div
-                className="aspect-square relative grid place-items-center transition-colors duration-500"
-                style={{
-                  backgroundColor: wrap === "transparent" ? "#f6ecdc" : wrapColor,
-                }}
-              >
-                <div className="relative w-full h-full">
-                  {previewStems.length === 0 ? (
-                    <div className="absolute inset-0 grid place-items-center text-ink/40 text-sm">
-                      <Flower2 className="size-10" strokeWidth={1.2} />
-                    </div>
-                  ) : (
-                    previewStems.map((s, i) => {
-                      const total = previewStems.length;
-                      const angle = total === 1 ? 0 : -22 + (i / (total - 1)) * 44;
-                      const spread = Math.min(70, 18 + total * 6);
-                      const offsetX = total === 1 ? 0 : (i - (total - 1) / 2) * (spread / Math.max(total - 1, 1));
-                      const offsetY = Math.abs(i - (total - 1) / 2) * 6;
-                      return (
-                        <img
-                          key={s.id}
-                          src={s.image}
-                          alt={s.name}
-                          loading="lazy"
-                          className="absolute left-1/2 top-1/2 w-[68%] h-[88%] object-contain origin-bottom transition-all duration-500 animate-fade-up drop-shadow-md"
-                          style={{
-                            transform: `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px) rotate(${angle}deg)`,
-                            zIndex: 10 - Math.abs(i - (total - 1) / 2),
-                          }}
-                        />
-                      );
-                    })
-                  )}
-                  <div
-                    className="absolute left-1/2 -translate-x-1/2 bottom-[10%] w-[35%] h-2.5 rounded-full transition-colors shadow-sm"
-                    style={{ backgroundColor: ribbonColor }}
-                  />
-                </div>
+            <div className="rounded-3xl bg-card border border-border/60 p-6 space-y-4 shadow-[0_30px_80px_-40px_rgba(180,120,120,0.25)]">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-ink/45">Your bouquet</p>
+                <h2 className="font-serif text-2xl">A bespoke gesture</h2>
               </div>
-
-              <div className="p-6 space-y-4">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-ink/45">Your bouquet</p>
-                  <h2 className="font-serif text-2xl">A bespoke gesture</h2>
-                </div>
-                <ul className="text-sm text-ink/70 space-y-1.5">
-                  {previewStems.map((s) => (
-                    <li key={s.id} className="flex items-center gap-2">
-                      <span className="size-2 rounded-full" style={{ backgroundColor: s.color }} />
-                      {s.name}
-                    </li>
-                  ))}
-                  <li className="text-ink/50 pt-2 border-t border-border/60 mt-2">
-                    {wraps.find((w) => w.id === wrap)?.name} wrap · {ribbons.find((r) => r.id === ribbon)?.name} ribbon
+              <ul className="text-sm text-ink/70 space-y-1.5">
+                {previewStems.length === 0 && (
+                  <li className="text-ink/40 italic">No stems selected yet…</li>
+                )}
+                {previewStems.map((s) => (
+                  <li key={s.id} className="flex items-center gap-2">
+                    <span className="size-2 rounded-full" style={{ backgroundColor: s.color }} />
+                    {s.name}
                   </li>
-                  {customSize && <li className="text-ink/50">Size: {customSize}</li>}
-                </ul>
-                <Link
-                  to="/contact"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
-                >
-                  Request This Bouquet
-                  <ArrowRight className="size-4" />
-                </Link>
-                <p className="text-xs text-ink/50 text-center italic font-italic">
-                  Final price confirmed after a quick chat about your selections and delivery.
-                </p>
-              </div>
+                ))}
+                <li className="text-ink/50 pt-2 border-t border-border/60 mt-2">
+                  {wraps.find((w) => w.id === wrap)?.name} wrap · {ribbons.find((r) => r.id === ribbon)?.name} ribbon
+                </li>
+                {customSize && <li className="text-ink/50">Size: {customSize}</li>}
+              </ul>
+              <Link
+                to="/contact"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
+              >
+                Request This Bouquet
+                <ArrowRight className="size-4" />
+              </Link>
+              <p className="text-xs text-ink/50 text-center italic font-italic">
+                Final price confirmed after a quick chat about your selections and delivery.
+              </p>
             </div>
           </aside>
         </div>
