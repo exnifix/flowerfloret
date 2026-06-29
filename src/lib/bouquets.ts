@@ -3,12 +3,15 @@ import fleurRoseAsset from "@/assets/bouquet-fleur-rose.jpg.asset.json";
 import cupidsBlossomAsset from "@/assets/bouquet-cupids-blossom.jpg.asset.json";
 import pinkRadianceAsset from "@/assets/bouquet-pink-radiance.jpg.asset.json";
 import celestialBloomAsset from "@/assets/bouquet-celestial-bloom.jpg.asset.json";
+import heavenlyWhisperAsset from "@/assets/bouquet-heavenly-whisper.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
 const cupidsBlossom = cupidsBlossomAsset.url;
 const pinkRadiance = pinkRadianceAsset.url;
 const celestialBloom = celestialBloomAsset.url;
+const heavenlyWhisper = heavenlyWhisperAsset.url;
+
 
 
 export type Bouquet = {
@@ -84,7 +87,20 @@ export const bouquets: Bouquet[] = [
       "White lilies open like small, slow moons at the heart of this bouquet — petals so pure they almost glow, golden anthers held inside like tiny lit lamps. The white lily has carried meaning for centuries: purity, majesty, the soul caught mid-flight. In old paintings, angels hand them to mortals; in older gardens, they were planted to mark the holy and the deeply loved. Surrounding them, baby's breath drifts like distant constellations, and the whole bouquet is cradled in cloud-white tissue and sheathed in dramatic matte-black wrap — night and starlight, held in one hand. \"The lily speaks where words kneel down.\" A gift for the moments too sacred for noise.",
     stems: ["5 stems of white Oriental lilies", "1 generous bunch of gypsophila (baby's breath)", "Ivory inner wrap", "Matte-black outer wrap", "Hand-tied raffia"],
   },
+  {
+    slug: "heavenly-whisper",
+    name: "Heavenly Whisper",
+    tagline: "Soft as a secret, told in petals",
+    price: 500,
+    category: "Bouquets",
+    image: heavenlyWhisper,
+    emotion: "For tender beginnings and unsaid affection",
+    description:
+      "Seven blush-pink roses gather close like friends sharing a secret — petals the colour of a blush caught mid-sentence, edges curling open to reveal that deeper rose-gold heart. Pink roses are the soft language of love: gratitude, sweetness, admiration that doesn't need to announce itself. A single deep green leaf peeks through, grounding all that softness, and the entire bouquet is sleeved in cloud-white matte paper folded into careful petals of its own, then sashed with a wide peach satin ribbon that spills like warm light. \"Some feelings don't shout — they bloom.\" Heavenly Whisper is the bouquet for the gentle, unhurried kind of love.",
+    stems: ["7 blush-pink roses", "Fresh green foliage", "Layered matte-white wrapping paper", "Peach satin ribbon"],
+  },
 ];
+
 
 
 export const getBouquet = (slug: string) => bouquets.find((b) => b.slug === slug);
