@@ -20,8 +20,8 @@ export const Route = createFileRoute("/product/$slug")({
           { property: "og:type", content: "product" },
           { property: "og:image", content: loaderData.bouquet.image },
           { property: "og:url", content: `https://flowerfloret.lovable.app/product/${params.slug}` },
-          { property: "product:price:amount", content: loaderData.bouquet.price.toFixed(2) },
-          { property: "product:price:currency", content: "USD" },
+          { property: "product:price:amount", content: loaderData.bouquet.price.toString() },
+          { property: "product:price:currency", content: "BDT" },
           { name: "twitter:title", content: `${loaderData.bouquet.name} — Floret` },
           { name: "twitter:description", content: loaderData.bouquet.tagline },
           { name: "twitter:image", content: loaderData.bouquet.image },
@@ -44,8 +44,8 @@ export const Route = createFileRoute("/product/$slug")({
               brand: { "@type": "Brand", name: "Floret" },
               offers: {
                 "@type": "Offer",
-                price: loaderData.bouquet.price.toFixed(2),
-                priceCurrency: "USD",
+                price: loaderData.bouquet.price.toString(),
+                priceCurrency: "BDT",
                 availability: "https://schema.org/InStock",
                 url: `https://flowerfloret.lovable.app/product/${params.slug}`,
               },
@@ -111,7 +111,7 @@ function ProductPage() {
               <p className="mt-3 font-italic italic text-xl text-ink/60">{bouquet.tagline}</p>
 
               <div className="mt-8 flex items-center gap-4">
-                <span className="font-serif text-3xl text-rose">${bouquet.price.toFixed(2)}</span>
+                <span className="font-serif text-3xl text-rose">৳{bouquet.price.toLocaleString("en-BD")}</span>
                 <span className="text-[10px] uppercase tracking-[0.18em] px-3 py-1.5 rounded-full bg-sage/30 text-ink/70">
                   In Stock
                 </span>

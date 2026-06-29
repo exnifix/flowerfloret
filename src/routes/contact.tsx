@@ -116,7 +116,7 @@ function ContactPage() {
               >
                 <option value="">— Not sure yet / surprise me —</option>
                 {bouquets.map((b) => (
-                  <option key={b.slug} value={b.name}>{b.name} — ${b.price.toFixed(2)}</option>
+                  <option key={b.slug} value={b.name}>{b.name} — ৳{b.price.toLocaleString("en-BD")}</option>
                 ))}
                 <option value="Custom / Build your own">Custom / Build your own</option>
               </select>

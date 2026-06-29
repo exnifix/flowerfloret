@@ -22,26 +22,26 @@ export const Route = createFileRoute("/build")({
 type Choice = { id: string; name: string; color: string; price: number };
 
 const bases: Choice[] = [
-  { id: "rose-blush", name: "Blush Garden Rose", color: "#f5b6b8", price: 12 },
-  { id: "peony-cream", name: "Cream Peony", color: "#fbeadf", price: 16 },
-  { id: "ranunculus", name: "Coral Ranunculus", color: "#f0a08c", price: 14 },
-  { id: "rose-burgundy", name: "Burgundy Velvet Rose", color: "#6b1f2a", price: 13 },
-  { id: "tulip-white", name: "Ivory Tulip", color: "#f5efe4", price: 9 },
-  { id: "lavender", name: "French Lavender", color: "#b3a3d8", price: 7 },
+  { id: "rose-blush", name: "Blush Garden Rose", color: "#f5b6b8", price: 240 },
+  { id: "peony-cream", name: "Cream Peony", color: "#fbeadf", price: 320 },
+  { id: "ranunculus", name: "Coral Ranunculus", color: "#f0a08c", price: 280 },
+  { id: "rose-burgundy", name: "Burgundy Velvet Rose", color: "#6b1f2a", price: 260 },
+  { id: "tulip-white", name: "Ivory Tulip", color: "#f5efe4", price: 180 },
+  { id: "lavender", name: "French Lavender", color: "#b3a3d8", price: 140 },
 ];
 
 const accents: Choice[] = [
-  { id: "babys-breath", name: "Baby's Breath", color: "#ffffff", price: 6 },
-  { id: "eucalyptus", name: "Silver Eucalyptus", color: "#c9d5c5", price: 5 },
-  { id: "wheat", name: "Dried Wheat", color: "#d9c290", price: 4 },
-  { id: "astrantia", name: "Pink Astrantia", color: "#e7b4be", price: 6 },
+  { id: "babys-breath", name: "Baby's Breath", color: "#ffffff", price: 120 },
+  { id: "eucalyptus", name: "Silver Eucalyptus", color: "#c9d5c5", price: 100 },
+  { id: "wheat", name: "Dried Wheat", color: "#d9c290", price: 80 },
+  { id: "astrantia", name: "Pink Astrantia", color: "#e7b4be", price: 120 },
 ];
 
 const wraps: Choice[] = [
-  { id: "cream", name: "Cream Silk", color: "#f6ecdc", price: 8 },
-  { id: "blush", name: "Blush Paper", color: "#f4cdcf", price: 6 },
-  { id: "kraft", name: "Natural Kraft", color: "#c9a784", price: 5 },
-  { id: "sage", name: "Sage Linen", color: "#cdd7c4", price: 8 },
+  { id: "cream", name: "Cream Silk", color: "#f6ecdc", price: 160 },
+  { id: "blush", name: "Blush Paper", color: "#f4cdcf", price: 120 },
+  { id: "kraft", name: "Natural Kraft", color: "#c9a784", price: 100 },
+  { id: "sage", name: "Sage Linen", color: "#cdd7c4", price: 160 },
 ];
 
 const ribbons: Choice[] = [
@@ -76,7 +76,7 @@ function BuildPage() {
     const stemSum = stems.reduce((s, c) => s + c.price, 0);
     const wrapPrice = wraps.find((w) => w.id === wrap)?.price ?? 0;
     const mult = sizes.find((s) => s.id === size)?.mult ?? 1;
-    return Math.round((stemSum * mult + wrapPrice + 10) * 100) / 100;
+    return Math.round(stemSum * mult + wrapPrice + 200);
   }, [base, accent, wrap, size]);
 
   const previewStems = [
@@ -120,7 +120,7 @@ function BuildPage() {
                     >
                       <span className="block size-10 rounded-full mb-3 ring-1 ring-black/5" style={{ backgroundColor: b.color }} />
                       <p className="text-sm font-medium">{b.name}</p>
-                      <p className="text-xs text-ink/55 mt-1">+${b.price}</p>
+                      <p className="text-xs text-ink/55 mt-1">+৳{b.price}</p>
                       {on && <Check className="size-4 text-rose mt-2" />}
                     </button>
                   );
@@ -142,7 +142,7 @@ function BuildPage() {
                     >
                       <span className="block size-8 rounded-full mb-3 ring-1 ring-black/5" style={{ backgroundColor: a.color }} />
                       <p className="text-sm">{a.name}</p>
-                      <p className="text-xs text-ink/55 mt-1">+${a.price}</p>
+                      <p className="text-xs text-ink/55 mt-1">+৳{a.price}</p>
                     </button>
                   );
                 })}
@@ -285,7 +285,7 @@ function BuildPage() {
                 </ul>
                 <div className="flex items-baseline justify-between pt-4 border-t border-border/60">
                   <span className="text-sm text-ink/60">Estimate</span>
-                  <span className="font-serif text-3xl text-rose">${total.toFixed(2)}</span>
+                  <span className="font-serif text-3xl text-rose">৳{total.toLocaleString("en-BD")}</span>
                 </div>
                 <Link
                   to="/contact"
