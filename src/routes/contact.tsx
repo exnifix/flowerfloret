@@ -14,6 +14,7 @@ const ORDER_INSTA = "antoraken";
 const searchSchema = z.object({ bouquet: z.string().optional() });
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: searchSchema,
   head: () => ({
     meta: [
       { title: "Contact — Floret" },
@@ -26,6 +27,9 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const { bouquet: bouquetParam } = Route.useSearch();
+  const initialBouquet = bouquetParam && getBouquet(bouquetParam) ? getBouquet(bouquetParam)!.name : "";
+  const [selectedBouquet, setSelectedBouquet] = useState<string>(initialBouquet);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -41,6 +45,7 @@ function ContactPage() {
       phone: String(fd.get("phone") || "").trim() || null,
       occasion: String(fd.get("occasion") || "").trim() || null,
       message: String(fd.get("message") || "").trim() || null,
+      bouquet: String(fd.get("bouquet") || "").trim() || null,
     };
 
     const { error } = await supabase.from("orders").insert(payload);
@@ -52,6 +57,7 @@ function ContactPage() {
     notifyNewOrder({ data: payload }).catch((err) => console.error("notify failed", err));
     setStatus("sent");
     form.reset();
+    setSelectedBouquet("");
   };
 
   return (
