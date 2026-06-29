@@ -9,7 +9,7 @@ import { bouquets, getBouquet } from "@/lib/bouquets";
 
 const ORDER_EMAIL = "pusnojawadraiyan@gmail.com";
 const ORDER_PHONE = "01718159391";
-const ORDER_INSTA = "flo.rett";
+const ORDER_INSTA = "flo.rettt";
 const ORDER_INSTA_DISPLAY = "floret";
 
 const searchSchema = z.object({ bouquet: z.string().optional() });
