@@ -1,7 +1,7 @@
-import { SHOP_PHONE } from "@/lib/contact-info";
+import { SHOP_BKASH_NUMBER, SHOP_PHONE } from "@/lib/contact-info";
 
 const OPTIONS = [
-  { value: "bKash", label: "bKash", hint: `Send to ${SHOP_PHONE}` },
+  { value: "bKash", label: "bKash", hint: `Send to ${SHOP_BKASH_NUMBER}` },
   { value: "Nagad", label: "Nagad", hint: `Send to ${SHOP_PHONE}` },
   { value: "Cash on Delivery", label: "Cash on Delivery", hint: "Pay when it arrives" },
 ] as const;
