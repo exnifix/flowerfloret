@@ -2,6 +2,19 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Flower2, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Layout } from "@/components/site/Layout";
+import rosePink from "@/assets/flowers/rose-pink.png";
+import roseRed from "@/assets/flowers/rose-red.png";
+import roseWhite from "@/assets/flowers/rose-white.png";
+import roseYellow from "@/assets/flowers/rose-yellow.png";
+import gerberaPink from "@/assets/flowers/gerbera-pink.png";
+import gerberaWhite from "@/assets/flowers/gerbera-white.png";
+import gerberaYellow from "@/assets/flowers/gerbera-yellow.png";
+import gerberaOrange from "@/assets/flowers/gerbera-orange.png";
+import gerberaDarkPink from "@/assets/flowers/gerbera-darkpink.png";
+import lilyWhite from "@/assets/flowers/lily-white.png";
+import lilyPink from "@/assets/flowers/lily-pink.png";
+import sunflowerImg from "@/assets/flowers/sunflower.png";
+import gypsyImg from "@/assets/flowers/gypsy.png";
 
 export const Route = createFileRoute("/build")({
   head: () => ({
@@ -19,27 +32,27 @@ export const Route = createFileRoute("/build")({
   component: BuildPage,
 });
 
-type Choice = { id: string; name: string; color: string; group?: string };
+type Choice = { id: string; name: string; color: string; image?: string; group?: string };
 
 const flowers: Choice[] = [
   // Rose
-  { id: "rose-pink", name: "Pink Rose", color: "#f4a6b8", group: "Rose" },
-  { id: "rose-red", name: "Red Rose", color: "#b3121f", group: "Rose" },
-  { id: "rose-white", name: "White Rose", color: "#fbf6ec", group: "Rose" },
-  { id: "rose-yellow", name: "Yellow Rose", color: "#f6d365", group: "Rose" },
+  { id: "rose-pink", name: "Pink Rose", color: "#f4a6b8", image: rosePink, group: "Rose" },
+  { id: "rose-red", name: "Red Rose", color: "#b3121f", image: roseRed, group: "Rose" },
+  { id: "rose-white", name: "White Rose", color: "#fbf6ec", image: roseWhite, group: "Rose" },
+  { id: "rose-yellow", name: "Yellow Rose", color: "#f6d365", image: roseYellow, group: "Rose" },
   // Gerbera
-  { id: "gerbera-pink", name: "Pink Gerbera", color: "#f48fb1", group: "Gerbera" },
-  { id: "gerbera-white", name: "White Gerbera", color: "#fdfaf1", group: "Gerbera" },
-  { id: "gerbera-yellow", name: "Yellow Gerbera", color: "#ffd24a", group: "Gerbera" },
-  { id: "gerbera-orange", name: "Orange Gerbera", color: "#f08a3a", group: "Gerbera" },
-  { id: "gerbera-darkpink", name: "Dark Pink Gerbera", color: "#c2185b", group: "Gerbera" },
+  { id: "gerbera-pink", name: "Pink Gerbera", color: "#f48fb1", image: gerberaPink, group: "Gerbera" },
+  { id: "gerbera-white", name: "White Gerbera", color: "#fdfaf1", image: gerberaWhite, group: "Gerbera" },
+  { id: "gerbera-yellow", name: "Yellow Gerbera", color: "#ffd24a", image: gerberaYellow, group: "Gerbera" },
+  { id: "gerbera-orange", name: "Orange Gerbera", color: "#f08a3a", image: gerberaOrange, group: "Gerbera" },
+  { id: "gerbera-darkpink", name: "Dark Pink Gerbera", color: "#c2185b", image: gerberaDarkPink, group: "Gerbera" },
   // Lily
-  { id: "lily-white", name: "White Lily", color: "#fcf7ea", group: "Lily" },
-  { id: "lily-pink", name: "Pink Lily", color: "#e88aa6", group: "Lily" },
+  { id: "lily-white", name: "White Lily", color: "#fcf7ea", image: lilyWhite, group: "Lily" },
+  { id: "lily-pink", name: "Pink Lily", color: "#e88aa6", image: lilyPink, group: "Lily" },
   // Sunflower
-  { id: "sunflower", name: "Sunflower", color: "#e9a93a", group: "Sunflower" },
+  { id: "sunflower", name: "Sunflower", color: "#e9a93a", image: sunflowerImg, group: "Sunflower" },
   // Additional
-  { id: "gypsy", name: "Gypsophila (Baby's Breath)", color: "#ffffff", group: "Additional" },
+  { id: "gypsy", name: "Gypsophila (Baby's Breath)", color: "#ffffff", image: gypsyImg, group: "Additional" },
 ];
 
 const wraps: Choice[] = [
@@ -121,18 +134,31 @@ function BuildPage() {
                           <button
                             key={f.id}
                             onClick={() => toggle(f.id)}
-                            className={`group text-left rounded-2xl border p-4 transition-all ${
+                            className={`group text-left rounded-2xl border p-3 transition-all ${
                               on
-                                ? "border-rose bg-blush-soft/40 -translate-y-0.5"
+                                ? "border-rose bg-blush-soft/40 -translate-y-0.5 shadow-sm"
                                 : "border-border bg-card hover:border-rose/50"
                             }`}
                           >
-                            <span
-                              className="block size-10 rounded-full mb-3 ring-1 ring-black/10"
-                              style={{ backgroundColor: f.color }}
-                            />
-                            <p className="text-sm font-medium">{f.name}</p>
-                            {on && <Check className="size-4 text-rose mt-2" />}
+                            <div className="aspect-square w-full rounded-xl bg-cream/60 grid place-items-center overflow-hidden mb-2">
+                              {f.image ? (
+                                <img
+                                  src={f.image}
+                                  alt={f.name}
+                                  loading="lazy"
+                                  className="w-full h-full object-contain drop-shadow-sm transition-transform group-hover:scale-105"
+                                />
+                              ) : (
+                                <span
+                                  className="block size-10 rounded-full ring-1 ring-black/10"
+                                  style={{ backgroundColor: f.color }}
+                                />
+                              )}
+                            </div>
+                            <p className="text-sm font-medium flex items-center justify-between">
+                              {f.name}
+                              {on && <Check className="size-4 text-rose" />}
+                            </p>
                           </button>
                         );
                       })}
@@ -226,7 +252,7 @@ function BuildPage() {
                   backgroundColor: wrap === "transparent" ? "#f6ecdc" : wrapColor,
                 }}
               >
-                <div className="relative w-44 h-56">
+                <div className="relative w-full h-full">
                   {previewStems.length === 0 ? (
                     <div className="absolute inset-0 grid place-items-center text-ink/40 text-sm">
                       <Flower2 className="size-10" strokeWidth={1.2} />
@@ -234,28 +260,27 @@ function BuildPage() {
                   ) : (
                     previewStems.map((s, i) => {
                       const total = previewStems.length;
-                      const angle = -30 + (i / Math.max(total - 1, 1)) * 60;
-                      const offset = (i - (total - 1) / 2) * 14;
+                      const angle = total === 1 ? 0 : -22 + (i / (total - 1)) * 44;
+                      const spread = Math.min(70, 18 + total * 6);
+                      const offsetX = total === 1 ? 0 : (i - (total - 1) / 2) * (spread / Math.max(total - 1, 1));
+                      const offsetY = Math.abs(i - (total - 1) / 2) * 6;
                       return (
-                        <div
+                        <img
                           key={s.id}
-                          className="absolute left-1/2 top-4 origin-bottom transition-all duration-500 animate-fade-up"
+                          src={s.image}
+                          alt={s.name}
+                          loading="lazy"
+                          className="absolute left-1/2 top-1/2 w-[68%] h-[88%] object-contain origin-bottom transition-all duration-500 animate-fade-up drop-shadow-md"
                           style={{
-                            transform: `translateX(${offset}px) rotate(${angle}deg)`,
-                            zIndex: 10 - Math.abs(i - total / 2),
+                            transform: `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px) rotate(${angle}deg)`,
+                            zIndex: 10 - Math.abs(i - (total - 1) / 2),
                           }}
-                        >
-                          <div className="w-1 h-40 bg-green-700/40 mx-auto" />
-                          <div
-                            className="size-12 rounded-full -mt-44 mx-auto ring-2 ring-white/40 shadow-md"
-                            style={{ backgroundColor: s.color }}
-                          />
-                        </div>
+                        />
                       );
                     })
                   )}
                   <div
-                    className="absolute left-1/2 -translate-x-1/2 bottom-2 w-20 h-2 rounded-full transition-colors"
+                    className="absolute left-1/2 -translate-x-1/2 bottom-[10%] w-[35%] h-2.5 rounded-full transition-colors shadow-sm"
                     style={{ backgroundColor: ribbonColor }}
                   />
                 </div>
