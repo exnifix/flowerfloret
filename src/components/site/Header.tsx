@@ -35,22 +35,24 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://instagram.com/floret"
+            href="https://instagram.com/antoraken"
             target="_blank"
             rel="noreferrer"
-            aria-label="Instagram"
-            className="size-9 grid place-items-center rounded-full border border-blush/60 text-rose hover:bg-blush-soft transition-colors"
+            aria-label="Floret on Instagram"
+            className="size-11 grid place-items-center rounded-full border border-blush/60 text-rose hover:bg-blush-soft transition-colors"
           >
             <Instagram className="size-4" strokeWidth={1.5} />
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden size-9 grid place-items-center rounded-full border border-border"
-            aria-label="Menu"
+            className="md:hidden size-11 grid place-items-center rounded-full border border-border"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
         </div>
+
       </div>
 
       {open && (
