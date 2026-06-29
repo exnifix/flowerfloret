@@ -108,10 +108,11 @@ function ProductPage() {
 
               <Link
                 to="/contact"
+                search={{ bouquet: bouquet.slug }}
                 className="mt-10 w-full inline-flex items-center justify-center gap-2 rounded-full bg-blush-soft hover:bg-blush text-ink px-8 py-5 text-sm tracking-wide transition-colors"
               >
                 <ShoppingBag className="size-4" />
-                Inquire About This Arrangement
+                Order {bouquet.name}
               </Link>
 
               <div className="mt-6 rounded-2xl bg-cream-soft/60 p-5 text-sm text-ink/70">
