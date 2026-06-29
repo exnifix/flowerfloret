@@ -74,7 +74,7 @@ function AboutPage() {
               <div className="mx-auto size-12 rounded-full bg-blush-soft grid place-items-center mb-5">
                 <span className="font-serif text-rose">0{i + 1}</span>
               </div>
-              <h3 className="font-serif text-2xl mb-2">{v.t}</h3>
+              <h2 className="font-serif text-2xl mb-2">{v.t}</h2>
               <p className="text-sm text-ink/65 leading-relaxed">{v.d}</p>
             </div>
           ))}
