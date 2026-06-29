@@ -111,7 +111,7 @@ function ProductPage() {
               <p className="mt-3 font-italic italic text-xl text-ink/60">{bouquet.tagline}</p>
 
               <div className="mt-8 flex items-center gap-4">
-                <span className="font-serif text-3xl text-rose">${bouquet.price.toFixed(2)}</span>
+                <span className="font-serif text-3xl text-rose">৳{bouquet.price.toLocaleString("en-BD")}</span>
                 <span className="text-[10px] uppercase tracking-[0.18em] px-3 py-1.5 rounded-full bg-sage/30 text-ink/70">
                   In Stock
                 </span>
