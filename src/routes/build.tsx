@@ -100,7 +100,7 @@ function BuildPage() {
             Build Your Own <span className="italic font-italic text-rose">Bouquet</span>
           </h1>
           <p className="mt-6 text-ink/70 leading-relaxed animate-fade-up delay-200">
-            Compose your gesture, stem by stem. Watch your bouquet bloom in real time on the right.
+            Compose your gesture, stem by stem. Pick your flowers, wrap, ribbon and size — we'll bring it to life.
           </p>
         </div>
       </section>
