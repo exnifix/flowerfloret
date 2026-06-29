@@ -85,6 +85,21 @@ function ContactPage() {
               <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
               <Field label="Phone" name="phone" placeholder="Optional" />
             </div>
+            <div>
+              <label className="text-xs uppercase tracking-[0.18em] text-ink/55">Which bouquet?</label>
+              <select
+                name="bouquet"
+                value={selectedBouquet}
+                onChange={(e) => setSelectedBouquet(e.target.value)}
+                className="mt-2 w-full rounded-full bg-cream/60 border border-border px-5 py-3.5 text-sm focus:outline-none focus:border-rose focus:bg-cream transition-colors appearance-none cursor-pointer"
+              >
+                <option value="">— Not sure yet / surprise me —</option>
+                {bouquets.map((b) => (
+                  <option key={b.slug} value={b.name}>{b.name} — ${b.price.toFixed(2)}</option>
+                ))}
+                <option value="Custom / Build your own">Custom / Build your own</option>
+              </select>
+            </div>
             <Field label="Occasion" name="occasion" placeholder="A birthday, an apology, a Tuesday…" />
             <div>
               <label className="text-xs uppercase tracking-[0.18em] text-ink/55">Tell us more</label>
