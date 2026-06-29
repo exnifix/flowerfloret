@@ -215,4 +215,5 @@ export const bouquets: Bouquet[] = [
 
 
 
-export const getBouquet = (slug: string) => bouquets.find((b) => b.slug === slug);
+const bouquetIndex: Map<string, Bouquet> = new Map(bouquets.map((b) => [b.slug, b]));
+export const getBouquet = (slug: string): Bouquet | undefined => bouquetIndex.get(slug);
