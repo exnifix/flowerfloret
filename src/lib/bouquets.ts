@@ -9,6 +9,7 @@ import amourRougeAsset from "@/assets/bouquet-amour-rouge.jpg.asset.json";
 import goldenGraceAsset from "@/assets/bouquet-golden-grace.jpg.asset.json";
 import whiteSnowAsset from "@/assets/bouquet-white-snow.jpg.asset.json";
 import snowPetalsAsset from "@/assets/bouquet-snow-petals.jpg.asset.json";
+import petalsEmbraceAsset from "@/assets/bouquet-petals-embrace.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -21,6 +22,7 @@ const amourRouge = amourRougeAsset.url;
 const goldenGrace = goldenGraceAsset.url;
 const whiteSnow = whiteSnowAsset.url;
 const snowPetals = snowPetalsAsset.url;
+const petalsEmbrace = petalsEmbraceAsset.url;
 
 
 
