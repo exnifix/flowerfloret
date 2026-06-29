@@ -5,6 +5,7 @@ import pinkRadianceAsset from "@/assets/bouquet-pink-radiance.jpg.asset.json";
 import celestialBloomAsset from "@/assets/bouquet-celestial-bloom.jpg.asset.json";
 import heavenlyWhisperAsset from "@/assets/bouquet-heavenly-whisper.jpg.asset.json";
 import nakedPrestigeAsset from "@/assets/bouquet-naked-prestige.jpg.asset.json";
+import amourRougeAsset from "@/assets/bouquet-amour-rouge.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -13,6 +14,7 @@ const pinkRadiance = pinkRadianceAsset.url;
 const celestialBloom = celestialBloomAsset.url;
 const heavenlyWhisper = heavenlyWhisperAsset.url;
 const nakedPrestige = nakedPrestigeAsset.url;
+const amourRouge = amourRougeAsset.url;
 
 
 
