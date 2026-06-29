@@ -106,8 +106,9 @@ function ContactPage() {
               <Field label="Phone" name="phone" placeholder="Optional" />
             </div>
             <div>
-              <label className="text-xs uppercase tracking-[0.18em] text-ink/55">Which bouquet?</label>
+              <label htmlFor="bouquet-select" className="text-xs uppercase tracking-[0.18em] text-ink/55">Which bouquet?</label>
               <select
+                id="bouquet-select"
                 name="bouquet"
                 value={selectedBouquet}
                 onChange={(e) => setSelectedBouquet(e.target.value)}
@@ -122,8 +123,9 @@ function ContactPage() {
             </div>
             <Field label="Occasion" name="occasion" placeholder="A birthday, an apology, a Tuesday…" />
             <div>
-              <label className="text-xs uppercase tracking-[0.18em] text-ink/55">Tell us more</label>
+              <label htmlFor="message" className="text-xs uppercase tracking-[0.18em] text-ink/55">Tell us more</label>
               <textarea
+                id="message"
                 name="message"
                 rows={5}
                 placeholder="Describe the feeling you want to send. Colours, recipient, anything that matters."
