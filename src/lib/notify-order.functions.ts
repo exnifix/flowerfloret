@@ -55,7 +55,11 @@ export const notifyNewOrder = createServerFn({ method: "POST" })
           <tr><td style="padding:10px 14px; font-weight:bold;">Email</td><td style="padding:10px 14px;">${esc(data.email)}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Phone</td><td style="padding:10px 14px; background:#faf3e8;">${esc(data.phone)}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold;">Occasion</td><td style="padding:10px 14px;">${esc(data.occasion)}</td></tr>
-          <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8; vertical-align:top;">Message</td><td style="padding:10px 14px; background:#faf3e8; white-space:pre-wrap;">${esc(data.message)}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold;">Phone</td><td style="padding:10px 14px;">${esc(data.phone)}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8; vertical-align:top;">Delivery Address</td><td style="padding:10px 14px; background:#faf3e8; white-space:pre-wrap;">${esc(data.address)}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold;">Instagram</td><td style="padding:10px 14px;">${data.instagram ? `@${esc(data.instagram)}` : "—"}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Occasion</td><td style="padding:10px 14px; background:#faf3e8;">${esc(data.occasion)}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold; vertical-align:top;">Message</td><td style="padding:10px 14px; white-space:pre-wrap;">${esc(data.message)}</td></tr>
         </table>
         <p style="margin-top:16px; font-size:12px; color:#7a4a3a;">Sent automatically by floret.</p>
       </div>
