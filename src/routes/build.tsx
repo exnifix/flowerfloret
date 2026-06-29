@@ -1,20 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Flower2, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Layout } from "@/components/site/Layout";
-import rosePink from "@/assets/flowers/rose-pink.png";
-import roseRed from "@/assets/flowers/rose-red.png";
-import roseWhite from "@/assets/flowers/rose-white.png";
-import roseYellow from "@/assets/flowers/rose-yellow.png";
-import gerberaPink from "@/assets/flowers/gerbera-pink.png";
-import gerberaWhite from "@/assets/flowers/gerbera-white.png";
-import gerberaYellow from "@/assets/flowers/gerbera-yellow.png";
-import gerberaOrange from "@/assets/flowers/gerbera-orange.png";
-import gerberaDarkPink from "@/assets/flowers/gerbera-darkpink.png";
-import lilyWhite from "@/assets/flowers/lily-white.png";
-import lilyPink from "@/assets/flowers/lily-pink.png";
-import sunflowerImg from "@/assets/flowers/sunflower.png";
-import gypsyImg from "@/assets/flowers/gypsy.png";
 
 export const Route = createFileRoute("/build")({
   head: () => ({
