@@ -8,6 +8,7 @@ import nakedPrestigeAsset from "@/assets/bouquet-naked-prestige.jpg.asset.json";
 import amourRougeAsset from "@/assets/bouquet-amour-rouge.jpg.asset.json";
 import goldenGraceAsset from "@/assets/bouquet-golden-grace.jpg.asset.json";
 import whiteSnowAsset from "@/assets/bouquet-white-snow.jpg.asset.json";
+import snowPetalsAsset from "@/assets/bouquet-snow-petals.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -19,6 +20,7 @@ const nakedPrestige = nakedPrestigeAsset.url;
 const amourRouge = amourRougeAsset.url;
 const goldenGrace = goldenGraceAsset.url;
 const whiteSnow = whiteSnowAsset.url;
+const snowPetals = snowPetalsAsset.url;
 
 
 
@@ -154,6 +156,18 @@ export const bouquets: Bouquet[] = [
     description:
       "Two bright-faced sunflowers turn their heads toward you like small suns caught mid-rise, golden petals fanning out around deep amber centres dusted with pollen. Sunflowers have always been the flower of loyalty and light — they literally follow the sun, faces tracking warmth across the sky, which is why the old gardeners called them the most faithful bloom in the bed. Around them, drifts of baby's breath fall like soft scattered clouds, broad green leaves ground the stems in living gold, and the whole bouquet is sleeved in honeyed kraft paper with a clear inner wrap, finished at the throat with a cream satin ribbon tied into a generous bow. \"Keep your face to the sunshine and you cannot see the shadow.\" Golden Grace is the bouquet for the people who do exactly that — and for the ones who deserve a little of their own sun handed back.",
     stems: ["2 stems of fresh-cut sunflowers", "Soft baby's breath (gypsophila)", "Natural green sunflower foliage", "Honey-kraft outer wrap with clear inner sleeve", "Cream satin ribbon, hand-tied bow"],
+  },
+  {
+    slug: "snow-petals",
+    name: "Snow Petals",
+    tagline: "Quiet white roses, dressed in kraft and eucalyptus",
+    price: 699,
+    category: "Bouquets",
+    image: snowPetals,
+    emotion: "For the calm, grounded kind of love",
+    description:
+      "A small choir of cream-white roses gathers at the heart of this bouquet, framed by silver-green eucalyptus leaves and a soft drift of baby's breath that floats around them like first snow. White roses are the oldest letter in the flower alphabet — purity, reverence, a new beginning offered with both hands — and the eucalyptus grounds all that softness with something steady, herbal, almost meditative, a scent that settles a room the moment you walk in. The whole arrangement is rolled into a cone of warm honey-kraft paper, tied at the throat with rough natural twine and finished with a wide white satin ribbon that spills across the linen like a held breath. \"Some love doesn't bloom loud — it lays itself down quietly and stays.\" Snow Petals is the bouquet for the people who love that way: gentle, grounded, and utterly true.",
+    stems: ["A gathering of cream-white roses", "Fresh silver eucalyptus foliage", "Soft baby's breath (gypsophila)", "Honey-kraft cone wrap", "Natural twine and wide white satin ribbon"],
   },
 ];
 
