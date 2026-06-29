@@ -4,6 +4,7 @@ import cupidsBlossomAsset from "@/assets/bouquet-cupids-blossom.jpg.asset.json";
 import pinkRadianceAsset from "@/assets/bouquet-pink-radiance.jpg.asset.json";
 import celestialBloomAsset from "@/assets/bouquet-celestial-bloom.jpg.asset.json";
 import heavenlyWhisperAsset from "@/assets/bouquet-heavenly-whisper.jpg.asset.json";
+import nakedPrestigeAsset from "@/assets/bouquet-naked-prestige.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -11,6 +12,7 @@ const cupidsBlossom = cupidsBlossomAsset.url;
 const pinkRadiance = pinkRadianceAsset.url;
 const celestialBloom = celestialBloomAsset.url;
 const heavenlyWhisper = heavenlyWhisperAsset.url;
+const nakedPrestige = nakedPrestigeAsset.url;
 
 
 
@@ -99,7 +101,19 @@ export const bouquets: Bouquet[] = [
       "Seven blush-pink roses gather close like friends sharing a secret — petals the colour of a blush caught mid-sentence, edges curling open to reveal that deeper rose-gold heart. Pink roses are the soft language of love: gratitude, sweetness, admiration that doesn't need to announce itself. A single deep green leaf peeks through, grounding all that softness, and the entire bouquet is sleeved in cloud-white matte paper folded into careful petals of its own, then sashed with a wide peach satin ribbon that spills like warm light. \"Some feelings don't shout — they bloom.\" Heavenly Whisper is the bouquet for the gentle, unhurried kind of love.",
     stems: ["7 blush-pink roses", "Fresh green foliage", "Layered matte-white wrapping paper", "Peach satin ribbon"],
   },
-];
+  {
+    slug: "naked-prestige",
+    name: "Naked Prestige",
+    tagline: "Red roses, stripped to their truth",
+    price: 500,
+    category: "Bouquets",
+    image: nakedPrestige,
+    emotion: "For love that needs no decoration",
+    description:
+      "A dozen long-stemmed red roses, hand-tied and left utterly bare — no wrap, no cellophane, no clever distraction. Just deep crimson heads gathered into one velvet crown, leaves still on the stems, thorns still telling the truth, finished with nothing but a single ivory satin ribbon. The red rose has always been the loudest word in love's vocabulary: passion, devotion, the heart laid open. Strip away the paper and that meaning sharpens — this is feeling without performance, romance without apology. Each bloom is hand-selected for that dark, blood-velvet red that almost drinks the light, petals layered tight like a kept promise. \"A red rose, naked, is the bravest sentence in the world.\" Naked Prestige is for the moments when you mean it — and you want them to know you mean it.",
+    stems: ["12 long-stemmed red roses", "Natural green foliage on the stem", "Single ivory satin ribbon", "Hand-tied, unwrapped presentation"],
+  },
+]; 
 
 
 
