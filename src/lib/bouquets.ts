@@ -60,6 +60,18 @@ export const bouquets: Bouquet[] = [
     stems: ["1 long-stem premium red rose", "Crystal-clear cellophane sleeve", "Black crepe paper wrap", "Crimson satin ribbon"],
   },
   {
+    slug: "blushing-grace",
+    name: "Blushing Grace",
+    tagline: "Soft as a first hello, sweet as a held hand",
+    price: 499,
+    category: "Bouquets",
+    image: blushingGrace,
+    emotion: "For tender beginnings and gentle confessions",
+    description:
+      "Ten plump pink rosebuds — each one caught at that perfect, just-about-to-open moment — cluster together like a circle of friends sharing a secret. Their petals carry that impossible bubblegum-pink that looks lit from within, framed by glossy emerald leaves that make the colour sing even louder. Pink roses, in the old floriographies, mean grace, admiration, and a happiness that's still a little shy of itself. The whole bouquet is cradled in two generous wraps of soft rose-pink crepe paper folded into a graceful cone, and finished with a striped grosgrain ribbon in cherry-red and white — the kind of bow that turns a delivery into an occasion. Send it for a first date, a sweet sixteen, a thank-you, or a Tuesday that deserved more than a text.",
+    stems: ["10 stems of premium pink roses (bud-stage)", "Fresh emerald foliage", "Double-layer rose-pink crepe wrap", "Cherry-and-white striped grosgrain ribbon"],
+  },
+  {
     slug: "seraphine",
     name: "Seraphine",
     tagline: "An angel, wrapped in linen",
