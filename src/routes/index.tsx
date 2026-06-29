@@ -234,7 +234,7 @@ function HomePage() {
             {igs.map((src, i) => (
               <a
                 key={i}
-                href="https://instagram.com/floret"
+                href="https://www.instagram.com/flo.rettt/"
                 target="_blank"
                 rel="noreferrer"
                 className="group relative aspect-square overflow-hidden rounded-xl bg-cream-soft"

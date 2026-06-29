@@ -27,7 +27,7 @@ export function Footer() {
         <div className="space-y-3">
           <h4 className="text-[10px] uppercase tracking-[0.2em] text-ink/50">Get In Touch</h4>
           <a
-            href="https://instagram.com/flo.rettt"
+            href="https://www.instagram.com/flo.rettt/"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 text-sm hover:text-rose transition-colors"

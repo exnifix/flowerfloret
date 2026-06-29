@@ -10,6 +10,7 @@ import { bouquets, getBouquet } from "@/lib/bouquets";
 const ORDER_EMAIL = "pusnojawadraiyan@gmail.com";
 const ORDER_PHONE = "01718159391";
 const ORDER_INSTA = "flo.rettt";
+const ORDER_INSTA_URL = "https://www.instagram.com/flo.rettt/";
 const ORDER_INSTA_DISPLAY = "floret";
 
 const searchSchema = z.object({ bouquet: z.string().optional() });
@@ -39,7 +40,7 @@ export const Route = createFileRoute("/contact")({
           email: "pusnojawadraiyan@gmail.com",
           telephone: "+8801718159391",
           priceRange: "$$",
-          sameAs: ["https://instagram.com/flo.rettt"],
+          sameAs: [ORDER_INSTA_URL],
         }),
       },
     ],
@@ -157,7 +158,7 @@ function ContactPage() {
           <div className="mt-10 grid sm:grid-cols-3 gap-4 text-center">
             <InfoCard icon={<Mail className="size-4" />} label="Email" value={ORDER_EMAIL} href={`mailto:${ORDER_EMAIL}`} />
             <InfoCard icon={<Phone className="size-4" />} label="Phone" value={ORDER_PHONE} href={`tel:+880${ORDER_PHONE.replace(/^0/, "")}`} />
-            <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value={`@${ORDER_INSTA_DISPLAY}`} href={`https://instagram.com/${ORDER_INSTA}`} />
+            <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value={`@${ORDER_INSTA_DISPLAY}`} href={ORDER_INSTA_URL} />
           </div>
         </div>
       </section>
