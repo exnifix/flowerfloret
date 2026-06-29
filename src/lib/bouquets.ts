@@ -46,6 +46,18 @@ export type Bouquet = {
 
 export const bouquets: Bouquet[] = [
   {
+    slug: "rosetta",
+    name: "Rosetta",
+    tagline: "One rose. One promise. Nothing else needed.",
+    price: 149,
+    category: "Single Stem",
+    image: rosetta,
+    emotion: "For the quiet, deliberate kind of love",
+    description:
+      "A single red rose — chosen for its perfect, unbruised head — stands tall inside a sheer cellophane sleeve, dressed in midnight-black crepe petals that flare around the stem like the skirt of a gown. Finished with a slim crimson satin ribbon tied into a soft bow, Rosetta is the bouquet that doesn't need to explain itself. One rose has always meant one thing — \"you, and only you\" — and the black wrap turns that whisper into a statement: serious, devoted, a little dramatic, deeply romantic. Hand it over on a first date, slip it into the seat of a car, leave it on a pillow. It's the smallest grand gesture in the shop.",
+    stems: ["1 long-stem premium red rose", "Crystal-clear cellophane sleeve", "Black crepe paper wrap", "Crimson satin ribbon"],
+  },
+  {
     slug: "seraphine",
     name: "Seraphine",
     tagline: "An angel, wrapped in linen",
