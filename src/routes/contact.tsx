@@ -157,7 +157,7 @@ function ContactPage() {
           <div className="mt-10 grid sm:grid-cols-3 gap-4 text-center">
             <InfoCard icon={<Mail className="size-4" />} label="Email" value={ORDER_EMAIL} href={`mailto:${ORDER_EMAIL}`} />
             <InfoCard icon={<Phone className="size-4" />} label="Phone" value={ORDER_PHONE} href={`tel:+880${ORDER_PHONE.replace(/^0/, "")}`} />
-            <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value={`@${ORDER_INSTA}`} href={`https://instagram.com/${ORDER_INSTA}`} />
+            <InfoCard icon={<Instagram className="size-4" />} label="Instagram" value={`@${ORDER_INSTA_DISPLAY}`} href={`https://instagram.com/${ORDER_INSTA}`} />
           </div>
         </div>
       </section>
