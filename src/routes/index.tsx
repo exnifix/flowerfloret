@@ -25,7 +25,10 @@ export const Route = createFileRoute("/")({
       { name: "twitter:description", content: "Hand-tied bouquets composed as gestures by a small floral studio." },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fce57ac1-4615-4af7-92d9-13ff9b0a4177/id-preview-92112fd2--da013ce0-a7fa-495b-ae1c-8c4890277b1d.lovable.app-1782556626080.png" },
     ],
-    links: [{ rel: "canonical", href: "https://flowerfloret.lovable.app/" }],
+    links: [
+      { rel: "canonical", href: "https://flowerfloret.lovable.app/" },
+      { rel: "preload", as: "image", href: hero, fetchpriority: "high" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -95,6 +98,9 @@ function HomePage() {
                   alt="A field of ranunculus in soft morning light"
                   width={1400}
                   height={1700}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="size-full object-cover transition-transform duration-[1200ms] hover:scale-105"
                 />
               </div>
@@ -188,7 +194,7 @@ function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {bouquets.map((b, i) => (
-              <BouquetCard key={b.slug} bouquet={b} index={i} />
+              <BouquetCard key={b.slug} bouquet={b} index={i} priority={i < 3} />
             ))}
           </div>
 

@@ -1,7 +1,16 @@
+import { memo } from "react";
 import { Link } from "@tanstack/react-router";
 import type { Bouquet } from "@/lib/bouquets";
 
-export function BouquetCard({ bouquet, index = 0 }: { bouquet: Bouquet; index?: number }) {
+function BouquetCardImpl({
+  bouquet,
+  index = 0,
+  priority = false,
+}: {
+  bouquet: Bouquet;
+  index?: number;
+  priority?: boolean;
+}) {
   return (
     <Link
       to="/product/$slug"
@@ -15,7 +24,9 @@ export function BouquetCard({ bouquet, index = 0 }: { bouquet: Bouquet; index?: 
           alt={`${bouquet.name} bouquet — ${bouquet.tagline}`}
           width={800}
           height={1000}
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          fetchPriority={priority ? "high" : "low"}
           className="size-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
         />
       </div>
@@ -35,3 +46,5 @@ export function BouquetCard({ bouquet, index = 0 }: { bouquet: Bouquet; index?: 
     </Link>
   );
 }
+
+export const BouquetCard = memo(BouquetCardImpl);
