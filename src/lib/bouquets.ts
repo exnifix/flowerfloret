@@ -6,6 +6,7 @@ import celestialBloomAsset from "@/assets/bouquet-celestial-bloom.jpg.asset.json
 import heavenlyWhisperAsset from "@/assets/bouquet-heavenly-whisper.jpg.asset.json";
 import nakedPrestigeAsset from "@/assets/bouquet-naked-prestige.jpg.asset.json";
 import amourRougeAsset from "@/assets/bouquet-amour-rouge.jpg.asset.json";
+import goldenGraceAsset from "@/assets/bouquet-golden-grace.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -15,6 +16,7 @@ const celestialBloom = celestialBloomAsset.url;
 const heavenlyWhisper = heavenlyWhisperAsset.url;
 const nakedPrestige = nakedPrestigeAsset.url;
 const amourRouge = amourRougeAsset.url;
+const goldenGrace = goldenGraceAsset.url;
 
 
 
@@ -127,7 +129,19 @@ export const bouquets: Bouquet[] = [
       "A tight, opulent crown of deep crimson roses — each bloom a small, velvet heart — gathered into a sharp matte-black cone wrap and finished with a single ribbon of vivid scarlet silk tied into a soft bow at the throat. The red rose has always been love's loudest word: passion, devotion, desire kept just barely behind the teeth. Dressed in black, that meaning sharpens into something cinematic — romance with a little danger in it, a confession made in candlelight. Each rose head is hand-selected for that dark, glossy red that almost drinks the light, petals layered tight like a kept secret, leaves tucked low so the colour does all the talking. \"Give a red rose and you've spoken; give a dozen, and you've sworn.\" Amour Rouge is for the moment you stop pretending you're casual about them.",
     stems: ["A dozen deep red roses", "Matte-black cone wrap", "Scarlet satin ribbon, hand-tied bow", "Natural green foliage at the base"],
   },
-]; 
+  {
+    slug: "golden-grace",
+    name: "Golden Grace",
+    tagline: "A handful of sunshine, tied with cream",
+    price: 599,
+    category: "Bouquets",
+    image: goldenGrace,
+    emotion: "For warmth, gratitude, and unshakable cheer",
+    description:
+      "Two bright-faced sunflowers turn their heads toward you like small suns caught mid-rise, golden petals fanning out around deep amber centres dusted with pollen. Sunflowers have always been the flower of loyalty and light — they literally follow the sun, faces tracking warmth across the sky, which is why the old gardeners called them the most faithful bloom in the bed. Around them, drifts of baby's breath fall like soft scattered clouds, broad green leaves ground the stems in living gold, and the whole bouquet is sleeved in honeyed kraft paper with a clear inner wrap, finished at the throat with a cream satin ribbon tied into a generous bow. \"Keep your face to the sunshine and you cannot see the shadow.\" Golden Grace is the bouquet for the people who do exactly that — and for the ones who deserve a little of their own sun handed back.",
+    stems: ["2 stems of fresh-cut sunflowers", "Soft baby's breath (gypsophila)", "Natural green sunflower foliage", "Honey-kraft outer wrap with clear inner sleeve", "Cream satin ribbon, hand-tied bow"],
+  },
+];
 
 
 
