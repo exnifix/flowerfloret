@@ -6,11 +6,15 @@ import { Layout } from "@/components/site/Layout";
 export const Route = createFileRoute("/build")({
   head: () => ({
     meta: [
-      { title: "Build Your Own Bouquet — Floret" },
-      { name: "description", content: "Compose a custom bouquet at Floret. Choose your blooms, accents, wrap, and ribbon." },
-      { property: "og:title", content: "Build Your Own Bouquet — Floret" },
+      { title: "Build Your Own Bouquet — Custom Floral Arrangements | Floret" },
+      { name: "description", content: "Compose a bespoke bouquet at Floret. Choose your blooms, accents, wrap, and ribbon — watch your arrangement come together stem by stem." },
+      { property: "og:title", content: "Build Your Own Bouquet — Custom Floral Arrangements | Floret" },
       { property: "og:description", content: "Compose your own gesture, stem by stem." },
+      { property: "og:url", content: "https://flowerfloret.lovable.app/build" },
+      { name: "twitter:title", content: "Build Your Own Bouquet | Floret" },
+      { name: "twitter:description", content: "Compose your own gesture, stem by stem." },
     ],
+    links: [{ rel: "canonical", href: "https://flowerfloret.lovable.app/build" }],
   }),
   component: BuildPage,
 });
