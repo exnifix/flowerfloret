@@ -23,23 +23,23 @@ type Choice = { id: string; name: string; color: string; image?: string; group?:
 
 const flowers: Choice[] = [
   // Rose
-  { id: "rose-pink", name: "Pink Rose", color: "#f4a6b8", image: rosePink, group: "Rose" },
-  { id: "rose-red", name: "Red Rose", color: "#b3121f", image: roseRed, group: "Rose" },
-  { id: "rose-white", name: "White Rose", color: "#fbf6ec", image: roseWhite, group: "Rose" },
-  { id: "rose-yellow", name: "Yellow Rose", color: "#f6d365", image: roseYellow, group: "Rose" },
+  { id: "rose-pink", name: "Pink Rose", color: "#f4a6b8", group: "Rose" },
+  { id: "rose-red", name: "Red Rose", color: "#b3121f", group: "Rose" },
+  { id: "rose-white", name: "White Rose", color: "#fbf6ec", group: "Rose" },
+  { id: "rose-yellow", name: "Yellow Rose", color: "#f6d365", group: "Rose" },
   // Gerbera
-  { id: "gerbera-pink", name: "Pink Gerbera", color: "#f48fb1", image: gerberaPink, group: "Gerbera" },
-  { id: "gerbera-white", name: "White Gerbera", color: "#fdfaf1", image: gerberaWhite, group: "Gerbera" },
-  { id: "gerbera-yellow", name: "Yellow Gerbera", color: "#ffd24a", image: gerberaYellow, group: "Gerbera" },
-  { id: "gerbera-orange", name: "Orange Gerbera", color: "#f08a3a", image: gerberaOrange, group: "Gerbera" },
-  { id: "gerbera-darkpink", name: "Dark Pink Gerbera", color: "#c2185b", image: gerberaDarkPink, group: "Gerbera" },
+  { id: "gerbera-pink", name: "Pink Gerbera", color: "#f48fb1", group: "Gerbera" },
+  { id: "gerbera-white", name: "White Gerbera", color: "#fdfaf1", group: "Gerbera" },
+  { id: "gerbera-yellow", name: "Yellow Gerbera", color: "#ffd24a", group: "Gerbera" },
+  { id: "gerbera-orange", name: "Orange Gerbera", color: "#f08a3a", group: "Gerbera" },
+  { id: "gerbera-darkpink", name: "Dark Pink Gerbera", color: "#c2185b", group: "Gerbera" },
   // Lily
-  { id: "lily-white", name: "White Lily", color: "#fcf7ea", image: lilyWhite, group: "Lily" },
-  { id: "lily-pink", name: "Pink Lily", color: "#e88aa6", image: lilyPink, group: "Lily" },
+  { id: "lily-white", name: "White Lily", color: "#fcf7ea", group: "Lily" },
+  { id: "lily-pink", name: "Pink Lily", color: "#e88aa6", group: "Lily" },
   // Sunflower
-  { id: "sunflower", name: "Sunflower", color: "#e9a93a", image: sunflowerImg, group: "Sunflower" },
+  { id: "sunflower", name: "Sunflower", color: "#e9a93a", group: "Sunflower" },
   // Additional
-  { id: "gypsy", name: "Gypsophila (Baby's Breath)", color: "#ffffff", image: gypsyImg, group: "Additional" },
+  { id: "gypsy", name: "Gypsophila (Baby's Breath)", color: "#ffffff", group: "Additional" },
 ];
 
 const wraps: Choice[] = [
