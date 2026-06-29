@@ -95,7 +95,7 @@ export function OrderForm({ initialBouquet = "" }: Props) {
 
       {status === "sent" && (
         <p className="text-center text-sm text-rose font-italic italic animate-fade-up">
-          Thank you — your order has bloomed into our studio. We'll reach out within 24 hours.
+          Thank you — once we confirm your bKash payment to 01710538698, we'll begin composing your bouquet and reach out within 24 hours.
         </p>
       )}
       {status === "error" && (
