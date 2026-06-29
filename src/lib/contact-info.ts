@@ -1,6 +1,6 @@
 // Shop contact details — single source of truth.
 export const SHOP_EMAIL = "pusnojawadraiyan@gmail.com";
-export const SHOP_PHONE = "01718159391";
+export const SHOP_PHONE = "01710538698";
 export const SHOP_BKASH_NUMBER = "01710538698";
 export const SHOP_INSTA_HANDLE = "flo.rettt";
 export const SHOP_INSTA_DISPLAY = "floret";
