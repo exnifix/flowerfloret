@@ -142,7 +142,7 @@ function BuildPage() {
                     >
                       <span className="block size-8 rounded-full mb-3 ring-1 ring-black/5" style={{ backgroundColor: a.color }} />
                       <p className="text-sm">{a.name}</p>
-                      <p className="text-xs text-ink/55 mt-1">+${a.price}</p>
+                      <p className="text-xs text-ink/55 mt-1">+৳{a.price}</p>
                     </button>
                   );
                 })}
