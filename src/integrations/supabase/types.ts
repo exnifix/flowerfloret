@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       orders: {
         Row: {
+          bouquet: string | null
           created_at: string
           email: string
           id: string
@@ -25,6 +26,7 @@ export type Database = {
           phone: string | null
         }
         Insert: {
+          bouquet?: string | null
           created_at?: string
           email: string
           id?: string
@@ -34,6 +36,7 @@ export type Database = {
           phone?: string | null
         }
         Update: {
+          bouquet?: string | null
           created_at?: string
           email?: string
           id?: string
