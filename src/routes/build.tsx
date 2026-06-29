@@ -6,11 +6,15 @@ import { Layout } from "@/components/site/Layout";
 export const Route = createFileRoute("/build")({
   head: () => ({
     meta: [
-      { title: "Build Your Own Bouquet — Floret" },
-      { name: "description", content: "Compose a custom bouquet at Floret. Choose your blooms, accents, wrap, and ribbon." },
-      { property: "og:title", content: "Build Your Own Bouquet — Floret" },
+      { title: "Build Your Own Bouquet — Custom Floral Arrangements | Floret" },
+      { name: "description", content: "Compose a bespoke bouquet at Floret. Choose your blooms, accents, wrap, and ribbon — watch your arrangement come together stem by stem." },
+      { property: "og:title", content: "Build Your Own Bouquet — Custom Floral Arrangements | Floret" },
       { property: "og:description", content: "Compose your own gesture, stem by stem." },
+      { property: "og:url", content: "https://flowerfloret.lovable.app/build" },
+      { name: "twitter:title", content: "Build Your Own Bouquet | Floret" },
+      { name: "twitter:description", content: "Compose your own gesture, stem by stem." },
     ],
+    links: [{ rel: "canonical", href: "https://flowerfloret.lovable.app/build" }],
   }),
   component: BuildPage,
 });
@@ -204,8 +208,9 @@ function BuildPage() {
               </div>
             </StepGroup>
 
-            <StepGroup step="06" label="A note to tuck inside (optional)">
+            <StepGroup step="06" label="A note to tuck inside (optional)" htmlFor="bouquet-note">
               <textarea
+                id="bouquet-note"
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 rows={3}
@@ -264,7 +269,7 @@ function BuildPage() {
               <div className="p-6 space-y-4">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-ink/45">Your bouquet</p>
-                  <h3 className="font-serif text-2xl">A bespoke gesture</h3>
+                  <h2 className="font-serif text-2xl">A bespoke gesture</h2>
                 </div>
                 <ul className="text-sm text-ink/70 space-y-1.5">
                   {previewStems.map((s) => (
@@ -301,12 +306,16 @@ function BuildPage() {
   );
 }
 
-function StepGroup({ step, label, children }: { step: string; label: string; children: React.ReactNode }) {
+function StepGroup({ step, label, children, htmlFor }: { step: string; label: string; children: React.ReactNode; htmlFor?: string }) {
   return (
     <div>
       <div className="flex items-baseline gap-3 mb-4">
         <span className="font-serif text-rose text-lg">{step}</span>
-        <h3 className="font-serif text-2xl text-ink">{label}</h3>
+        {htmlFor ? (
+          <label htmlFor={htmlFor} className="font-serif text-2xl text-ink">{label}</label>
+        ) : (
+          <h2 className="font-serif text-2xl text-ink">{label}</h2>
+        )}
       </div>
       {children}
     </div>

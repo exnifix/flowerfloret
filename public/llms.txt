@@ -1,0 +1,22 @@
+# Floret
+
+> A small floral studio crafting hand-tied bouquets composed as gestures — where flowers are not just flowers, but emotions, feelings, and unspoken words given form.
+
+Floret is an independent floral studio based in Bangladesh, offering signature seasonal bouquets, bespoke arrangements, and event florals. Each bouquet is hand-tied in studio with ethically sourced stems and finished with a handwritten note.
+
+## Pages
+
+- [Home](/): Brand introduction, featured collection, and overview of services.
+- [Bouquet Collection](/collection): Six signature hand-tied bouquets, each composed for a particular shade of feeling.
+- [Build Your Own Bouquet](/build): Interactive composer for choosing blooms, accents, wrap, ribbon, and size.
+- [About Floret](/about): Studio story, values, and the craft behind every arrangement.
+- [Contact](/contact): Bespoke order form, email, phone, and Instagram for inquiries.
+
+## Featured Bouquets
+
+- [Ethereal Blush](/product/ethereal-blush): Soft pink garden roses and cream peonies for tender moments.
+- [Garden Whispers](/product/garden-whispers): Seasonal blooms in butter cream and dusty blush.
+- [Romance in Bloom](/product/romance-in-bloom): Pale pink roses with baby's breath for declarations of love.
+- [Sunset Serenade](/product/sunset-serenade): Apricot and amber roses for warm gratitude.
+- [Midnight Velvet](/product/midnight-velvet): Burgundy roses and moody foliage for deep passion.
+- [Wildflower Sonnet](/product/wildflower-sonnet): Lavender, daisies, and dried wheat for free spirits.

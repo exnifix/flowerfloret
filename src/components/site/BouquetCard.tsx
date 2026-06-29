@@ -12,7 +12,7 @@ export function BouquetCard({ bouquet, index = 0 }: { bouquet: Bouquet; index?: 
       <div className="aspect-[4/5] overflow-hidden bg-cream-soft">
         <img
           src={bouquet.image}
-          alt={bouquet.name}
+          alt={`${bouquet.name} bouquet — ${bouquet.tagline}`}
           width={800}
           height={1000}
           loading="lazy"

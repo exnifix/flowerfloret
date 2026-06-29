@@ -17,10 +17,30 @@ export const Route = createFileRoute("/contact")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Contact — Floret" },
-      { name: "description", content: "Tell us about your floral dreams. Floret takes bespoke orders and event commissions." },
-      { property: "og:title", content: "Contact — Floret" },
-      { property: "og:description", content: "Tell us about your floral dreams." },
+      { title: "Contact Floret — Bespoke Bouquets & Event Florals" },
+      { name: "description", content: "Tell us about your floral dreams. Floret takes bespoke orders, weddings, and event commissions — reach us by email, phone, or Instagram." },
+      { property: "og:title", content: "Contact Floret — Bespoke Bouquets & Event Florals" },
+      { property: "og:description", content: "Tell us about your floral dreams — bespoke orders and event commissions." },
+      { property: "og:url", content: "https://flowerfloret.lovable.app/contact" },
+      { name: "twitter:title", content: "Contact Floret" },
+      { name: "twitter:description", content: "Tell us about your floral dreams." },
+    ],
+    links: [{ rel: "canonical", href: "https://flowerfloret.lovable.app/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Floret",
+          description: "Small floral studio offering hand-tied bouquets, bespoke arrangements, and event florals by appointment.",
+          url: "https://flowerfloret.lovable.app",
+          email: "pusnojawadraiyan@gmail.com",
+          telephone: "+8801718159391",
+          priceRange: "$$",
+          sameAs: ["https://instagram.com/antoraken"],
+        }),
+      },
     ],
   }),
   component: ContactPage,
@@ -86,8 +106,9 @@ function ContactPage() {
               <Field label="Phone" name="phone" placeholder="Optional" />
             </div>
             <div>
-              <label className="text-xs uppercase tracking-[0.18em] text-ink/55">Which bouquet?</label>
+              <label htmlFor="bouquet-select" className="text-xs uppercase tracking-[0.18em] text-ink/55">Which bouquet?</label>
               <select
+                id="bouquet-select"
                 name="bouquet"
                 value={selectedBouquet}
                 onChange={(e) => setSelectedBouquet(e.target.value)}
@@ -102,8 +123,9 @@ function ContactPage() {
             </div>
             <Field label="Occasion" name="occasion" placeholder="A birthday, an apology, a Tuesday…" />
             <div>
-              <label className="text-xs uppercase tracking-[0.18em] text-ink/55">Tell us more</label>
+              <label htmlFor="message" className="text-xs uppercase tracking-[0.18em] text-ink/55">Tell us more</label>
               <textarea
+                id="message"
                 name="message"
                 rows={5}
                 placeholder="Describe the feeling you want to send. Colours, recipient, anything that matters."
@@ -142,11 +164,14 @@ function ContactPage() {
   );
 }
 
-function Field({ label, ...rest }: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
+function Field({ label, name, ...rest }: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
+  const id = `field-${name}`;
   return (
     <div>
-      <label className="text-xs uppercase tracking-[0.18em] text-ink/55">{label}</label>
+      <label htmlFor={id} className="text-xs uppercase tracking-[0.18em] text-ink/55">{label}</label>
       <input
+        id={id}
+        name={name}
         {...rest}
         className="mt-2 w-full rounded-full bg-cream/60 border border-border px-5 py-3.5 text-sm focus:outline-none focus:border-rose focus:bg-cream transition-colors"
       />

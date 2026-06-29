@@ -10,16 +10,49 @@ export const Route = createFileRoute("/product/$slug")({
     if (!bouquet) throw notFound();
     return { bouquet };
   },
-  head: ({ loaderData }) => ({
+  head: ({ params, loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.bouquet.name} — Floret` },
+          { title: `${loaderData.bouquet.name} — ${loaderData.bouquet.tagline} | Floret` },
           { name: "description", content: loaderData.bouquet.description.slice(0, 160) },
           { property: "og:title", content: `${loaderData.bouquet.name} — Floret` },
           { property: "og:description", content: loaderData.bouquet.tagline },
+          { property: "og:type", content: "product" },
           { property: "og:image", content: loaderData.bouquet.image },
+          { property: "og:url", content: `https://flowerfloret.lovable.app/product/${params.slug}` },
+          { property: "product:price:amount", content: loaderData.bouquet.price.toFixed(2) },
+          { property: "product:price:currency", content: "USD" },
+          { name: "twitter:title", content: `${loaderData.bouquet.name} — Floret` },
+          { name: "twitter:description", content: loaderData.bouquet.tagline },
+          { name: "twitter:image", content: loaderData.bouquet.image },
         ]
       : [{ title: "Floret" }],
+    links: loaderData
+      ? [{ rel: "canonical", href: `https://flowerfloret.lovable.app/product/${params.slug}` }]
+      : [],
+    scripts: loaderData
+      ? [
+          {
+            type: "application/ld+json",
+            children: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: loaderData.bouquet.name,
+              description: loaderData.bouquet.description,
+              image: loaderData.bouquet.image,
+              category: loaderData.bouquet.category,
+              brand: { "@type": "Brand", name: "Floret" },
+              offers: {
+                "@type": "Offer",
+                price: loaderData.bouquet.price.toFixed(2),
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                url: `https://flowerfloret.lovable.app/product/${params.slug}`,
+              },
+            }),
+          },
+        ]
+      : [],
   }),
   notFoundComponent: () => (
     <Layout>
@@ -61,7 +94,9 @@ function ProductPage() {
               <div className="absolute -inset-4 bg-blush/15 rounded-[2.5rem] blur-2xl" />
               <img
                 src={bouquet.image}
-                alt={bouquet.name}
+                alt={`${bouquet.name} — ${bouquet.tagline}, a hand-tied Floret bouquet`}
+                loading="eager"
+                fetchPriority="high"
                 width={800}
                 height={1000}
                 className="relative w-full rounded-[2rem] object-cover aspect-[4/5]"
@@ -88,7 +123,7 @@ function ProductPage() {
                 <p className="text-xs uppercase tracking-[0.2em] text-rose mb-3 flex items-center gap-2">
                   <Sparkles className="size-3.5" /> {bouquet.emotion}
                 </p>
-                <h3 className="font-serif text-xl mb-4">Composed with</h3>
+                <h2 className="font-serif text-xl mb-4">Composed with</h2>
                 <ul className="space-y-2">
                   {bouquet.stems.map((s: string) => (
                     <li key={s} className="flex items-start gap-3 text-sm text-ink/75">
