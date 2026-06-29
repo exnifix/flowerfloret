@@ -6,10 +6,25 @@ import { bouquets } from "@/lib/bouquets";
 export const Route = createFileRoute("/collection")({
   head: () => ({
     meta: [
-      { title: "Collection — Floret" },
-      { name: "description", content: "Browse Floret's hand-tied bouquet collection. Every arrangement composed as a gesture." },
-      { property: "og:title", content: "Collection — Floret" },
-      { property: "og:description", content: "Hand-tied bouquets, composed as gestures." },
+      { title: "Bouquet Collection — Floret Hand-Tied Floral Arrangements" },
+      { name: "description", content: "Browse Floret's signature hand-tied bouquet collection. Six seasonal compositions, each crafted as a gesture of feeling — from tender blush to deep burgundy." },
+      { property: "og:title", content: "Bouquet Collection — Floret Hand-Tied Floral Arrangements" },
+      { property: "og:description", content: "Six signature compositions, hand-tied as gestures." },
+      { property: "og:url", content: "https://flowerfloret.lovable.app/collection" },
+      { name: "twitter:title", content: "Bouquet Collection — Floret" },
+      { name: "twitter:description", content: "Six signature compositions, hand-tied as gestures." },
+    ],
+    links: [{ rel: "canonical", href: "https://flowerfloret.lovable.app/collection" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Floret Bouquet Collection",
+          url: "https://flowerfloret.lovable.app/collection",
+        }),
+      },
     ],
   }),
   component: CollectionPage,
