@@ -185,6 +185,18 @@ export const bouquets: Bouquet[] = [
       "A trio of pink Oriental lilies unfurls at the heart of this bouquet — each petal that impossibly soft shade between blush and dawn, brushed with a deeper rose down the centre vein and freckled gold in the throat. The pink lily is one of the most quietly romantic flowers in the world: in the old language of blooms it carries prosperity, admiration, and a love that's still learning how big it can grow. A single ivory rose tucks itself in like a kept secret, and clouds of baby's breath drift around the lilies like little stars caught in tulle. The whole arrangement is cradled in two layers of cream wrapping paper — the outer sheet softly crinkled, the inner one folded into careful petals of its own — and tied at the throat with a length of blush-pink twine, finished with a small message card waiting for your words. \"Some flowers don't just sit in your hands — they hold them back.\" Petal's Embrace is the bouquet for the love that arrives like a slow exhale: gentle, certain, and impossible to put down.",
     stems: ["3 stems of pink Oriental lilies", "1 ivory rose", "Generous baby's breath (gypsophila)", "Fresh green foliage", "Two layers of cream wrapping paper", "Blush-pink twine and message card"],
   },
+  {
+    slug: "romance-velvet",
+    name: "Romance Velvet",
+    tagline: "Crimson roses, hushed in champagne paper",
+    price: 999,
+    category: "Bouquets",
+    image: romanceVelvet,
+    emotion: "For old-cinema romance",
+    description:
+      "A close, opulent crown of deep crimson spray roses gathers at the top of this bouquet — each bloom a small velvet heart, layered tight with smaller buds still half-curled, the colour so saturated it almost drinks the light around it. Red roses are love's oldest and loudest word — passion, devotion, desire spoken without apology — and the spray rose adds a softer chorus underneath, three or four little blooms on every stem so the whole crown reads as a single, living velvet pillow. The arrangement is sleeved in a tall sheet of champagne-cream matte paper folded into a clean architectural cone, the seam dropping into a soft fishtail at the base, and finished at the throat with a wide burgundy satin ribbon tied into a generous hand-knotted bow that spills down the front like a held sigh. \"Red roses are the heart's loudest whisper.\" Romance Velvet is the bouquet for the quiet, cinematic kind of love — the one that doesn't need fireworks, only a single look held a beat too long.",
+    stems: ["A full gathering of deep red spray roses", "Natural green foliage at the collar", "Architectural champagne-cream matte wrap", "Wide burgundy satin ribbon, hand-tied bow"],
+  },
 ];
 
 
