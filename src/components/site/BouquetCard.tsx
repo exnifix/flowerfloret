@@ -26,7 +26,7 @@ export function BouquetCard({ bouquet, index = 0 }: { bouquet: Bouquet; index?: 
           {bouquet.description}
         </p>
         <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between">
-          <span className="font-serif text-xl text-rose">${bouquet.price.toFixed(2)}</span>
+          <span className="font-serif text-xl text-rose">৳{bouquet.price.toLocaleString("en-BD")}</span>
           <span className="text-[10px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-sage/30 text-ink/70">
             In Stock
           </span>
