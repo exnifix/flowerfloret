@@ -1,20 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Flower2, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Layout } from "@/components/site/Layout";
-import rosePink from "@/assets/flowers/rose-pink.png";
-import roseRed from "@/assets/flowers/rose-red.png";
-import roseWhite from "@/assets/flowers/rose-white.png";
-import roseYellow from "@/assets/flowers/rose-yellow.png";
-import gerberaPink from "@/assets/flowers/gerbera-pink.png";
-import gerberaWhite from "@/assets/flowers/gerbera-white.png";
-import gerberaYellow from "@/assets/flowers/gerbera-yellow.png";
-import gerberaOrange from "@/assets/flowers/gerbera-orange.png";
-import gerberaDarkPink from "@/assets/flowers/gerbera-darkpink.png";
-import lilyWhite from "@/assets/flowers/lily-white.png";
-import lilyPink from "@/assets/flowers/lily-pink.png";
-import sunflowerImg from "@/assets/flowers/sunflower.png";
-import gypsyImg from "@/assets/flowers/gypsy.png";
 
 export const Route = createFileRoute("/build")({
   head: () => ({
@@ -36,23 +23,23 @@ type Choice = { id: string; name: string; color: string; image?: string; group?:
 
 const flowers: Choice[] = [
   // Rose
-  { id: "rose-pink", name: "Pink Rose", color: "#f4a6b8", image: rosePink, group: "Rose" },
-  { id: "rose-red", name: "Red Rose", color: "#b3121f", image: roseRed, group: "Rose" },
-  { id: "rose-white", name: "White Rose", color: "#fbf6ec", image: roseWhite, group: "Rose" },
-  { id: "rose-yellow", name: "Yellow Rose", color: "#f6d365", image: roseYellow, group: "Rose" },
+  { id: "rose-pink", name: "Pink Rose", color: "#f4a6b8", group: "Rose" },
+  { id: "rose-red", name: "Red Rose", color: "#b3121f", group: "Rose" },
+  { id: "rose-white", name: "White Rose", color: "#fbf6ec", group: "Rose" },
+  { id: "rose-yellow", name: "Yellow Rose", color: "#f6d365", group: "Rose" },
   // Gerbera
-  { id: "gerbera-pink", name: "Pink Gerbera", color: "#f48fb1", image: gerberaPink, group: "Gerbera" },
-  { id: "gerbera-white", name: "White Gerbera", color: "#fdfaf1", image: gerberaWhite, group: "Gerbera" },
-  { id: "gerbera-yellow", name: "Yellow Gerbera", color: "#ffd24a", image: gerberaYellow, group: "Gerbera" },
-  { id: "gerbera-orange", name: "Orange Gerbera", color: "#f08a3a", image: gerberaOrange, group: "Gerbera" },
-  { id: "gerbera-darkpink", name: "Dark Pink Gerbera", color: "#c2185b", image: gerberaDarkPink, group: "Gerbera" },
+  { id: "gerbera-pink", name: "Pink Gerbera", color: "#f48fb1", group: "Gerbera" },
+  { id: "gerbera-white", name: "White Gerbera", color: "#fdfaf1", group: "Gerbera" },
+  { id: "gerbera-yellow", name: "Yellow Gerbera", color: "#ffd24a", group: "Gerbera" },
+  { id: "gerbera-orange", name: "Orange Gerbera", color: "#f08a3a", group: "Gerbera" },
+  { id: "gerbera-darkpink", name: "Dark Pink Gerbera", color: "#c2185b", group: "Gerbera" },
   // Lily
-  { id: "lily-white", name: "White Lily", color: "#fcf7ea", image: lilyWhite, group: "Lily" },
-  { id: "lily-pink", name: "Pink Lily", color: "#e88aa6", image: lilyPink, group: "Lily" },
+  { id: "lily-white", name: "White Lily", color: "#fcf7ea", group: "Lily" },
+  { id: "lily-pink", name: "Pink Lily", color: "#e88aa6", group: "Lily" },
   // Sunflower
-  { id: "sunflower", name: "Sunflower", color: "#e9a93a", image: sunflowerImg, group: "Sunflower" },
+  { id: "sunflower", name: "Sunflower", color: "#e9a93a", group: "Sunflower" },
   // Additional
-  { id: "gypsy", name: "Gypsophila (Baby's Breath)", color: "#ffffff", image: gypsyImg, group: "Additional" },
+  { id: "gypsy", name: "Gypsophila (Baby's Breath)", color: "#ffffff", group: "Additional" },
 ];
 
 const wraps: Choice[] = [
@@ -113,7 +100,7 @@ function BuildPage() {
             Build Your Own <span className="italic font-italic text-rose">Bouquet</span>
           </h1>
           <p className="mt-6 text-ink/70 leading-relaxed animate-fade-up delay-200">
-            Compose your gesture, stem by stem. Watch your bouquet bloom in real time on the right.
+            Compose your gesture, stem by stem. Pick your flowers, wrap, ribbon and size — we'll bring it to life.
           </p>
         </div>
       </section>
@@ -134,27 +121,16 @@ function BuildPage() {
                           <button
                             key={f.id}
                             onClick={() => toggle(f.id)}
-                            className={`group text-left rounded-2xl border p-3 transition-all ${
+                            className={`group text-left rounded-2xl border p-4 transition-all ${
                               on
                                 ? "border-rose bg-blush-soft/40 -translate-y-0.5 shadow-sm"
                                 : "border-border bg-card hover:border-rose/50"
                             }`}
                           >
-                            <div className="aspect-square w-full rounded-xl bg-cream/60 grid place-items-center overflow-hidden mb-2">
-                              {f.image ? (
-                                <img
-                                  src={f.image}
-                                  alt={f.name}
-                                  loading="lazy"
-                                  className="w-full h-full object-contain drop-shadow-sm transition-transform group-hover:scale-105"
-                                />
-                              ) : (
-                                <span
-                                  className="block size-10 rounded-full ring-1 ring-black/10"
-                                  style={{ backgroundColor: f.color }}
-                                />
-                              )}
-                            </div>
+                            <span
+                              className="block size-10 rounded-full mb-3 ring-1 ring-black/10"
+                              style={{ backgroundColor: f.color }}
+                            />
                             <p className="text-sm font-medium flex items-center justify-between">
                               {f.name}
                               {on && <Check className="size-4 text-rose" />}
@@ -243,77 +219,38 @@ function BuildPage() {
             </StepGroup>
           </div>
 
-          {/* Live Preview */}
+          {/* Summary */}
           <aside className="lg:sticky lg:top-28">
-            <div className="rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[0_30px_80px_-40px_rgba(180,120,120,0.25)]">
-              <div
-                className="aspect-square relative grid place-items-center transition-colors duration-500"
-                style={{
-                  backgroundColor: wrap === "transparent" ? "#f6ecdc" : wrapColor,
-                }}
-              >
-                <div className="relative w-full h-full">
-                  {previewStems.length === 0 ? (
-                    <div className="absolute inset-0 grid place-items-center text-ink/40 text-sm">
-                      <Flower2 className="size-10" strokeWidth={1.2} />
-                    </div>
-                  ) : (
-                    previewStems.map((s, i) => {
-                      const total = previewStems.length;
-                      const angle = total === 1 ? 0 : -22 + (i / (total - 1)) * 44;
-                      const spread = Math.min(70, 18 + total * 6);
-                      const offsetX = total === 1 ? 0 : (i - (total - 1) / 2) * (spread / Math.max(total - 1, 1));
-                      const offsetY = Math.abs(i - (total - 1) / 2) * 6;
-                      return (
-                        <img
-                          key={s.id}
-                          src={s.image}
-                          alt={s.name}
-                          loading="lazy"
-                          className="absolute left-1/2 top-1/2 w-[68%] h-[88%] object-contain origin-bottom transition-all duration-500 animate-fade-up drop-shadow-md"
-                          style={{
-                            transform: `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px) rotate(${angle}deg)`,
-                            zIndex: 10 - Math.abs(i - (total - 1) / 2),
-                          }}
-                        />
-                      );
-                    })
-                  )}
-                  <div
-                    className="absolute left-1/2 -translate-x-1/2 bottom-[10%] w-[35%] h-2.5 rounded-full transition-colors shadow-sm"
-                    style={{ backgroundColor: ribbonColor }}
-                  />
-                </div>
+            <div className="rounded-3xl bg-card border border-border/60 p-6 space-y-4 shadow-[0_30px_80px_-40px_rgba(180,120,120,0.25)]">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-ink/45">Your bouquet</p>
+                <h2 className="font-serif text-2xl">A bespoke gesture</h2>
               </div>
-
-              <div className="p-6 space-y-4">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-ink/45">Your bouquet</p>
-                  <h2 className="font-serif text-2xl">A bespoke gesture</h2>
-                </div>
-                <ul className="text-sm text-ink/70 space-y-1.5">
-                  {previewStems.map((s) => (
-                    <li key={s.id} className="flex items-center gap-2">
-                      <span className="size-2 rounded-full" style={{ backgroundColor: s.color }} />
-                      {s.name}
-                    </li>
-                  ))}
-                  <li className="text-ink/50 pt-2 border-t border-border/60 mt-2">
-                    {wraps.find((w) => w.id === wrap)?.name} wrap · {ribbons.find((r) => r.id === ribbon)?.name} ribbon
+              <ul className="text-sm text-ink/70 space-y-1.5">
+                {previewStems.length === 0 && (
+                  <li className="text-ink/40 italic">No stems selected yet…</li>
+                )}
+                {previewStems.map((s) => (
+                  <li key={s.id} className="flex items-center gap-2">
+                    <span className="size-2 rounded-full" style={{ backgroundColor: s.color }} />
+                    {s.name}
                   </li>
-                  {customSize && <li className="text-ink/50">Size: {customSize}</li>}
-                </ul>
-                <Link
-                  to="/contact"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
-                >
-                  Request This Bouquet
-                  <ArrowRight className="size-4" />
-                </Link>
-                <p className="text-xs text-ink/50 text-center italic font-italic">
-                  Final price confirmed after a quick chat about your selections and delivery.
-                </p>
-              </div>
+                ))}
+                <li className="text-ink/50 pt-2 border-t border-border/60 mt-2">
+                  {wraps.find((w) => w.id === wrap)?.name} wrap · {ribbons.find((r) => r.id === ribbon)?.name} ribbon
+                </li>
+                {customSize && <li className="text-ink/50">Size: {customSize}</li>}
+              </ul>
+              <Link
+                to="/contact"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
+              >
+                Request This Bouquet
+                <ArrowRight className="size-4" />
+              </Link>
+              <p className="text-xs text-ink/50 text-center italic font-italic">
+                Final price confirmed after a quick chat about your selections and delivery.
+              </p>
             </div>
           </aside>
         </div>
