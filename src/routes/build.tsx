@@ -120,24 +120,29 @@ function BuildPage() {
                         return (
                           <button
                             key={f.id}
+                            type="button"
                             onClick={() => toggle(f.id)}
-                            className={`group text-left rounded-2xl border p-4 transition-all ${
+                            aria-pressed={on}
+                            className={`group relative text-left rounded-2xl border-2 p-4 transition-all cursor-pointer ${
                               on
-                                ? "border-rose bg-blush-soft/40 -translate-y-0.5 shadow-sm"
-                                : "border-border bg-card hover:border-rose/50"
+                                ? "border-rose bg-blush-soft/60 -translate-y-0.5 shadow-md ring-2 ring-rose/30"
+                                : "border-border bg-card hover:border-rose/60 hover:bg-blush-soft/20"
                             }`}
                           >
+                            {on && (
+                              <span className="absolute top-2 right-2 size-5 rounded-full bg-rose text-cream flex items-center justify-center">
+                                <Check className="size-3" strokeWidth={3} />
+                              </span>
+                            )}
                             <span
                               className="block size-10 rounded-full mb-3 ring-1 ring-black/10"
                               style={{ backgroundColor: f.color }}
                             />
-                            <p className="text-sm font-medium flex items-center justify-between">
-                              {f.name}
-                              {on && <Check className="size-4 text-rose" />}
-                            </p>
+                            <p className="text-sm font-medium">{f.name}</p>
                           </button>
                         );
                       })}
+
                     </div>
                   </div>
                 ))}
