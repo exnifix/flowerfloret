@@ -44,8 +44,8 @@ export const Route = createFileRoute("/product/$slug")({
               brand: { "@type": "Brand", name: "Floret" },
               offers: {
                 "@type": "Offer",
-                price: loaderData.bouquet.price.toFixed(2),
-                priceCurrency: "USD",
+                price: loaderData.bouquet.price.toString(),
+                priceCurrency: "BDT",
                 availability: "https://schema.org/InStock",
                 url: `https://flowerfloret.lovable.app/product/${params.slug}`,
               },
