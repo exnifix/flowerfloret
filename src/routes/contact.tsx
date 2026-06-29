@@ -1,13 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Instagram, Mail, Phone, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { z } from "zod";
 import { Layout } from "@/components/site/Layout";
 import { supabase } from "@/integrations/supabase/client";
 import { notifyNewOrder } from "@/lib/notify-order.functions";
+import { bouquets, getBouquet } from "@/lib/bouquets";
 
 const ORDER_EMAIL = "pusnojawadraiyan@gmail.com";
 const ORDER_PHONE = "01718159391";
 const ORDER_INSTA = "antoraken";
+
+const searchSchema = z.object({ bouquet: z.string().optional() });
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
