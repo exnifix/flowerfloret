@@ -134,27 +134,16 @@ function BuildPage() {
                           <button
                             key={f.id}
                             onClick={() => toggle(f.id)}
-                            className={`group text-left rounded-2xl border p-3 transition-all ${
+                            className={`group text-left rounded-2xl border p-4 transition-all ${
                               on
                                 ? "border-rose bg-blush-soft/40 -translate-y-0.5 shadow-sm"
                                 : "border-border bg-card hover:border-rose/50"
                             }`}
                           >
-                            <div className="aspect-square w-full rounded-xl bg-cream/60 grid place-items-center overflow-hidden mb-2">
-                              {f.image ? (
-                                <img
-                                  src={f.image}
-                                  alt={f.name}
-                                  loading="lazy"
-                                  className="w-full h-full object-contain drop-shadow-sm transition-transform group-hover:scale-105"
-                                />
-                              ) : (
-                                <span
-                                  className="block size-10 rounded-full ring-1 ring-black/10"
-                                  style={{ backgroundColor: f.color }}
-                                />
-                              )}
-                            </div>
+                            <span
+                              className="block size-10 rounded-full mb-3 ring-1 ring-black/10"
+                              style={{ backgroundColor: f.color }}
+                            />
                             <p className="text-sm font-medium flex items-center justify-between">
                               {f.name}
                               {on && <Check className="size-4 text-rose" />}
