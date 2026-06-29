@@ -7,7 +7,7 @@ export const Route = createFileRoute("/build")({
   head: () => ({
     meta: [
       { title: "Build Your Own Bouquet — Custom Floral Arrangements | Floret" },
-      { name: "description", content: "Compose a bespoke bouquet at Floret. Choose your blooms, accents, wrap, and ribbon — watch your arrangement come together stem by stem." },
+      { name: "description", content: "Compose a bespoke bouquet at Floret. Choose your roses, gerberas, lilies, sunflowers, wrap and ribbon — watch your arrangement come together stem by stem." },
       { property: "og:title", content: "Build Your Own Bouquet — Custom Floral Arrangements | Floret" },
       { property: "og:description", content: "Compose your own gesture, stem by stem." },
       { property: "og:url", content: "https://flowerfloret.lovable.app/build" },
@@ -19,72 +19,75 @@ export const Route = createFileRoute("/build")({
   component: BuildPage,
 });
 
-type Choice = { id: string; name: string; color: string; price: number };
+type Choice = { id: string; name: string; color: string; group?: string };
 
-const bases: Choice[] = [
-  { id: "rose-blush", name: "Blush Garden Rose", color: "#f5b6b8", price: 240 },
-  { id: "peony-cream", name: "Cream Peony", color: "#fbeadf", price: 320 },
-  { id: "ranunculus", name: "Coral Ranunculus", color: "#f0a08c", price: 280 },
-  { id: "rose-burgundy", name: "Burgundy Velvet Rose", color: "#6b1f2a", price: 260 },
-  { id: "tulip-white", name: "Ivory Tulip", color: "#f5efe4", price: 180 },
-  { id: "lavender", name: "French Lavender", color: "#b3a3d8", price: 140 },
-];
-
-const accents: Choice[] = [
-  { id: "babys-breath", name: "Baby's Breath", color: "#ffffff", price: 120 },
-  { id: "eucalyptus", name: "Silver Eucalyptus", color: "#c9d5c5", price: 100 },
-  { id: "wheat", name: "Dried Wheat", color: "#d9c290", price: 80 },
-  { id: "astrantia", name: "Pink Astrantia", color: "#e7b4be", price: 120 },
+const flowers: Choice[] = [
+  // Rose
+  { id: "rose-pink", name: "Pink Rose", color: "#f4a6b8", group: "Rose" },
+  { id: "rose-red", name: "Red Rose", color: "#b3121f", group: "Rose" },
+  { id: "rose-white", name: "White Rose", color: "#fbf6ec", group: "Rose" },
+  { id: "rose-yellow", name: "Yellow Rose", color: "#f6d365", group: "Rose" },
+  // Gerbera
+  { id: "gerbera-pink", name: "Pink Gerbera", color: "#f48fb1", group: "Gerbera" },
+  { id: "gerbera-white", name: "White Gerbera", color: "#fdfaf1", group: "Gerbera" },
+  { id: "gerbera-yellow", name: "Yellow Gerbera", color: "#ffd24a", group: "Gerbera" },
+  { id: "gerbera-orange", name: "Orange Gerbera", color: "#f08a3a", group: "Gerbera" },
+  { id: "gerbera-darkpink", name: "Dark Pink Gerbera", color: "#c2185b", group: "Gerbera" },
+  // Lily
+  { id: "lily-white", name: "White Lily", color: "#fcf7ea", group: "Lily" },
+  { id: "lily-pink", name: "Pink Lily", color: "#e88aa6", group: "Lily" },
+  // Sunflower
+  { id: "sunflower", name: "Sunflower", color: "#e9a93a", group: "Sunflower" },
+  // Additional
+  { id: "gypsy", name: "Gypsophila (Baby's Breath)", color: "#ffffff", group: "Additional" },
 ];
 
 const wraps: Choice[] = [
-  { id: "cream", name: "Cream Silk", color: "#f6ecdc", price: 160 },
-  { id: "blush", name: "Blush Paper", color: "#f4cdcf", price: 120 },
-  { id: "kraft", name: "Natural Kraft", color: "#c9a784", price: 100 },
-  { id: "sage", name: "Sage Linen", color: "#cdd7c4", price: 160 },
+  { id: "offwhite", name: "Off White", color: "#f3ece0" },
+  { id: "white", name: "White", color: "#ffffff" },
+  { id: "pink", name: "Pink", color: "#f4c2cf" },
+  { id: "black", name: "Black", color: "#1a1a1a" },
+  { id: "maroon", name: "Maroon", color: "#5c1a23" },
+  { id: "olive", name: "Olive", color: "#7c8438" },
+  { id: "gray", name: "Gray", color: "#9aa0a6" },
+  { id: "lightpink", name: "Light Pink", color: "#fadbe2" },
+  { id: "transparent", name: "Transparent", color: "transparent" },
 ];
 
 const ribbons: Choice[] = [
-  { id: "blush-silk", name: "Blush Silk", color: "#f5b6b8" },
-  { id: "ivory", name: "Ivory Satin", color: "#f3ebd9" },
-  { id: "moss", name: "Moss Velvet", color: "#7a8966" },
-  { id: "twine", name: "Hemp Twine", color: "#b59872" },
-] as Choice[];
-
-const sizes = [
-  { id: "petite", name: "Petite", desc: "12 stems", mult: 1 },
-  { id: "signature", name: "Signature", desc: "24 stems", mult: 1.8 },
-  { id: "abundant", name: "Abundant", desc: "40 stems", mult: 2.8 },
+  { id: "black", name: "Black", color: "#1a1a1a" },
+  { id: "pink", name: "Pink", color: "#f4a6b8" },
+  { id: "white", name: "White", color: "#fbf6ec" },
+  { id: "blue", name: "Blue", color: "#4a78c2" },
+  { id: "goldenbrown", name: "Golden Brown", color: "#b07a3a" },
 ];
 
 function BuildPage() {
-  const [base, setBase] = useState<string[]>(["rose-blush"]);
-  const [accent, setAccent] = useState<string[]>(["babys-breath"]);
-  const [wrap, setWrap] = useState<string>("cream");
-  const [ribbon, setRibbon] = useState<string>("blush-silk");
-  const [size, setSize] = useState<string>("signature");
+  const [picks, setPicks] = useState<string[]>(["rose-pink"]);
+  const [wrap, setWrap] = useState<string>("offwhite");
+  const [ribbon, setRibbon] = useState<string>("pink");
+  const [customSize, setCustomSize] = useState<string>("");
   const [note, setNote] = useState("");
 
-  const toggle = (arr: string[], id: string, max = 3) => {
-    if (arr.includes(id)) return arr.filter((x) => x !== id);
-    if (arr.length >= max) return [...arr.slice(1), id];
-    return [...arr, id];
+  const toggle = (id: string) => {
+    setPicks((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
   };
 
-  const total = useMemo(() => {
-    const stems = [...bases, ...accents].filter((c) => [...base, ...accent].includes(c.id));
-    const stemSum = stems.reduce((s, c) => s + c.price, 0);
-    const wrapPrice = wraps.find((w) => w.id === wrap)?.price ?? 0;
-    const mult = sizes.find((s) => s.id === size)?.mult ?? 1;
-    return Math.round(stemSum * mult + wrapPrice + 200);
-  }, [base, accent, wrap, size]);
+  const previewStems = useMemo(
+    () => flowers.filter((f) => picks.includes(f.id)),
+    [picks],
+  );
+  const wrapColor = wraps.find((w) => w.id === wrap)?.color ?? "#f3ece0";
+  const ribbonColor = ribbons.find((r) => r.id === ribbon)?.color ?? "#f4a6b8";
 
-  const previewStems = [
-    ...bases.filter((b) => base.includes(b.id)),
-    ...accents.filter((a) => accent.includes(a.id)),
-  ];
-  const wrapColor = wraps.find((w) => w.id === wrap)?.color ?? "#f6ecdc";
-  const ribbonColor = ribbons.find((r) => r.id === ribbon)?.color ?? "#f5b6b8";
+  const grouped = useMemo(() => {
+    const g: Record<string, Choice[]> = {};
+    flowers.forEach((f) => {
+      const k = f.group ?? "Other";
+      (g[k] ||= []).push(f);
+    });
+    return g;
+  }, []);
 
   return (
     <Layout>
@@ -106,53 +109,44 @@ function BuildPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-[1fr_400px] gap-10 items-start">
           {/* Controls */}
           <div className="space-y-10">
-            <StepGroup step="01" label={`Base flowers · pick up to 3`}>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {bases.map((b) => {
-                  const on = base.includes(b.id);
-                  return (
-                    <button
-                      key={b.id}
-                      onClick={() => setBase((prev) => toggle(prev, b.id, 3))}
-                      className={`group text-left rounded-2xl border p-4 transition-all ${
-                        on ? "border-rose bg-blush-soft/40 -translate-y-0.5" : "border-border bg-card hover:border-rose/50"
-                      }`}
-                    >
-                      <span className="block size-10 rounded-full mb-3 ring-1 ring-black/5" style={{ backgroundColor: b.color }} />
-                      <p className="text-sm font-medium">{b.name}</p>
-                      <p className="text-xs text-ink/55 mt-1">+৳{b.price}</p>
-                      {on && <Check className="size-4 text-rose mt-2" />}
-                    </button>
-                  );
-                })}
+            <StepGroup step="01" label="Flowers · pick as many as you like">
+              <div className="space-y-6">
+                {Object.entries(grouped).map(([groupName, items]) => (
+                  <div key={groupName}>
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-ink/50 mb-3">{groupName}</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                      {items.map((f) => {
+                        const on = picks.includes(f.id);
+                        return (
+                          <button
+                            key={f.id}
+                            onClick={() => toggle(f.id)}
+                            className={`group text-left rounded-2xl border p-4 transition-all ${
+                              on
+                                ? "border-rose bg-blush-soft/40 -translate-y-0.5"
+                                : "border-border bg-card hover:border-rose/50"
+                            }`}
+                          >
+                            <span
+                              className="block size-10 rounded-full mb-3 ring-1 ring-black/10"
+                              style={{ backgroundColor: f.color }}
+                            />
+                            <p className="text-sm font-medium">{f.name}</p>
+                            {on && <Check className="size-4 text-rose mt-2" />}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
               </div>
             </StepGroup>
 
-            <StepGroup step="02" label="Accent stems · pick up to 2">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {accents.map((a) => {
-                  const on = accent.includes(a.id);
-                  return (
-                    <button
-                      key={a.id}
-                      onClick={() => setAccent((prev) => toggle(prev, a.id, 2))}
-                      className={`rounded-2xl border p-4 text-left transition-all ${
-                        on ? "border-rose bg-blush-soft/40" : "border-border bg-card hover:border-rose/50"
-                      }`}
-                    >
-                      <span className="block size-8 rounded-full mb-3 ring-1 ring-black/5" style={{ backgroundColor: a.color }} />
-                      <p className="text-sm">{a.name}</p>
-                      <p className="text-xs text-ink/55 mt-1">+৳{a.price}</p>
-                    </button>
-                  );
-                })}
-              </div>
-            </StepGroup>
-
-            <StepGroup step="03" label="Wrap">
+            <StepGroup step="02" label="Wrap">
               <div className="flex flex-wrap gap-3">
                 {wraps.map((w) => {
                   const on = wrap === w.id;
+                  const isTransparent = w.id === "transparent";
                   return (
                     <button
                       key={w.id}
@@ -161,7 +155,17 @@ function BuildPage() {
                         on ? "border-rose bg-blush-soft/40" : "border-border hover:border-rose/50"
                       }`}
                     >
-                      <span className="size-7 rounded-full ring-1 ring-black/5" style={{ backgroundColor: w.color }} />
+                      <span
+                        className="size-7 rounded-full ring-1 ring-black/10"
+                        style={{
+                          backgroundColor: isTransparent ? "transparent" : w.color,
+                          backgroundImage: isTransparent
+                            ? "linear-gradient(45deg,#eee 25%,transparent 25%,transparent 75%,#eee 75%),linear-gradient(45deg,#eee 25%,transparent 25%,transparent 75%,#eee 75%)"
+                            : undefined,
+                          backgroundSize: isTransparent ? "8px 8px" : undefined,
+                          backgroundPosition: isTransparent ? "0 0, 4px 4px" : undefined,
+                        }}
+                      />
                       <span className="text-sm">{w.name}</span>
                     </button>
                   );
@@ -169,8 +173,8 @@ function BuildPage() {
               </div>
             </StepGroup>
 
-            <StepGroup step="04" label="Ribbon">
-              <div className="flex flex-wrap gap-3">
+            <StepGroup step="03" label="Ribbon">
+              <div className="flex flex-wrap gap-4">
                 {ribbons.map((r) => {
                   const on = ribbon === r.id;
                   return (
@@ -178,6 +182,7 @@ function BuildPage() {
                       key={r.id}
                       onClick={() => setRibbon(r.id)}
                       aria-label={r.name}
+                      title={r.name}
                       className={`size-10 rounded-full ring-2 ring-offset-2 ring-offset-cream transition-all ${
                         on ? "ring-rose scale-110" : "ring-transparent hover:ring-rose/40"
                       }`}
@@ -188,27 +193,17 @@ function BuildPage() {
               </div>
             </StepGroup>
 
-            <StepGroup step="05" label="Size">
-              <div className="grid grid-cols-3 gap-3">
-                {sizes.map((s) => {
-                  const on = size === s.id;
-                  return (
-                    <button
-                      key={s.id}
-                      onClick={() => setSize(s.id)}
-                      className={`rounded-2xl border p-4 text-left transition-all ${
-                        on ? "border-rose bg-blush-soft/40" : "border-border bg-card hover:border-rose/50"
-                      }`}
-                    >
-                      <p className="font-serif text-xl">{s.name}</p>
-                      <p className="text-xs text-ink/55">{s.desc}</p>
-                    </button>
-                  );
-                })}
-              </div>
+            <StepGroup step="04" label="Size · tell us what you want" htmlFor="custom-size">
+              <input
+                id="custom-size"
+                value={customSize}
+                onChange={(e) => setCustomSize(e.target.value)}
+                placeholder="e.g. 20 stems, large hand-tied, mini posy…"
+                className="w-full rounded-full bg-card border border-border px-5 py-4 text-sm focus:outline-none focus:border-rose transition-colors"
+              />
             </StepGroup>
 
-            <StepGroup step="06" label="A note to tuck inside (optional)" htmlFor="bouquet-note">
+            <StepGroup step="05" label="A note to tuck inside (optional)" htmlFor="bouquet-note">
               <textarea
                 id="bouquet-note"
                 value={note}
@@ -227,9 +222,10 @@ function BuildPage() {
             <div className="rounded-3xl bg-card border border-border/60 overflow-hidden shadow-[0_30px_80px_-40px_rgba(180,120,120,0.25)]">
               <div
                 className="aspect-square relative grid place-items-center transition-colors duration-500"
-                style={{ backgroundColor: wrapColor }}
+                style={{
+                  backgroundColor: wrap === "transparent" ? "#f6ecdc" : wrapColor,
+                }}
               >
-                {/* Stems visual */}
                 <div className="relative w-44 h-56">
                   {previewStems.length === 0 ? (
                     <div className="absolute inset-0 grid place-items-center text-ink/40 text-sm">
@@ -238,8 +234,8 @@ function BuildPage() {
                   ) : (
                     previewStems.map((s, i) => {
                       const total = previewStems.length;
-                      const angle = -25 + (i / Math.max(total - 1, 1)) * 50;
-                      const offset = (i - (total - 1) / 2) * 18;
+                      const angle = -30 + (i / Math.max(total - 1, 1)) * 60;
+                      const offset = (i - (total - 1) / 2) * 14;
                       return (
                         <div
                           key={s.id}
@@ -258,7 +254,6 @@ function BuildPage() {
                       );
                     })
                   )}
-                  {/* ribbon */}
                   <div
                     className="absolute left-1/2 -translate-x-1/2 bottom-2 w-20 h-2 rounded-full transition-colors"
                     style={{ backgroundColor: ribbonColor }}
@@ -281,12 +276,8 @@ function BuildPage() {
                   <li className="text-ink/50 pt-2 border-t border-border/60 mt-2">
                     {wraps.find((w) => w.id === wrap)?.name} wrap · {ribbons.find((r) => r.id === ribbon)?.name} ribbon
                   </li>
-                  <li className="text-ink/50">{sizes.find((s) => s.id === size)?.name} · {sizes.find((s) => s.id === size)?.desc}</li>
+                  {customSize && <li className="text-ink/50">Size: {customSize}</li>}
                 </ul>
-                <div className="flex items-baseline justify-between pt-4 border-t border-border/60">
-                  <span className="text-sm text-ink/60">Estimate</span>
-                  <span className="font-serif text-3xl text-rose">৳{total.toLocaleString("en-BD")}</span>
-                </div>
                 <Link
                   to="/contact"
                   className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
@@ -295,7 +286,7 @@ function BuildPage() {
                   <ArrowRight className="size-4" />
                 </Link>
                 <p className="text-xs text-ink/50 text-center italic font-italic">
-                  Final price confirmed after a quick chat about delivery.
+                  Final price confirmed after a quick chat about your selections and delivery.
                 </p>
               </div>
             </div>
@@ -306,13 +297,25 @@ function BuildPage() {
   );
 }
 
-function StepGroup({ step, label, children, htmlFor }: { step: string; label: string; children: React.ReactNode; htmlFor?: string }) {
+function StepGroup({
+  step,
+  label,
+  children,
+  htmlFor,
+}: {
+  step: string;
+  label: string;
+  children: React.ReactNode;
+  htmlFor?: string;
+}) {
   return (
     <div>
       <div className="flex items-baseline gap-3 mb-4">
         <span className="font-serif text-rose text-lg">{step}</span>
         {htmlFor ? (
-          <label htmlFor={htmlFor} className="font-serif text-2xl text-ink">{label}</label>
+          <label htmlFor={htmlFor} className="font-serif text-2xl text-ink">
+            {label}
+          </label>
         ) : (
           <h2 className="font-serif text-2xl text-ink">{label}</h2>
         )}
