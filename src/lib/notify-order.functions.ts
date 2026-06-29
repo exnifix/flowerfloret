@@ -4,6 +4,8 @@ type OrderPayload = {
   name: string;
   email: string;
   phone?: string | null;
+  address?: string | null;
+  instagram?: string | null;
   occasion?: string | null;
   message?: string | null;
   bouquet?: string | null;
@@ -52,6 +54,8 @@ export const notifyNewOrder = createServerFn({ method: "POST" })
           <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Name</td><td style="padding:10px 14px; background:#faf3e8;">${esc(data.name)}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold;">Email</td><td style="padding:10px 14px;">${esc(data.email)}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Phone</td><td style="padding:10px 14px; background:#faf3e8;">${esc(data.phone)}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold; vertical-align:top;">Delivery Address</td><td style="padding:10px 14px; white-space:pre-wrap;">${esc(data.address)}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Instagram</td><td style="padding:10px 14px; background:#faf3e8;">${data.instagram ? `@${esc(data.instagram)}` : "—"}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold;">Occasion</td><td style="padding:10px 14px;">${esc(data.occasion)}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8; vertical-align:top;">Message</td><td style="padding:10px 14px; background:#faf3e8; white-space:pre-wrap;">${esc(data.message)}</td></tr>
         </table>

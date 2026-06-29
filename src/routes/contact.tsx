@@ -61,10 +61,30 @@ function ContactPage() {
     setErrorMsg("");
     const form = e.currentTarget;
     const fd = new FormData(form);
+    const rawPhone = String(fd.get("phone") || "").trim().replace(/\s|-/g, "");
+    const phone = rawPhone.startsWith("+880")
+      ? rawPhone
+      : rawPhone
+      ? `+880${rawPhone.replace(/^0+/, "")}`
+      : "";
+    if (!/^\+880\d{9,10}$/.test(phone)) {
+      setStatus("error");
+      setErrorMsg("Please enter a valid Bangladeshi phone number starting with +880 (e.g. +8801718159391).");
+      return;
+    }
+    const address = String(fd.get("address") || "").trim();
+    if (!address) {
+      setStatus("error");
+      setErrorMsg("Please provide a delivery address.");
+      return;
+    }
+    const rawInsta = String(fd.get("instagram") || "").trim().replace(/^@/, "");
     const payload = {
       name: String(fd.get("name") || "").trim(),
       email: String(fd.get("email") || "").trim(),
-      phone: String(fd.get("phone") || "").trim() || null,
+      phone,
+      address,
+      instagram: rawInsta || null,
       occasion: String(fd.get("occasion") || "").trim() || null,
       message: String(fd.get("message") || "").trim() || null,
       bouquet: String(fd.get("bouquet") || "").trim() || null,
@@ -104,9 +124,11 @@ function ContactPage() {
           >
             <Field label="Your Name" name="name" placeholder="How shall we greet you?" required />
             <div className="grid sm:grid-cols-2 gap-5">
-              <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
-              <Field label="Phone" name="phone" placeholder="Optional" />
+            <Field label="Email" name="email" type="email" placeholder="you@example.com" required />
+              <Field label="Phone (Bangladesh)" name="phone" type="tel" placeholder="+8801XXXXXXXXX" required pattern="^\+880\d{9,10}$|^0?1\d{9}$" />
             </div>
+            <Field label="Delivery Address" name="address" placeholder="House, road, area, city" required />
+            <Field label="Instagram (optional)" name="instagram" placeholder="@yourhandle" />
             <div>
               <label htmlFor="bouquet-select" className="text-xs uppercase tracking-[0.18em] text-ink/55">Which bouquet?</label>
               <select

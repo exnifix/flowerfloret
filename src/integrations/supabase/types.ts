@@ -16,30 +16,36 @@ export type Database = {
     Tables: {
       orders: {
         Row: {
+          address: string | null
           bouquet: string | null
           created_at: string
           email: string
           id: string
+          instagram: string | null
           message: string | null
           name: string
           occasion: string | null
           phone: string | null
         }
         Insert: {
+          address?: string | null
           bouquet?: string | null
           created_at?: string
           email: string
           id?: string
+          instagram?: string | null
           message?: string | null
           name: string
           occasion?: string | null
           phone?: string | null
         }
         Update: {
+          address?: string | null
           bouquet?: string | null
           created_at?: string
           email?: string
           id?: string
+          instagram?: string | null
           message?: string | null
           name?: string
           occasion?: string | null
