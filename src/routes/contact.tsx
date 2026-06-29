@@ -61,10 +61,30 @@ function ContactPage() {
     setErrorMsg("");
     const form = e.currentTarget;
     const fd = new FormData(form);
+    const rawPhone = String(fd.get("phone") || "").trim().replace(/\s|-/g, "");
+    const phone = rawPhone.startsWith("+880")
+      ? rawPhone
+      : rawPhone
+      ? `+880${rawPhone.replace(/^0+/, "")}`
+      : "";
+    if (!/^\+880\d{9,10}$/.test(phone)) {
+      setStatus("error");
+      setErrorMsg("Please enter a valid Bangladeshi phone number starting with +880 (e.g. +8801718159391).");
+      return;
+    }
+    const address = String(fd.get("address") || "").trim();
+    if (!address) {
+      setStatus("error");
+      setErrorMsg("Please provide a delivery address.");
+      return;
+    }
+    const rawInsta = String(fd.get("instagram") || "").trim().replace(/^@/, "");
     const payload = {
       name: String(fd.get("name") || "").trim(),
       email: String(fd.get("email") || "").trim(),
-      phone: String(fd.get("phone") || "").trim() || null,
+      phone,
+      address,
+      instagram: rawInsta || null,
       occasion: String(fd.get("occasion") || "").trim() || null,
       message: String(fd.get("message") || "").trim() || null,
       bouquet: String(fd.get("bouquet") || "").trim() || null,
