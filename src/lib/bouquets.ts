@@ -132,6 +132,18 @@ export const bouquets: Bouquet[] = [
     stems: ["A dozen deep red roses", "Matte-black cone wrap", "Scarlet satin ribbon, hand-tied bow", "Natural green foliage at the base"],
   },
   {
+    slug: "white-snow",
+    name: "White Snow",
+    tagline: "Pink hearts, hushed in winter paper",
+    price: 699,
+    category: "Bouquets",
+    image: whiteSnow,
+    emotion: "For soft confessions and snow-quiet love",
+    description:
+      "A close gathering of white roses, each petal kissed at the very edge with a brushstroke of pink — as if the cold had blushed them. White-and-pink bicolour roses carry a meaning all their own: the purity and new-beginning of the white rose softened by the gentle, growing affection of the pink. Together they whisper the loveliest sentence in the flower language — \"I'm falling for you, quietly.\" The blooms are nested in crisp white tissue folded into tall, sharp petals of paper that frame the bouquet like falling snow, then cinched at the throat with a wide pink satin ribbon tied into a soft bow. \"Some love arrives like snowfall — pale, sudden, and impossible to ignore.\" White Snow is the bouquet for tender beginnings and the words you almost said.",
+    stems: ["A generous gathering of white roses with pink-blushed edges", "Crisp white tissue wrap folded into sharp petals", "Soft pink satin ribbon, hand-tied bow", "Natural green foliage at the base"],
+  },
+  {
     slug: "golden-grace",
     name: "Golden Grace",
     tagline: "A handful of sunshine, tied with cream",
