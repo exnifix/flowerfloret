@@ -99,6 +99,7 @@ function ProductPage() {
                 src={bouquet.image}
                 alt={`${bouquet.name} — ${bouquet.tagline}, a hand-tied Floret bouquet`}
                 loading="eager"
+                decoding="async"
                 fetchPriority="high"
                 width={800}
                 height={1000}
