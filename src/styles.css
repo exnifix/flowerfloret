@@ -110,8 +110,10 @@ a[href*="lovable.dev/?utm"],
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "ss01", "cv11";
   }
-  ::selection { background: var(--blush-soft); color: var(--ink); }
+  ::selection { background: var(--blush); color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: 4px; }
 }
+
 
 /* ===========================
    Custom animations
