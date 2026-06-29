@@ -15,8 +15,27 @@ import ig6 from "@/assets/ig-6.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Floret — Where Emotions Bloom" },
-      { name: "description", content: "Floret crafts hand-tied bouquets that speak the language of feelings. Explore our collection, or compose your own." },
+      { title: "Floret — Hand-Tied Bouquets Where Emotions Bloom" },
+      { name: "description", content: "Floret crafts hand-tied bouquets that speak the language of feelings. Explore our seasonal collection or compose a bespoke arrangement." },
+      { property: "og:title", content: "Floret — Hand-Tied Bouquets Where Emotions Bloom" },
+      { property: "og:description", content: "Hand-tied bouquets composed as gestures by a small floral studio. Shop the collection or build your own." },
+      { property: "og:url", content: "https://flowerfloret.lovable.app/" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fce57ac1-4615-4af7-92d9-13ff9b0a4177/id-preview-92112fd2--da013ce0-a7fa-495b-ae1c-8c4890277b1d.lovable.app-1782556626080.png" },
+      { name: "twitter:title", content: "Floret — Hand-Tied Bouquets Where Emotions Bloom" },
+      { name: "twitter:description", content: "Hand-tied bouquets composed as gestures by a small floral studio." },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fce57ac1-4615-4af7-92d9-13ff9b0a4177/id-preview-92112fd2--da013ce0-a7fa-495b-ae1c-8c4890277b1d.lovable.app-1782556626080.png" },
+    ],
+    links: [{ rel: "canonical", href: "https://flowerfloret.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Floret",
+          url: "https://flowerfloret.lovable.app",
+        }),
+      },
     ],
   }),
   component: HomePage,
