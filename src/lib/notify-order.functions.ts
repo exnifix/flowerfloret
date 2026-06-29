@@ -6,6 +6,7 @@ type OrderPayload = {
   phone?: string | null;
   occasion?: string | null;
   message?: string | null;
+  bouquet?: string | null;
 };
 
 const NOTIFY_TO = "pusnojawadraiyan@gmail.com";
