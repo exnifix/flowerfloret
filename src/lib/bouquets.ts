@@ -14,6 +14,7 @@ import romanceVelvetAsset from "@/assets/bouquet-romance-velvet.jpg.asset.json";
 import redLetterAsset from "@/assets/bouquet-red-letter.jpg.asset.json";
 import rosettaAsset from "@/assets/rosetta.jpeg.asset.json";
 import blushingGraceAsset from "@/assets/blushing-grace.jpeg.asset.json";
+import eleganceDesireAsset from "@/assets/elegance-desire.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -31,6 +32,7 @@ const romanceVelvet = romanceVelvetAsset.url;
 const redLetter = redLetterAsset.url;
 const rosetta = rosettaAsset.url;
 const blushingGrace = blushingGraceAsset.url;
+const eleganceDesire = eleganceDesireAsset.url;
 
 
 
@@ -70,6 +72,18 @@ export const bouquets: Bouquet[] = [
     description:
       "Ten plump pink rosebuds — each one caught at that perfect, just-about-to-open moment — cluster together like a circle of friends sharing a secret. Their petals carry that impossible bubblegum-pink that looks lit from within, framed by glossy emerald leaves that make the colour sing even louder. Pink roses, in the old floriographies, mean grace, admiration, and a happiness that's still a little shy of itself. The whole bouquet is cradled in two generous wraps of soft rose-pink crepe paper folded into a graceful cone, and finished with a striped grosgrain ribbon in cherry-red and white — the kind of bow that turns a delivery into an occasion. Send it for a first date, a sweet sixteen, a thank-you, or a Tuesday that deserved more than a text.",
     stems: ["10 stems of premium pink roses (bud-stage)", "Fresh emerald foliage", "Double-layer rose-pink crepe wrap", "Cherry-and-white striped grosgrain ribbon"],
+  },
+  {
+    slug: "elegance-desire",
+    name: "Elegance Desire",
+    tagline: "A cathedral of pink roses, carried like a secret",
+    price: 849,
+    category: "Bouquets",
+    image: eleganceDesire,
+    emotion: "For the longing that finally finds its words",
+    description:
+      "An extravagant gathering of spray roses — dozens of small, perfectly-formed pink heads blooming in tiers along tall emerald stems — rises out of the wrap like a slow exhale. Each cluster carries that soft, candlelit pink that sits exactly between blush and bubblegum: feminine, romantic, a little theatrical. The stems are tall and proudly bare, gathered into a single tight grip and sleeved in crystal-clear cellophane that's folded into a sharp architectural cone, so the whole bouquet reads like a stained-glass window held up to the light. A wide, glossy pink satin ribbon is tied at the throat into a generous double bow, its long tails trailing past the wrist. Spray roses, by tradition, are roses multiplied — admiration in plural, affection said over and over in the same breath. Hand this one across a doorway and you're not whispering a feeling anymore; you're announcing it.",
+    stems: ["Premium pink spray roses (multi-head, long-stem)", "Tall fresh-cut emerald foliage", "Architectural clear cellophane cone wrap", "Wide blush-pink satin double-bow ribbon"],
   },
   {
     slug: "seraphine",
