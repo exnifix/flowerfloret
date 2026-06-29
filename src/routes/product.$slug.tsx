@@ -10,16 +10,49 @@ export const Route = createFileRoute("/product/$slug")({
     if (!bouquet) throw notFound();
     return { bouquet };
   },
-  head: ({ loaderData }) => ({
+  head: ({ params, loaderData }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.bouquet.name} — Floret` },
+          { title: `${loaderData.bouquet.name} — ${loaderData.bouquet.tagline} | Floret` },
           { name: "description", content: loaderData.bouquet.description.slice(0, 160) },
           { property: "og:title", content: `${loaderData.bouquet.name} — Floret` },
           { property: "og:description", content: loaderData.bouquet.tagline },
+          { property: "og:type", content: "product" },
           { property: "og:image", content: loaderData.bouquet.image },
+          { property: "og:url", content: `https://flowerfloret.lovable.app/product/${params.slug}` },
+          { property: "product:price:amount", content: loaderData.bouquet.price.toFixed(2) },
+          { property: "product:price:currency", content: "USD" },
+          { name: "twitter:title", content: `${loaderData.bouquet.name} — Floret` },
+          { name: "twitter:description", content: loaderData.bouquet.tagline },
+          { name: "twitter:image", content: loaderData.bouquet.image },
         ]
       : [{ title: "Floret" }],
+    links: loaderData
+      ? [{ rel: "canonical", href: `https://flowerfloret.lovable.app/product/${params.slug}` }]
+      : [],
+    scripts: loaderData
+      ? [
+          {
+            type: "application/ld+json",
+            children: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: loaderData.bouquet.name,
+              description: loaderData.bouquet.description,
+              image: loaderData.bouquet.image,
+              category: loaderData.bouquet.category,
+              brand: { "@type": "Brand", name: "Floret" },
+              offers: {
+                "@type": "Offer",
+                price: loaderData.bouquet.price.toFixed(2),
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                url: `https://flowerfloret.lovable.app/product/${params.slug}`,
+              },
+            }),
+          },
+        ]
+      : [],
   }),
   notFoundComponent: () => (
     <Layout>
