@@ -79,6 +79,12 @@ function ContactPage() {
       return;
     }
     const rawInsta = String(fd.get("instagram") || "").trim().replace(/^@/, "");
+    const payment_method = String(fd.get("payment_method") || "").trim();
+    if (!payment_method) {
+      setStatus("error");
+      setErrorMsg("Please choose a payment method.");
+      return;
+    }
     const payload = {
       name: String(fd.get("name") || "").trim(),
       email: String(fd.get("email") || "").trim(),
@@ -88,6 +94,7 @@ function ContactPage() {
       occasion: String(fd.get("occasion") || "").trim() || null,
       message: String(fd.get("message") || "").trim() || null,
       bouquet: String(fd.get("bouquet") || "").trim() || null,
+      payment_method,
     };
 
     const { error } = await supabase.from("orders").insert(payload);

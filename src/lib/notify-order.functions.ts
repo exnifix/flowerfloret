@@ -9,6 +9,7 @@ type OrderPayload = {
   occasion?: string | null;
   message?: string | null;
   bouquet?: string | null;
+  payment_method?: string | null;
 };
 
 const NOTIFY_TO = "pusnojawadraiyan@gmail.com";
@@ -56,8 +57,9 @@ export const notifyNewOrder = createServerFn({ method: "POST" })
           <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Phone</td><td style="padding:10px 14px; background:#faf3e8;">${esc(data.phone)}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold; vertical-align:top;">Delivery Address</td><td style="padding:10px 14px; white-space:pre-wrap;">${esc(data.address)}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Instagram</td><td style="padding:10px 14px; background:#faf3e8;">${data.instagram ? `@${esc(data.instagram)}` : "—"}</td></tr>
-          <tr><td style="padding:10px 14px; font-weight:bold;">Occasion</td><td style="padding:10px 14px;">${esc(data.occasion)}</td></tr>
-          <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8; vertical-align:top;">Message</td><td style="padding:10px 14px; background:#faf3e8; white-space:pre-wrap;">${esc(data.message)}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold;">Payment</td><td style="padding:10px 14px;"><strong style="color:#3D0A05;">${esc(data.payment_method)}</strong></td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Occasion</td><td style="padding:10px 14px; background:#faf3e8;">${esc(data.occasion)}</td></tr>
+          <tr><td style="padding:10px 14px; font-weight:bold; vertical-align:top;">Message</td><td style="padding:10px 14px; white-space:pre-wrap;">${esc(data.message)}</td></tr>
         </table>
         <p style="margin-top:16px; font-size:12px; color:#7a4a3a;">Sent automatically by floret.</p>
       </div>
