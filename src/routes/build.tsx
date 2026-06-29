@@ -252,7 +252,7 @@ function BuildPage() {
                   backgroundColor: wrap === "transparent" ? "#f6ecdc" : wrapColor,
                 }}
               >
-                <div className="relative w-44 h-56">
+                <div className="relative w-full h-full">
                   {previewStems.length === 0 ? (
                     <div className="absolute inset-0 grid place-items-center text-ink/40 text-sm">
                       <Flower2 className="size-10" strokeWidth={1.2} />
@@ -260,28 +260,27 @@ function BuildPage() {
                   ) : (
                     previewStems.map((s, i) => {
                       const total = previewStems.length;
-                      const angle = -30 + (i / Math.max(total - 1, 1)) * 60;
-                      const offset = (i - (total - 1) / 2) * 14;
+                      const angle = total === 1 ? 0 : -22 + (i / (total - 1)) * 44;
+                      const spread = Math.min(70, 18 + total * 6);
+                      const offsetX = total === 1 ? 0 : (i - (total - 1) / 2) * (spread / Math.max(total - 1, 1));
+                      const offsetY = Math.abs(i - (total - 1) / 2) * 6;
                       return (
-                        <div
+                        <img
                           key={s.id}
-                          className="absolute left-1/2 top-4 origin-bottom transition-all duration-500 animate-fade-up"
+                          src={s.image}
+                          alt={s.name}
+                          loading="lazy"
+                          className="absolute left-1/2 top-1/2 w-[68%] h-[88%] object-contain origin-bottom transition-all duration-500 animate-fade-up drop-shadow-md"
                           style={{
-                            transform: `translateX(${offset}px) rotate(${angle}deg)`,
-                            zIndex: 10 - Math.abs(i - total / 2),
+                            transform: `translate(-50%, -50%) translate(${offsetX}px, ${offsetY}px) rotate(${angle}deg)`,
+                            zIndex: 10 - Math.abs(i - (total - 1) / 2),
                           }}
-                        >
-                          <div className="w-1 h-40 bg-green-700/40 mx-auto" />
-                          <div
-                            className="size-12 rounded-full -mt-44 mx-auto ring-2 ring-white/40 shadow-md"
-                            style={{ backgroundColor: s.color }}
-                          />
-                        </div>
+                        />
                       );
                     })
                   )}
                   <div
-                    className="absolute left-1/2 -translate-x-1/2 bottom-2 w-20 h-2 rounded-full transition-colors"
+                    className="absolute left-1/2 -translate-x-1/2 bottom-[10%] w-[35%] h-2.5 rounded-full transition-colors shadow-sm"
                     style={{ backgroundColor: ribbonColor }}
                   />
                 </div>
