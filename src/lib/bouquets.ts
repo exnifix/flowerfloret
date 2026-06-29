@@ -3,12 +3,15 @@ import fleurRoseAsset from "@/assets/bouquet-fleur-rose.jpg.asset.json";
 import cupidsBlossomAsset from "@/assets/bouquet-cupids-blossom.jpg.asset.json";
 import pinkRadianceAsset from "@/assets/bouquet-pink-radiance.jpg.asset.json";
 import celestialBloomAsset from "@/assets/bouquet-celestial-bloom.jpg.asset.json";
+import heavenlyWhisperAsset from "@/assets/bouquet-heavenly-whisper.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
 const cupidsBlossom = cupidsBlossomAsset.url;
 const pinkRadiance = pinkRadianceAsset.url;
 const celestialBloom = celestialBloomAsset.url;
+const heavenlyWhisper = heavenlyWhisperAsset.url;
+
 
 
 export type Bouquet = {
