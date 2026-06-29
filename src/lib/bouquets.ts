@@ -5,6 +5,7 @@ import pinkRadianceAsset from "@/assets/bouquet-pink-radiance.jpg.asset.json";
 import celestialBloomAsset from "@/assets/bouquet-celestial-bloom.jpg.asset.json";
 import heavenlyWhisperAsset from "@/assets/bouquet-heavenly-whisper.jpg.asset.json";
 import nakedPrestigeAsset from "@/assets/bouquet-naked-prestige.jpg.asset.json";
+import amourRougeAsset from "@/assets/bouquet-amour-rouge.jpg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -13,6 +14,7 @@ const pinkRadiance = pinkRadianceAsset.url;
 const celestialBloom = celestialBloomAsset.url;
 const heavenlyWhisper = heavenlyWhisperAsset.url;
 const nakedPrestige = nakedPrestigeAsset.url;
+const amourRouge = amourRougeAsset.url;
 
 
 
@@ -112,6 +114,18 @@ export const bouquets: Bouquet[] = [
     description:
       "A dozen long-stemmed red roses, hand-tied and left utterly bare — no wrap, no cellophane, no clever distraction. Just deep crimson heads gathered into one velvet crown, leaves still on the stems, thorns still telling the truth, finished with nothing but a single ivory satin ribbon. The red rose has always been the loudest word in love's vocabulary: passion, devotion, the heart laid open. Strip away the paper and that meaning sharpens — this is feeling without performance, romance without apology. Each bloom is hand-selected for that dark, blood-velvet red that almost drinks the light, petals layered tight like a kept promise. \"A red rose, naked, is the bravest sentence in the world.\" Naked Prestige is for the moments when you mean it — and you want them to know you mean it.",
     stems: ["12 long-stemmed red roses", "Natural green foliage on the stem", "Single ivory satin ribbon", "Hand-tied, unwrapped presentation"],
+  },
+  {
+    slug: "amour-rouge",
+    name: "Amour Rouge",
+    tagline: "Red roses, dressed for the night",
+    price: 499,
+    category: "Bouquets",
+    image: amourRouge,
+    emotion: "For love that arrives in black-tie",
+    description:
+      "A tight, opulent crown of deep crimson roses — each bloom a small, velvet heart — gathered into a sharp matte-black cone wrap and finished with a single ribbon of vivid scarlet silk tied into a soft bow at the throat. The red rose has always been love's loudest word: passion, devotion, desire kept just barely behind the teeth. Dressed in black, that meaning sharpens into something cinematic — romance with a little danger in it, a confession made in candlelight. Each rose head is hand-selected for that dark, glossy red that almost drinks the light, petals layered tight like a kept secret, leaves tucked low so the colour does all the talking. \"Give a red rose and you've spoken; give a dozen, and you've sworn.\" Amour Rouge is for the moment you stop pretending you're casual about them.",
+    stems: ["A dozen deep red roses", "Matte-black cone wrap", "Scarlet satin ribbon, hand-tied bow", "Natural green foliage at the base"],
   },
 ]; 
 
