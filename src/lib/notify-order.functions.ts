@@ -4,6 +4,8 @@ type OrderPayload = {
   name: string;
   email: string;
   phone?: string | null;
+  address?: string | null;
+  instagram?: string | null;
   occasion?: string | null;
   message?: string | null;
   bouquet?: string | null;
