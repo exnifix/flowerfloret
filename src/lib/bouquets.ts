@@ -18,6 +18,7 @@ const heavenlyWhisper = heavenlyWhisperAsset.url;
 const nakedPrestige = nakedPrestigeAsset.url;
 const amourRouge = amourRougeAsset.url;
 const goldenGrace = goldenGraceAsset.url;
+const whiteSnow = whiteSnowAsset.url;
 
 
 
