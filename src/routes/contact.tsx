@@ -72,7 +72,7 @@ function ContactPage() {
     const { error } = await supabase.from("orders").insert(payload);
     if (error) {
       setStatus("error");
-      setErrorMsg("Something went wrong. Please try again, or reach us on Instagram @antoraken.");
+      setErrorMsg("Something went wrong. Please try again, or reach us on Instagram @floret.");
       return;
     }
     notifyNewOrder({ data: payload }).catch((err) => console.error("notify failed", err));
