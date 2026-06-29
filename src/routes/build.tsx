@@ -120,7 +120,7 @@ function BuildPage() {
                     >
                       <span className="block size-10 rounded-full mb-3 ring-1 ring-black/5" style={{ backgroundColor: b.color }} />
                       <p className="text-sm font-medium">{b.name}</p>
-                      <p className="text-xs text-ink/55 mt-1">+${b.price}</p>
+                      <p className="text-xs text-ink/55 mt-1">+৳{b.price}</p>
                       {on && <Check className="size-4 text-rose mt-2" />}
                     </button>
                   );
