@@ -171,6 +171,18 @@ export const bouquets: Bouquet[] = [
       "A small choir of cream-white roses gathers at the heart of this bouquet, framed by silver-green eucalyptus leaves and a soft drift of baby's breath that floats around them like first snow. White roses are the oldest letter in the flower alphabet — purity, reverence, a new beginning offered with both hands — and the eucalyptus grounds all that softness with something steady, herbal, almost meditative, a scent that settles a room the moment you walk in. The whole arrangement is rolled into a cone of warm honey-kraft paper, tied at the throat with rough natural twine and finished with a wide white satin ribbon that spills across the linen like a held breath. \"Some love doesn't bloom loud — it lays itself down quietly and stays.\" Snow Petals is the bouquet for the people who love that way: gentle, grounded, and utterly true.",
     stems: ["A gathering of cream-white roses", "Fresh silver eucalyptus foliage", "Soft baby's breath (gypsophila)", "Honey-kraft cone wrap", "Natural twine and wide white satin ribbon"],
   },
+  {
+    slug: "petals-embrace",
+    name: "Petal's Embrace",
+    tagline: "Pink lilies, holding you close",
+    price: 1299,
+    category: "Bouquets",
+    image: petalsEmbrace,
+    emotion: "For a love that wraps itself around you",
+    description:
+      "A trio of pink Oriental lilies unfurls at the heart of this bouquet — each petal that impossibly soft shade between blush and dawn, brushed with a deeper rose down the centre vein and freckled gold in the throat. The pink lily is one of the most quietly romantic flowers in the world: in the old language of blooms it carries prosperity, admiration, and a love that's still learning how big it can grow. A single ivory rose tucks itself in like a kept secret, and clouds of baby's breath drift around the lilies like little stars caught in tulle. The whole arrangement is cradled in two layers of cream wrapping paper — the outer sheet softly crinkled, the inner one folded into careful petals of its own — and tied at the throat with a length of blush-pink twine, finished with a small message card waiting for your words. \"Some flowers don't just sit in your hands — they hold them back.\" Petal's Embrace is the bouquet for the love that arrives like a slow exhale: gentle, certain, and impossible to put down.",
+    stems: ["3 stems of pink Oriental lilies", "1 ivory rose", "Generous baby's breath (gypsophila)", "Fresh green foliage", "Two layers of cream wrapping paper", "Blush-pink twine and message card"],
+  },
 ];
 
 
