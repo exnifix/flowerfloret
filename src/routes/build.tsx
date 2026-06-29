@@ -208,8 +208,9 @@ function BuildPage() {
               </div>
             </StepGroup>
 
-            <StepGroup step="06" label="A note to tuck inside (optional)">
+            <StepGroup step="06" label="A note to tuck inside (optional)" htmlFor="bouquet-note">
               <textarea
+                id="bouquet-note"
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 rows={3}
