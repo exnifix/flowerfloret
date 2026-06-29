@@ -58,23 +58,23 @@ a[href*="lovable.dev/?utm"],
   --color-ink: var(--ink);
   --color-burgundy: var(--burgundy);
 
-  --font-serif: "Italiana", "Cormorant Garamond", serif;
+  --font-serif: "Cormorant Garamond", "Cormorant", serif;
   --font-italic: "Cormorant Garamond", serif;
-  --font-sans: "Quicksand", "Inter", system-ui, sans-serif;
+  --font-sans: "Karla", "Inter", system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.75rem;
 
-  /* Blume palette */
-  --cream: oklch(0.955 0.022 75);          /* #F5E9D7 warm cream background */
-  --cream-soft: oklch(0.92 0.028 60);      /* #EBDCC5 deeper cream section */
-  --blush: oklch(0.84 0.04 25);            /* #EAC3BF blush */
-  --blush-soft: oklch(0.90 0.028 30);      /* soft blush */
-  --rose: oklch(0.46 0.16 32);             /* #7F1F0E rust red accent */
-  --sage: oklch(0.74 0.045 30);            /* mauve #B98E89 */
-  --ink: oklch(0.24 0.07 30);              /* #3D0A05 deep burgundy */
-  --burgundy: oklch(0.24 0.07 30);
+  /* Cherry Blossom palette */
+  --cream: oklch(0.985 0.008 350);         /* #fffdfa warm paper */
+  --cream-soft: oklch(0.965 0.018 350);    /* #fef0f5 petal mist */
+  --blush: oklch(0.88 0.06 350);           /* #f8c8d8 blossom */
+  --blush-soft: oklch(0.93 0.035 350);     /* light blush */
+  --rose: oklch(0.62 0.16 0);              /* #c45c7c deep rose */
+  --sage: oklch(0.78 0.07 0);              /* #e88aab mid rose */
+  --ink: oklch(0.22 0.08 25);              /* #2d0a0a deep burgundy */
+  --burgundy: oklch(0.22 0.08 25);
 
 
   /* shadcn semantic mapping */
@@ -84,20 +84,21 @@ a[href*="lovable.dev/?utm"],
   --card-foreground: var(--ink);
   --popover: var(--cream);
   --popover-foreground: var(--ink);
-  --primary: var(--ink);
+  --primary: var(--rose);
   --primary-foreground: var(--cream);
   --secondary: var(--blush-soft);
   --secondary-foreground: var(--ink);
   --muted: var(--cream-soft);
-  --muted-foreground: oklch(0.52 0.02 40);
-  --accent: var(--blush-soft);
+  --muted-foreground: oklch(0.45 0.04 20);
+  --accent: var(--blush);
   --accent-foreground: var(--ink);
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.88 0.018 40);
-  --input: oklch(0.92 0.015 40);
+  --border: oklch(0.9 0.02 350);
+  --input: oklch(0.93 0.018 350);
   --ring: var(--rose);
 }
+
 
 @layer base {
   * { border-color: var(--color-border); }
@@ -109,8 +110,10 @@ a[href*="lovable.dev/?utm"],
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "ss01", "cv11";
   }
-  ::selection { background: var(--blush-soft); color: var(--ink); }
+  ::selection { background: var(--blush); color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: 4px; }
 }
+
 
 /* ===========================
    Custom animations
