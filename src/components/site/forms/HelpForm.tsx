@@ -75,6 +75,14 @@ export function HelpForm() {
         />
       </div>
 
+      <ImageUploadField
+        label="Reference photo (optional)"
+        hint="Share a flower design or inspiration you'd love us to recreate."
+        value={imageUrl}
+        onChange={setImageUrl}
+      />
+
+
       <button
         type="submit"
         disabled={status === "sending"}
