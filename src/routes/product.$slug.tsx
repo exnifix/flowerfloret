@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, ShoppingBag, Sparkles } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
-import { bouquets, getBouquet } from "@/lib/bouquets";
+import { bouquets, getBouquet, getProductCode } from "@/lib/bouquets";
 import { BouquetCard } from "@/components/site/BouquetCard";
 
 
