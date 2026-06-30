@@ -133,7 +133,13 @@ export function OrderDetailsDrawer({
               );
             })}
           </div>
+          <p className="mt-3 text-[11px] text-muted-foreground">
+            {order.status_updated_at
+              ? `Last updated ${new Date(order.status_updated_at).toLocaleString()}`
+              : "No status change recorded yet."}
+          </p>
         </section>
+
 
         {/* Customer (masked by default) */}
         <section className="mt-5 rounded-xl border border-border bg-white p-4">
