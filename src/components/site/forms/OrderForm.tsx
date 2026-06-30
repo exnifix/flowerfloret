@@ -143,22 +143,41 @@ export function OrderForm({ initialBouquet = "" }: Props) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-8 py-4 text-sm tracking-wide hover:bg-rose transition-colors disabled:opacity-60"
+        aria-busy={status === "sending"}
+        aria-live="polite"
+        className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-8 py-4 text-sm tracking-wide hover:bg-rose transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
       >
         {status === "sending" ? (
-          <><Loader2 className="size-4 animate-spin" /> Sending…</>
+          <><Loader2 className="size-4 animate-spin" /> Placing your order…</>
         ) : (
           <><Send className="size-4" /> {selected ? `Place Order — ${fmt(total)}` : "Place Your Order"}</>
         )}
       </button>
 
-      {status === "sent" && (
-        <p className="text-center text-sm text-rose font-italic italic animate-fade-up">
-          Thank you — once we confirm your bKash payment to 01710538698, we'll begin composing your bouquet and reach out within 24 hours.
+      {status === "sending" && (
+        <p className="text-center text-xs text-ink/60 italic animate-fade-up">
+          Hang tight — sending your order securely. Please don't close this page.
         </p>
       )}
+      {status === "sent" && (
+        <div
+          role="status"
+          className="flex items-start gap-3 rounded-2xl border border-rose/40 bg-blush-soft/50 p-4 text-sm text-ink animate-fade-up"
+        >
+          <CheckCircle2 className="size-5 text-rose shrink-0 mt-0.5" strokeWidth={2} />
+          <p className="font-italic italic leading-relaxed">
+            Thank you — once we confirm your bKash payment to 01710538698, we'll begin composing your bouquet and reach out within 24 hours.
+          </p>
+        </div>
+      )}
       {status === "error" && (
-        <p className="text-center text-sm text-red-600 animate-fade-up">{errorMsg}</p>
+        <div
+          role="alert"
+          className="flex items-start gap-3 rounded-2xl border border-red-300 bg-red-50 p-4 text-sm text-red-700 animate-fade-up"
+        >
+          <AlertCircle className="size-5 shrink-0 mt-0.5" strokeWidth={2} />
+          <p className="leading-relaxed">{errorMsg}</p>
+        </div>
       )}
     </form>
   );
