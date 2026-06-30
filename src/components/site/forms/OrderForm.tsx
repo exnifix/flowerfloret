@@ -92,6 +92,33 @@ export function OrderForm({ initialBouquet = "" }: Props) {
         />
       </div>
 
+      <div className="rounded-2xl border border-rose/30 bg-cream-soft/70 p-5">
+        <p className="text-xs uppercase tracking-[0.2em] text-ink/55 mb-3">Order Summary</p>
+        <dl className="space-y-2 text-sm">
+          <div className="flex items-center justify-between">
+            <dt className="text-ink/70">
+              {selected ? selected.name : <span className="italic text-ink/50">No bouquet selected yet</span>}
+            </dt>
+            <dd className="font-mono text-ink">{selected ? fmt(bouquetPrice) : "—"}</dd>
+          </div>
+          <div className="flex items-center justify-between">
+            <dt className="text-ink/70">Delivery charge</dt>
+            <dd className="font-mono text-ink">{fmt(DELIVERY_CHARGE)}</dd>
+          </div>
+          <div className="border-t border-border/60 pt-3 mt-2 flex items-center justify-between">
+            <dt className="font-serif text-base text-ink">Total to pay</dt>
+            <dd className="font-serif text-2xl text-rose">{selected ? fmt(total) : fmt(DELIVERY_CHARGE) + "+"}</dd>
+          </div>
+        </dl>
+        {selected ? (
+          <p className="mt-3 text-xs text-ink/60 leading-relaxed">
+            Send <span className="font-medium text-ink">{fmt(total)}</span> via bKash Send Money, then paste the TrxID in the message below.
+          </p>
+        ) : (
+          <p className="mt-3 text-xs text-ink/55 italic">Pick a bouquet above to see your full total.</p>
+        )}
+      </div>
+
       <button
         type="submit"
         disabled={status === "sending"}
@@ -100,7 +127,7 @@ export function OrderForm({ initialBouquet = "" }: Props) {
         {status === "sending" ? (
           <><Loader2 className="size-4 animate-spin" /> Sending…</>
         ) : (
-          <><Send className="size-4" /> Place Your Order</>
+          <><Send className="size-4" /> {selected ? `Place Order — ${fmt(total)}` : "Place Your Order"}</>
         )}
       </button>
 
