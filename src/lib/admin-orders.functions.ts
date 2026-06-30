@@ -54,7 +54,7 @@ export const updateOrderStatus = createServerFn({ method: "POST" })
       .from("orders")
       .update({ status: data.status })
       .eq("id", data.id)
-      .select("id, status")
+      .select("id, status, status_updated_at, status_updated_by")
       .single();
 
     if (error) throw new Error(error.message);
