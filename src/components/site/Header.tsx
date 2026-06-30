@@ -1,6 +1,6 @@
-import { Link } from "@tanstack/react-router";
-import { Heart, Instagram, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { Heart, Instagram, Menu, Search, X } from "lucide-react";
+import { useState, type FormEvent } from "react";
 
 const navItems = [
   { to: "/", label: "Home" },
