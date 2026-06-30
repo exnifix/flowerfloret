@@ -16,6 +16,7 @@ import rosettaAsset from "@/assets/rosetta.jpeg.asset.json";
 import blushingGraceAsset from "@/assets/blushing-grace.jpeg.asset.json";
 import eleganceDesireAsset from "@/assets/elegance-desire.jpeg.asset.json";
 import creamyLoveAsset from "@/assets/creamy-love.jpeg.asset.json";
+import imperialBeautyAsset from "@/assets/imperial-beauty.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -35,6 +36,7 @@ const rosetta = rosettaAsset.url;
 const blushingGrace = blushingGraceAsset.url;
 const eleganceDesire = eleganceDesireAsset.url;
 const creamyLove = creamyLoveAsset.url;
+const imperialBeauty = imperialBeautyAsset.url;
 
 
 
@@ -99,6 +101,20 @@ export const bouquets: Bouquet[] = [
       "A gathering of cream-white roses — petals so soft they look poured rather than grown — nestle into a bed of deep emerald leaves and peek out from a crisp, architectural fold of matte white paper. Each rose sits at that perfect, half-opened moment: still holding its secret, already showing its heart. White roses have always been the flower of pure intention — new beginnings, sincere devotion, the kind of feeling that doesn't need to be dressed up to be believed. The wrap is folded sharp and clean, like a love letter that's been read once and saved forever, and tied at the throat with a slim ivory satin ribbon knotted into a simple, unfussy bow. Creamy Love is the bouquet for the quiet ones — the first \"I love you,\" the morning-after gesture, the apology that finally lands, the anniversary that doesn't need a speech. Pure, gentle, and impossibly elegant.",
     stems: ["Premium cream-white roses (half-bloom)", "Fresh emerald rose foliage", "Architectural matte white paper wrap", "Ivory satin ribbon"],
   },
+  {
+    slug: "imperial-beauty",
+    name: "Imperial Beauty",
+    tagline: "Deep red roses, dressed like royalty",
+    price: 599,
+    category: "Bouquets",
+    image: imperialBeauty,
+    emotion: "For the love that arrives like a verdict — final, certain, unforgettable",
+    description:
+      "A close gathering of velvet-deep red roses — petals so darkly saturated they look almost burgundy in low light, almost ruby when the sun catches them — sits at the heart of a crisp, architectural fold of matte white paper. Each rose is caught at that perfect, half-open moment where the bloom is most generous: full, lush, unapologetic. Red roses have always been the language of devotion at its loudest — passion, desire, a love that has stopped pretending to be casual — and Imperial Beauty wears that meaning like a crown. The wrap is folded into a sharp ivory cone, clean and modern, letting the roses speak without competition. Tied at the throat with a wide blush-pink satin ribbon knotted into a soft, generous bow, the bouquet carries a quiet contrast — fierce roses, tender ribbon, the warmth of a confession dressed in restraint. Hand it across a candlelit table, place it on a doorstep at midnight, deliver it on an anniversary that deserves something heavier than words. Imperial Beauty isn't a bouquet — it's a declaration.",
+    stems: ["Premium deep-red roses (half-bloom, long-stem)", "Architectural matte white paper wrap", "Wide blush-pink satin ribbon"],
+  },
+
+
 
   {
     slug: "seraphine",
