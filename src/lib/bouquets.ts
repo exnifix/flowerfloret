@@ -22,6 +22,7 @@ import phoenixBloomAsset from "@/assets/phoenix-bloom.jpeg.asset.json";
 import elaraAsset from "@/assets/elara.jpeg.asset.json";
 import tranquilBloomAsset from "@/assets/tranquil-bloom.jpeg.asset.json";
 import luxeIvoryAsset from "@/assets/luxe-ivory.jpeg.asset.json";
+import crimsonLoveAsset from "@/assets/crimson-love.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -47,6 +48,7 @@ const phoenixBloom = phoenixBloomAsset.url;
 const elara = elaraAsset.url;
 const tranquilBloom = tranquilBloomAsset.url;
 const luxeIvory = luxeIvoryAsset.url;
+const crimsonLove = crimsonLoveAsset.url;
 
 
 
@@ -183,6 +185,19 @@ export const bouquets: Bouquet[] = [
       "A generous, snow-white cloud of baby's breath bursts out of a sculptural blush-pink wrap, each tiny bloom catching the light like a constellation of paper stars. The gypsophila is gathered thick and full — hundreds of dainty ivory florets spilling outward in every direction, soft as sea foam, dense enough to feel almost weightless and weighty all at once. Beneath the blooms, a sheer ivory veil tucks inside the wrap, framing the heart of the bouquet like the inner lining of a couture gown. The outer wrap is folded into long, architectural petals of matte rose-pink paper that curl back to reveal the flowers like a slow reveal in a love story. Baby's breath, in the language of flowers, means everlasting love, innocence, and the kind of devotion that doesn't need to be loud to be true — a flower of small constant promises. Finished at the throat with two ribbons — one ivory satin, one blush — tied into an elegant trailing double bow. Luxe Ivory is the bouquet for the moments that don't need many words: the just-because, the soft apology, the new chapter, the quiet \"I'm proud of you.\" Pure, dreamy, and impossibly tender.",
     stems: ["Premium fresh baby's breath (gypsophila) — generous cloud", "Sheer ivory inner veil", "Architectural matte blush-pink paper wrap", "Ivory and blush satin double-bow ribbon"],
   },
+  {
+    slug: "crimson-love",
+    name: "Crimson Love",
+    tagline: "Red roses kissed by snow-white stars",
+    price: 899,
+    category: "Bouquets",
+    image: crimsonLove,
+    emotion: "For the love that is loud in feeling, gentle in voice",
+    description:
+      "A perfect dome of deep crimson roses — velvet-red, half-open, faces turned upward like an audience in love — is woven through with delicate sprigs of snow-white baby's breath that drift between the blooms like tiny falling stars. Each rose is full-headed and lush, the kind of red that reads almost black at the edges and ruby at the heart, framed by the soft ivory haze of gypsophila that softens all that fire without dimming it. Red roses speak of devotion, desire, and a love that has stopped pretending to be small; baby's breath answers back with innocence and the promise of forever — together they say everything a card can't. The whole arrangement is cradled in a crisp, architectural fold of matte ivory paper that opens like the petals of a single enormous flower, and finished at the throat with a wide crimson satin ribbon tied into a generous, glossy bow. Tucked at the top, a small ivory card waits for your handwriting. Crimson Love is the bouquet for the milestone confession — the proposal, the anniversary, the \"I should have said this sooner.\" Classic, cinematic, unforgettable.",
+    stems: ["Premium deep-red roses (half-bloom)", "Fresh white baby's breath (gypsophila)", "Architectural matte ivory paper wrap", "Wide crimson satin ribbon", "Ivory message card"],
+  },
+
 
 
 
