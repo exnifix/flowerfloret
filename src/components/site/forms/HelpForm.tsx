@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Loader2, Send } from "lucide-react";
 import { Field } from "./Field";
+import { ImageUploadField } from "./ImageUploadField";
 import { notifyNewOrder } from "@/lib/notify-order.functions";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -9,6 +10,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 export function HelpForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,9 +38,11 @@ export function HelpForm() {
           message: `[HELP REQUEST] ${message}`,
           bouquet: null,
           payment_method: "Help / Inquiry",
+          image_url: imageUrl,
         },
       });
       form.reset();
+      setImageUrl(null);
       setStatus("sent");
     } catch {
       setStatus("error");
