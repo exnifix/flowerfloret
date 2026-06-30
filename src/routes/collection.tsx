@@ -104,7 +104,7 @@ function CollectionPage() {
               onChange={(e) => {
                 const value = e.target.value;
                 navigate({
-                  search: (prev) => ({
+                  search: (prev: Search) => ({
                     ...prev,
                     q: value.trim() ? value : undefined,
                   }),
@@ -118,7 +118,7 @@ function CollectionPage() {
                 type="button"
                 onClick={() =>
                   navigate({
-                    search: (prev) => ({ ...prev, q: undefined }),
+                    search: (prev: Search) => ({ ...prev, q: undefined }),
                     replace: true,
                   })
                 }
