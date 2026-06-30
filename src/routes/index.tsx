@@ -4,6 +4,7 @@ import { QuoteCarousel } from "@/components/site/QuoteCarousel";
 import { HomeHero } from "@/components/site/sections/HomeHero";
 import { CategoryGrid } from "@/components/site/sections/CategoryGrid";
 import { FeaturedCollection } from "@/components/site/sections/FeaturedCollection";
+import { CakeCombos } from "@/components/site/sections/CakeCombos";
 import { BespokeCTA } from "@/components/site/sections/BespokeCTA";
 import { InstagramGrid } from "@/components/site/sections/InstagramGrid";
 import { ContactCTA } from "@/components/site/sections/ContactCTA";
@@ -51,6 +52,7 @@ function HomePage() {
       <QuoteCarousel />
       <CategoryGrid />
       <FeaturedCollection />
+      <CakeCombos />
       <BespokeCTA />
       <InstagramGrid />
       <ContactCTA />
