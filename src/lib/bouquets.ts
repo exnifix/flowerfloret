@@ -28,6 +28,7 @@ import goldenHarmonyAsset from "@/assets/golden-harmony.jpeg.asset.json";
 import sunflowerSerenityAsset from "@/assets/sunflower-serenity.jpeg.asset.json";
 import pinkDesireAsset from "@/assets/pink-desire.jpeg.asset.json";
 import pinkEleganceAsset from "@/assets/pink-elegance.jpeg.asset.json";
+import vanillaAffectionAsset from "@/assets/vanilla-affection.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -59,6 +60,7 @@ const goldenHarmony = goldenHarmonyAsset.url;
 const sunflowerSerenity = sunflowerSerenityAsset.url;
 const pinkDesire = pinkDesireAsset.url;
 const pinkElegance = pinkEleganceAsset.url;
+const vanillaAffection = vanillaAffectionAsset.url;
 
 
 
@@ -75,6 +77,18 @@ export type Bouquet = {
 };
 
 export const bouquets: Bouquet[] = [
+  {
+    slug: "vanilla-affection",
+    name: "Vanilla Affection",
+    tagline: "Cream roses and a candlelit cake — the whole celebration, hand-delivered",
+    price: 1499,
+    category: "Cake & Flower Combo",
+    image: vanillaAffection,
+    emotion: "For the birthdays that deserve to be remembered softly",
+    description:
+      "A generous gathering of ivory-cream roses — petals layered like folded silk, blushing faintly at the edges where the light catches them — bundled into a soft mint-pistachio wrap that falls open like a whispered secret. Paired with a petite round vanilla bento cake, finished in smooth buttercream and hand-lettered with a gold-and-chocolate 'Happy Birthday' script, a tiny red fondant heart pressed gently beside the words, and a single tall golden candle waiting to be lit. Cream roses speak of admiration in its quietest form — devotion without spectacle, love that doesn't need to raise its voice. Together with the cake, Vanilla Affection is the whole celebration in one delivery: the gasp at the door, the candle being struck, the slow circle of friends gathered around a phone camera. Perfect for birthdays, anniversaries, surprise office moments, or the long-distance kind of love that arrives in person for one perfect afternoon.",
+    stems: ["~20 premium ivory-cream roses, half-bloom", "Petite round vanilla bento cake with buttercream finish", "Hand-piped gold & chocolate 'Happy Birthday' script with fondant heart", "1 tall golden pillar candle", "Soft mint-pistachio matte wrap with ivory tissue lining"],
+  },
   {
     slug: "pink-elegance",
     name: "Pink Elegance",
