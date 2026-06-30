@@ -22,6 +22,7 @@ export function OrderForm({ initialBouquet = "" }: Props) {
   const [selectedBouquet, setSelectedBouquet] = useState(initialBouquet);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const submittingRef = useRef(false);
 
   const selected = useMemo(
     () => bouquets.find((b) => b.name === selectedBouquet),
@@ -32,28 +33,47 @@ export function OrderForm({ initialBouquet = "" }: Props) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Hard guard against double-submission from fast taps / Enter spam.
+    if (submittingRef.current) return;
+    submittingRef.current = true;
+
+    const form = e.currentTarget;
     setStatus("sending");
     setErrorMsg("");
 
-    const form = e.currentTarget;
-    const built = buildOrderPayload(new FormData(form));
-    if (!built.ok) {
-      setStatus("error");
-      setErrorMsg(built.error);
-      return;
-    }
+    try {
+      const built = buildOrderPayload(new FormData(form));
+      if (!built.ok) {
+        setStatus("error");
+        setErrorMsg(built.error);
+        toast.error("Please check your details", { description: built.error });
+        return;
+      }
 
-    const res = await submitOrder(built.payload);
-    if (!res.ok) {
-      setStatus("error");
-      setErrorMsg(res.error);
-      return;
-    }
+      const res = await submitOrder(built.payload);
+      if (!res.ok) {
+        setStatus("error");
+        setErrorMsg(res.error);
+        toast.error("Order didn't go through", { description: res.error });
+        return;
+      }
 
-    setStatus("sent");
-    form.reset();
-    setSelectedBouquet("");
+      setStatus("sent");
+      toast.success("Order received", {
+        description: "We'll confirm your bKash payment and reach out shortly.",
+      });
+      form.reset();
+      setSelectedBouquet("");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unexpected error. Please try again.";
+      setStatus("error");
+      setErrorMsg(message);
+      toast.error("Something went wrong", { description: message });
+    } finally {
+      submittingRef.current = false;
+    }
   };
+
 
   return (
     <form
