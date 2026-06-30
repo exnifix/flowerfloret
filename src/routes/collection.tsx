@@ -56,8 +56,7 @@ export const Route = createFileRoute("/collection")({
   component: CollectionPage,
 });
 
-function matchesQuery(b: (typeof bouquets)[number], q: string): boolean {
-  const needle = q.toLowerCase();
+function matchesQuery(b: (typeof bouquets)[number], needle: string): boolean {
   return (
     b.name.toLowerCase().includes(needle) ||
     b.slug.toLowerCase().includes(needle) ||
@@ -70,9 +69,32 @@ function matchesQuery(b: (typeof bouquets)[number], q: string): boolean {
 function CollectionPage() {
   const { cat, q } = Route.useSearch() as Search;
   const navigate = useNavigate({ from: "/collection" });
-  const byCat = filterByCategorySlug(bouquets, cat);
-  const filtered = q ? byCat.filter((b) => matchesQuery(b, q)) : byCat;
+
+  // Local input state so each keystroke does not trigger a router navigation + full re-render
+  const [input, setInput] = useState(q ?? "");
+  useEffect(() => {
+    setInput(q ?? "");
+  }, [q]);
+
+  // Debounce URL sync (200ms) so the address bar updates without thrashing
+  useEffect(() => {
+    const trimmed = input.trim();
+    const next = trimmed ? trimmed : undefined;
+    if (next === q) return;
+    const id = setTimeout(() => {
+      navigate({ search: (prev: Search) => ({ ...prev, q: next }), replace: true });
+    }, 200);
+    return () => clearTimeout(id);
+  }, [input, q, navigate]);
+
+  const filtered = useMemo(() => {
+    const byCat = filterByCategorySlug(bouquets, cat);
+    const needle = input.trim().toLowerCase();
+    return needle ? byCat.filter((b) => matchesQuery(b, needle)) : byCat;
+  }, [cat, input]);
+
   const activeLabel: string = cat ? CATEGORY_BY_SLUG[cat] : "Every bloom";
+
 
   return (
     <Layout>
