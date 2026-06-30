@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
+import { AlertCircle, CheckCircle2, Loader2, Minus, Plus, Send } from "lucide-react";
 import { toast } from "sonner";
 import { Field } from "./Field";
 import { PaymentMethodPicker } from "./PaymentMethodPicker";
@@ -20,6 +20,7 @@ type Props = {
 /** Full ordering form: customer details, bouquet pick, payment, submit + feedback. */
 export function OrderForm({ initialBouquet = "" }: Props) {
   const [selectedBouquet, setSelectedBouquet] = useState(initialBouquet);
+  const [quantity, setQuantity] = useState(1);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const submittingRef = useRef(false);
@@ -29,7 +30,12 @@ export function OrderForm({ initialBouquet = "" }: Props) {
     [selectedBouquet],
   );
   const bouquetPrice = selected?.price ?? 0;
-  const total = bouquetPrice + DELIVERY_CHARGE;
+  const subtotal = bouquetPrice * quantity;
+  const total = subtotal + DELIVERY_CHARGE;
+
+  const MAX_QTY = 20;
+  const stepQty = (delta: number) =>
+    setQuantity((q) => Math.min(MAX_QTY, Math.max(1, q + delta)));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,7 +56,16 @@ export function OrderForm({ initialBouquet = "" }: Props) {
         return;
       }
 
-      const res = await submitOrder(built.payload);
+      // Encode quantity into the bouquet field so the order email shows it
+      // without needing a schema change.
+      const payload = {
+        ...built.payload,
+        bouquet: built.payload.bouquet
+          ? `${built.payload.bouquet} × ${quantity}`
+          : built.payload.bouquet,
+      };
+
+      const res = await submitOrder(payload);
       if (!res.ok) {
         setStatus("error");
         setErrorMsg(res.error);
@@ -64,6 +79,7 @@ export function OrderForm({ initialBouquet = "" }: Props) {
       });
       form.reset();
       setSelectedBouquet("");
+      setQuantity(1);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unexpected error. Please try again.";
       setStatus("error");
@@ -96,6 +112,49 @@ export function OrderForm({ initialBouquet = "" }: Props) {
       <Field label="Instagram (optional)" name="instagram" placeholder="@yourhandle" />
 
       <BouquetSelect value={selectedBouquet} onChange={setSelectedBouquet} />
+
+      <div>
+        <span className="text-xs uppercase tracking-[0.18em] text-ink/55">Quantity</span>
+        <div className="mt-2 flex items-center justify-between rounded-2xl bg-cream/60 border border-border px-4 py-3">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => stepQty(-1)}
+              disabled={quantity <= 1}
+              aria-label="Decrease quantity"
+              className="inline-flex items-center justify-center size-9 rounded-full border border-border bg-card hover:bg-blush-soft/60 hover:border-rose/50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              <Minus className="size-4" />
+            </button>
+            <input
+              type="number"
+              min={1}
+              max={MAX_QTY}
+              value={quantity}
+              onChange={(e) => {
+                const n = parseInt(e.target.value, 10);
+                if (Number.isNaN(n)) return setQuantity(1);
+                setQuantity(Math.min(MAX_QTY, Math.max(1, n)));
+              }}
+              aria-label="Quantity"
+              className="w-14 text-center font-serif text-xl text-ink bg-transparent focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            />
+            <button
+              type="button"
+              onClick={() => stepQty(1)}
+              disabled={quantity >= MAX_QTY}
+              aria-label="Increase quantity"
+              className="inline-flex items-center justify-center size-9 rounded-full border border-border bg-card hover:bg-blush-soft/60 hover:border-rose/50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              <Plus className="size-4" />
+            </button>
+          </div>
+          <span className="text-xs text-ink/55 italic">
+            {selected ? `${quantity} × ${fmt(bouquetPrice)}` : "Select a bouquet first"}
+          </span>
+        </div>
+      </div>
+
       <PaymentMethodPicker />
 
       <Field label="Occasion" name="occasion" placeholder="A birthday, an apology, a Tuesday…" />
@@ -118,9 +177,15 @@ export function OrderForm({ initialBouquet = "" }: Props) {
         <dl className="space-y-2 text-sm">
           <div className="flex items-center justify-between">
             <dt className="text-ink/70">
-              {selected ? selected.name : <span className="italic text-ink/50">No bouquet selected yet</span>}
+              {selected ? (
+                <>
+                  {selected.name} <span className="text-ink/50">× {quantity}</span>
+                </>
+              ) : (
+                <span className="italic text-ink/50">No bouquet selected yet</span>
+              )}
             </dt>
-            <dd className="font-mono text-ink">{selected ? fmt(bouquetPrice) : "—"}</dd>
+            <dd className="font-mono text-ink">{selected ? fmt(subtotal) : "—"}</dd>
           </div>
           <div className="flex items-center justify-between">
             <dt className="text-ink/70">Delivery charge</dt>
