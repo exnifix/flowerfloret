@@ -18,6 +18,7 @@ const CHIPS: { label: string; slug?: CategorySlug }[] = [
   { label: "Wedding", slug: "wedding" },
   { label: "Birthday", slug: "birthday" },
   { label: "Anniversaries", slug: "anniversaries" },
+  { label: "Cake", slug: "cake" },
   { label: "Cake & Flower", slug: "cake-and-flower" },
 ];
 
