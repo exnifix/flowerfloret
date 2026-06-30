@@ -19,6 +19,7 @@ import creamyLoveAsset from "@/assets/creamy-love.jpeg.asset.json";
 import imperialBeautyAsset from "@/assets/imperial-beauty.jpeg.asset.json";
 import softLoveAsset from "@/assets/soft-love.jpeg.asset.json";
 import phoenixBloomAsset from "@/assets/phoenix-bloom.jpeg.asset.json";
+import elaraAsset from "@/assets/elara.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -41,6 +42,7 @@ const creamyLove = creamyLoveAsset.url;
 const imperialBeauty = imperialBeautyAsset.url;
 const softLove = softLoveAsset.url;
 const phoenixBloom = phoenixBloomAsset.url;
+const elara = elaraAsset.url;
 
 
 
@@ -141,6 +143,20 @@ export const bouquets: Bouquet[] = [
       "A dense, perfectly round cluster of deep-crimson gerbera daisies — petals long and lacquer-bright, hearts inked in velvet-black — burst out of a sheer architectural wrap edged in soft blush and dusted with constellations of baby's breath. Each gerbera is caught at full bloom, faces turned up like small suns at their boldest hour, framed by glossy emerald leaves that make the red read almost cinematic. Red gerberas, in the language of flowers, mean fierce love, courage, and a happiness that's been earned — the kind of joy that comes back stronger after it's been tested. Drifts of white gypsophila weave between the heads like sparks, softening all that fire without dimming it. The wrap is folded into a wide, generous shape that frames the bouquet like a painting, with crisp blush and charcoal borders that give the whole thing the air of an editorial portrait. Phoenix Bloom is the bouquet for the milestone after the struggle — the recovery, the promotion, the reconciliation, the \"I knew you'd make it.\" Bold, joyful, and impossible to ignore.",
     stems: ["Premium deep-red gerbera daisies (full-bloom)", "Fresh white baby's breath (gypsophila)", "Glossy emerald foliage", "Architectural sheer wrap with blush-and-charcoal border"],
   },
+  {
+    slug: "elara",
+    name: "Elara",
+    tagline: "Pink lilies and baby's breath, soft as morning light",
+    price: 1099,
+    category: "Bouquets",
+    image: elara,
+    emotion: "For the tender kind of forever",
+    description:
+      "A delicate cluster of pink Oriental lilies stretches out of a soft blush wrap like a slow, sleepy yawn — petals brushed in dreamy candy-pink with deeper rose veins running through their hearts, edges curling back as if caught mid-stretch. Around them, a generous cloud of baby's breath drifts like tiny stars caught in a veil, softening every line and making the whole bouquet glow as if lit from within. Pink lilies whisper of prosperity, abundance, and a love that's quietly imagining the future; baby's breath has always meant everlasting devotion, the small constant promises that hold the bigger ones together. The wrap is layered — soft matte blush paper on the outside, a sheer veil of organza tucked inside — and finished at the throat with a wispy white ribbon tied into an airy, almost weightless bow. Elara feels like a love letter written on a Sunday morning: gentle, sincere, in no hurry. Send it for a quiet anniversary, a new chapter, a thank-you that means more than it says, or simply because someone deserves to feel softly adored.",
+    stems: ["Premium pink Oriental lilies", "Fresh white baby's breath (gypsophila)", "Layered matte blush wrap with sheer organza veil", "Wispy white satin ribbon"],
+  },
+
+
 
 
 
