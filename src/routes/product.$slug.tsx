@@ -174,13 +174,8 @@ function ProductPage() {
                 </div>
               </Link>
 
-              <Link
-                to="/build"
-                search={{ base: bouquet.slug }}
-                className="mt-3 inline-flex items-center justify-center gap-2 w-full rounded-2xl border border-ink/15 bg-cream-soft/80 text-ink px-6 py-3.5 text-sm tracking-wide hover:bg-blush-soft/60 hover:border-rose/40 transition-colors"
-              >
-                <Sparkles className="size-4 text-rose" /> Customize this bouquet · swap flowers
-              </Link>
+
+
 
 
 
