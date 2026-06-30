@@ -124,30 +124,21 @@ function CollectionPage() {
               inputMode="search"
               autoComplete="off"
               placeholder="Search by name, code, or feeling…"
-              value={q ?? ""}
-              onChange={(e) => {
-                const value = e.target.value;
-                navigate({
-                  search: (prev: Search) => ({
-                    ...prev,
-                    q: value.trim() ? value : undefined,
-                  }),
-                  replace: true,
-                });
-              }}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
               className="w-full rounded-full bg-cream border border-blush/70 pl-11 pr-11 py-3 text-sm text-ink placeholder:text-ink/45 focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all"
             />
-            {q && (
+            {input && (
               <button
                 type="button"
-                onClick={() =>
-                  navigate({
-                    search: (prev: Search) => ({ ...prev, q: undefined }),
-                    replace: true,
-                  })
-                }
+                onClick={() => setInput("")}
                 aria-label="Clear search"
                 className="absolute right-3 top-1/2 -translate-y-1/2 size-7 grid place-items-center rounded-full text-ink/60 hover:text-rose hover:bg-blush-soft transition-colors"
+              >
+                <X className="size-4" strokeWidth={1.5} />
+              </button>
+            )}
+
               >
                 <X className="size-4" strokeWidth={1.5} />
               </button>
