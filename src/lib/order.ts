@@ -13,6 +13,7 @@ export type OrderPayload = {
   message: string | null;
   bouquet: string | null;
   payment_method: string;
+  image_url?: string | null;
 };
 
 export type OrderFormResult =
@@ -66,7 +67,9 @@ export function buildOrderPayload(fd: FormData): OrderFormResult {
 
 /** Persist the order and fire off the owner notification (best-effort). */
 export async function submitOrder(payload: OrderPayload): Promise<{ ok: true } | { ok: false; error: string }> {
-  const { error } = await supabase.from("orders").insert(payload);
+  // image_url is only used in the owner notification email — not persisted to DB.
+  const { image_url, ...dbRow } = payload;
+  const { error } = await supabase.from("orders").insert(dbRow);
   if (error) {
     return {
       ok: false,

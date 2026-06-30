@@ -10,6 +10,7 @@ type OrderPayload = {
   message?: string | null;
   bouquet?: string | null;
   payment_method?: string | null;
+  image_url?: string | null;
 };
 
 const NOTIFY_TO = "pusnojawadraiyan@gmail.com";
@@ -61,6 +62,7 @@ export const notifyNewOrder = createServerFn({ method: "POST" })
           <tr><td style="padding:10px 14px; font-weight:bold; background:#faf3e8;">Occasion</td><td style="padding:10px 14px; background:#faf3e8;">${esc(data.occasion)}</td></tr>
           <tr><td style="padding:10px 14px; font-weight:bold; vertical-align:top;">Message</td><td style="padding:10px 14px; white-space:pre-wrap;">${esc(data.message)}</td></tr>
         </table>
+        ${data.image_url ? `<div style="margin-top:16px;"><p style="margin:0 0 8px 0; font-weight:bold;">📷 Reference photo from customer:</p><img src="${data.image_url}" alt="Customer reference" style="max-width:100%; border-radius:8px; border:1px solid #eac3bf;" /></div>` : ""}
         <p style="margin-top:16px; font-size:12px; color:#7a4a3a;">Sent automatically by floret.</p>
       </div>
     `;
