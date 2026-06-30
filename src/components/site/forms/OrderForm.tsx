@@ -177,9 +177,15 @@ export function OrderForm({ initialBouquet = "" }: Props) {
         <dl className="space-y-2 text-sm">
           <div className="flex items-center justify-between">
             <dt className="text-ink/70">
-              {selected ? selected.name : <span className="italic text-ink/50">No bouquet selected yet</span>}
+              {selected ? (
+                <>
+                  {selected.name} <span className="text-ink/50">× {quantity}</span>
+                </>
+              ) : (
+                <span className="italic text-ink/50">No bouquet selected yet</span>
+              )}
             </dt>
-            <dd className="font-mono text-ink">{selected ? fmt(bouquetPrice) : "—"}</dd>
+            <dd className="font-mono text-ink">{selected ? fmt(subtotal) : "—"}</dd>
           </div>
           <div className="flex items-center justify-between">
             <dt className="text-ink/70">Delivery charge</dt>
