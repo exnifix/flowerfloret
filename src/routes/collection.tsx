@@ -50,7 +50,7 @@ export const Route = createFileRoute("/collection")({
 });
 
 function CollectionPage() {
-  const { cat } = Route.useSearch();
+  const { cat } = Route.useSearch() as Search;
   const filtered = filterByCategorySlug(bouquets, cat);
   const activeLabel: string = cat ? CATEGORY_BY_SLUG[cat] : "Every bloom";
 
