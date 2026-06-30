@@ -1,13 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Cake, Gift, Heart, Sparkles, type LucideIcon } from "lucide-react";
+import { Cake, Gift, Heart, PartyPopper, Sparkles, type LucideIcon } from "lucide-react";
 import type { CategorySlug } from "@/lib/categories";
 
 type Category = { icon: LucideIcon; label: string; slug: CategorySlug };
 
 const CATEGORIES: Category[] = [
   { icon: Heart, label: "Wedding", slug: "wedding" },
-  { icon: Cake, label: "Birthday", slug: "birthday" },
+  { icon: PartyPopper, label: "Birthday", slug: "birthday" },
   { icon: Gift, label: "Anniversaries", slug: "anniversaries" },
+  { icon: Cake, label: "Cake", slug: "cake" },
   { icon: Sparkles, label: "Cake & Flower", slug: "cake-and-flower" },
 ];
 
@@ -23,7 +24,7 @@ export function CategoryGrid() {
           Find the perfect blooms for every occasion — from wedding vows to birthday wishes
           and quiet anniversaries.
         </p>
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8">
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
           {CATEGORIES.map(({ icon: Icon, label, slug }) => (
             <Link
               key={slug}
