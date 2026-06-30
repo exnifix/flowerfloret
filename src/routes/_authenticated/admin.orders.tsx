@@ -7,9 +7,9 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   listAdminOrders,
   updateOrderStatus,
-  ORDER_STATUSES,
   type OrderStatus,
 } from "@/lib/admin-orders.functions";
+import { OrderDetailsDrawer } from "@/components/admin/OrderDetailsDrawer";
 
 export const Route = createFileRoute("/_authenticated/admin/orders")({
   head: () => ({
@@ -48,6 +48,7 @@ function AdminOrdersPage() {
   const router = useRouter();
   const queryClient = useQueryClient();
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const { data, isLoading, error, refetch, isFetching } = useQuery({
     queryKey: ["admin", "orders"],
@@ -90,6 +91,11 @@ function AdminOrdersPage() {
     router.invalidate();
   }
 
+  function openOrder(id: string) {
+    setSelectedId(id);
+    setDrawerOpen(true);
+  }
+
   return (
     <div className="min-h-screen bg-cream">
       <header className="border-b border-border bg-white/60 backdrop-blur">
@@ -124,27 +130,18 @@ function AdminOrdersPage() {
         ) : orders.length === 0 ? (
           <EmptyState />
         ) : (
-          <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-            <OrdersTable orders={orders} selectedId={selectedId} onSelect={setSelectedId} />
-            <OrderDetail
-              order={selected}
-              onStatusChange={(id, status) => mutation.mutate({ id, status })}
-              isUpdating={mutation.isPending}
-            />
-          </div>
+          <OrdersTable orders={orders} selectedId={selectedId} onSelect={openOrder} />
         )}
       </main>
-    </div>
-  );
-}
 
-function StatusBadge({ status }: { status: OrderStatus }) {
-  return (
-    <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium ${STATUS_STYLE[status]}`}
-    >
-      {STATUS_LABEL[status]}
-    </span>
+      <OrderDetailsDrawer
+        order={selected}
+        open={drawerOpen}
+        onOpenChange={setDrawerOpen}
+        onStatusChange={(id, status) => mutation.mutate({ id, status })}
+        isUpdating={mutation.isPending}
+      />
+    </div>
   );
 }
 
@@ -166,11 +163,13 @@ function OrdersTable({
             <th className="px-4 py-3">Customer</th>
             <th className="px-4 py-3">Bouquet</th>
             <th className="px-4 py-3">Status</th>
+            <th className="px-4 py-3 text-right">Details</th>
           </tr>
         </thead>
         <tbody>
           {orders.map((o) => {
             const active = o.id === selectedId;
+            const status = (o.status ?? "new") as OrderStatus;
             return (
               <tr
                 key={o.id}
@@ -184,11 +183,29 @@ function OrdersTable({
                 </td>
                 <td className="px-4 py-3">
                   <div className="font-medium text-ink">{o.name}</div>
-                  <div className="text-xs text-muted-foreground">{o.email}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {maskEmailInline(o.email)}
+                  </div>
                 </td>
                 <td className="px-4 py-3 text-ink">{o.bouquet ?? "—"}</td>
                 <td className="px-4 py-3">
-                  <StatusBadge status={(o.status ?? "new") as OrderStatus} />
+                  <span
+                    className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium ${STATUS_STYLE[status]}`}
+                  >
+                    {STATUS_LABEL[status]}
+                  </span>
+                </td>
+                <td className="px-4 py-3 text-right">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelect(o.id);
+                    }}
+                    className="rounded-full border border-border px-3 py-1 text-[11px] hover:bg-blush-soft"
+                  >
+                    View
+                  </button>
                 </td>
               </tr>
             );
@@ -199,96 +216,11 @@ function OrdersTable({
   );
 }
 
-function OrderDetail({
-  order,
-  onStatusChange,
-  isUpdating,
-}: {
-  order: Order | null;
-  onStatusChange: (id: string, status: OrderStatus) => void;
-  isUpdating: boolean;
-}) {
-  if (!order) {
-    return (
-      <aside className="rounded-2xl border border-dashed border-border bg-white/60 p-6 text-sm text-muted-foreground">
-        Select an order to see the full details and update its status.
-      </aside>
-    );
-  }
-  const status = (order.status ?? "new") as OrderStatus;
-  return (
-    <aside className="rounded-2xl border border-border bg-white p-6">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <h2 className="font-serif text-2xl text-ink">{order.bouquet ?? "Custom order"}</h2>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Received {new Date(order.created_at).toLocaleString()}
-          </p>
-        </div>
-        <StatusBadge status={status} />
-      </div>
-
-      <div className="mt-5 rounded-xl border border-border bg-cream/60 p-4">
-        <label
-          htmlFor="status-select"
-          className="text-xs uppercase tracking-wider text-muted-foreground"
-        >
-          Update status (admin only)
-        </label>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {ORDER_STATUSES.map((s) => {
-            const isActive = s === status;
-            return (
-              <button
-                key={s}
-                type="button"
-                disabled={isUpdating || isActive}
-                onClick={() => onStatusChange(order.id, s)}
-                className={`rounded-full border px-3 py-1 text-xs transition-colors disabled:opacity-60 ${
-                  isActive
-                    ? "border-ink bg-ink text-cream"
-                    : "border-border bg-white text-ink hover:bg-blush-soft"
-                }`}
-              >
-                {STATUS_LABEL[s]}
-              </button>
-            );
-          })}
-        </div>
-        <p className="mt-2 text-[11px] text-muted-foreground">
-          Only admin accounts can change this. Staff have read-only access.
-        </p>
-      </div>
-
-      <dl className="mt-5 grid grid-cols-[max-content_1fr] gap-x-4 gap-y-2 text-sm">
-        <Field label="Name" value={order.name} />
-        <Field label="Email" value={order.email} />
-        <Field label="Phone" value={order.phone} />
-        <Field label="Address" value={order.address} />
-        <Field label="Instagram" value={order.instagram} />
-        <Field label="Occasion" value={order.occasion} />
-        <Field label="Payment" value={order.payment_method} />
-      </dl>
-
-      {order.message && (
-        <div className="mt-5">
-          <div className="text-xs uppercase tracking-wider text-muted-foreground">Message</div>
-          <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-cream p-3 font-sans text-sm text-ink">
-{order.message}
-          </pre>
-        </div>
-      )}
-    </aside>
-  );
-}
-
-function Field({ label, value }: { label: string; value: string | null | undefined }) {
-  return (
-    <>
-      <dt className="text-xs uppercase tracking-wider text-muted-foreground self-center">{label}</dt>
-      <dd className="text-ink break-words">{value ?? <span className="text-muted-foreground">—</span>}</dd>
-    </>
-  );
+function maskEmailInline(email: string | null | undefined) {
+  if (!email) return "—";
+  const [name, domain] = email.split("@");
+  if (!domain) return "•••";
+  return `${name.slice(0, 2)}${"•".repeat(Math.max(1, name.length - 2))}@${domain}`;
 }
 
 function EmptyState() {
