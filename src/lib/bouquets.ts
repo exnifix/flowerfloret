@@ -23,6 +23,7 @@ import elaraAsset from "@/assets/elara.jpeg.asset.json";
 import tranquilBloomAsset from "@/assets/tranquil-bloom.jpeg.asset.json";
 import luxeIvoryAsset from "@/assets/luxe-ivory.jpeg.asset.json";
 import crimsonLoveAsset from "@/assets/crimson-love.jpeg.asset.json";
+import pearlRoyaleAsset from "@/assets/pearl-royale.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
