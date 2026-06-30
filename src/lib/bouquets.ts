@@ -56,6 +56,7 @@ const crimsonLove = crimsonLoveAsset.url;
 const pearlRoyale = pearlRoyaleAsset.url;
 const goldenHarmony = goldenHarmonyAsset.url;
 const sunflowerSerenity = sunflowerSerenityAsset.url;
+const pinkDesire = pinkDesireAsset.url;
 
 
 
