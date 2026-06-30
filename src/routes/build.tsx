@@ -70,6 +70,9 @@ const ribbons: Choice[] = [
 ];
 
 function BuildPage() {
+  const { base: baseSlug } = Route.useSearch();
+  const baseBouquet = baseSlug ? getBouquet(baseSlug) : undefined;
+
   const [picks, setPicks] = useState<string[]>(["rose-pink"]);
   const [wrap, setWrap] = useState<string>("offwhite");
   const [ribbon, setRibbon] = useState<string>("pink");
@@ -84,8 +87,6 @@ function BuildPage() {
     () => flowers.filter((f) => picks.includes(f.id)),
     [picks],
   );
-  const wrapColor = wraps.find((w) => w.id === wrap)?.color ?? "#f3ece0";
-  const ribbonColor = ribbons.find((r) => r.id === ribbon)?.color ?? "#f4a6b8";
 
   const grouped = useMemo(() => {
     const g: Record<string, Choice[]> = {};
@@ -96,6 +97,18 @@ function BuildPage() {
     return g;
   }, []);
 
+  // Build a compact human-readable customization string for the checkout note.
+  const customizationText = useMemo(() => {
+    const parts: string[] = [];
+    if (baseBouquet) parts.push(`Base: ${baseBouquet.name}`);
+    if (previewStems.length) parts.push(`Flowers: ${previewStems.map((s) => s.name).join(", ")}`);
+    parts.push(`Wrap: ${wraps.find((w) => w.id === wrap)?.name ?? wrap}`);
+    parts.push(`Ribbon: ${ribbons.find((r) => r.id === ribbon)?.name ?? ribbon}`);
+    if (customSize.trim()) parts.push(`Size: ${customSize.trim()}`);
+    if (note.trim()) parts.push(`Note: ${note.trim()}`);
+    return parts.join(" · ");
+  }, [baseBouquet, previewStems, wrap, ribbon, customSize, note]);
+
   return (
     <Layout>
       <section className="pt-12 pb-8 text-center">
@@ -104,10 +117,16 @@ function BuildPage() {
             <Sparkles className="size-3.5" /> Bespoke Atelier
           </p>
           <h1 className="font-serif text-5xl md:text-7xl text-ink leading-[1] animate-fade-up delay-100">
-            Build Your Own <span className="italic font-italic text-rose">Bouquet</span>
+            {baseBouquet ? (
+              <>Customize <span className="italic font-italic text-rose">{baseBouquet.name}</span></>
+            ) : (
+              <>Build Your Own <span className="italic font-italic text-rose">Bouquet</span></>
+            )}
           </h1>
           <p className="mt-6 text-ink/70 leading-relaxed animate-fade-up delay-200">
-            Compose your gesture, stem by stem. Pick your flowers, wrap, ribbon and size — we'll bring it to life.
+            {baseBouquet
+              ? `Starting from ${baseBouquet.name} (৳${baseBouquet.price.toLocaleString("en-BD")}). Swap flowers, wrap, ribbon and size — we'll tailor it for you.`
+              : "Compose your gesture, stem by stem. Pick your flowers, wrap, ribbon and size — we'll bring it to life."}
           </p>
         </div>
       </section>
