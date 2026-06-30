@@ -15,6 +15,7 @@ import redLetterAsset from "@/assets/bouquet-red-letter.jpg.asset.json";
 import rosettaAsset from "@/assets/rosetta.jpeg.asset.json";
 import blushingGraceAsset from "@/assets/blushing-grace.jpeg.asset.json";
 import eleganceDesireAsset from "@/assets/elegance-desire.jpeg.asset.json";
+import creamyLoveAsset from "@/assets/creamy-love.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -33,6 +34,7 @@ const redLetter = redLetterAsset.url;
 const rosetta = rosettaAsset.url;
 const blushingGrace = blushingGraceAsset.url;
 const eleganceDesire = eleganceDesireAsset.url;
+const creamyLove = creamyLoveAsset.url;
 
 
 
@@ -85,6 +87,19 @@ export const bouquets: Bouquet[] = [
       "An extravagant gathering of spray roses — dozens of small, perfectly-formed pink heads blooming in tiers along tall emerald stems — rises out of the wrap like a slow exhale. Each cluster carries that soft, candlelit pink that sits exactly between blush and bubblegum: feminine, romantic, a little theatrical. The stems are tall and proudly bare, gathered into a single tight grip and sleeved in crystal-clear cellophane that's folded into a sharp architectural cone, so the whole bouquet reads like a stained-glass window held up to the light. A wide, glossy pink satin ribbon is tied at the throat into a generous double bow, its long tails trailing past the wrist. Spray roses, by tradition, are roses multiplied — admiration in plural, affection said over and over in the same breath. Hand this one across a doorway and you're not whispering a feeling anymore; you're announcing it.",
     stems: ["Premium pink spray roses (multi-head, long-stem)", "Tall fresh-cut emerald foliage", "Architectural clear cellophane cone wrap", "Wide blush-pink satin double-bow ribbon"],
   },
+  {
+    slug: "creamy-love",
+    name: "Creamy Love",
+    tagline: "Quiet vows, folded in white paper",
+    price: 699,
+    category: "Bouquets",
+    image: creamyLove,
+    emotion: "For a love that doesn't need volume to be heard",
+    description:
+      "A gathering of cream-white roses — petals so soft they look poured rather than grown — nestle into a bed of deep emerald leaves and peek out from a crisp, architectural fold of matte white paper. Each rose sits at that perfect, half-opened moment: still holding its secret, already showing its heart. White roses have always been the flower of pure intention — new beginnings, sincere devotion, the kind of feeling that doesn't need to be dressed up to be believed. The wrap is folded sharp and clean, like a love letter that's been read once and saved forever, and tied at the throat with a slim ivory satin ribbon knotted into a simple, unfussy bow. Creamy Love is the bouquet for the quiet ones — the first \"I love you,\" the morning-after gesture, the apology that finally lands, the anniversary that doesn't need a speech. Pure, gentle, and impossibly elegant.",
+    stems: ["Premium cream-white roses (half-bloom)", "Fresh emerald rose foliage", "Architectural matte white paper wrap", "Ivory satin ribbon"],
+  },
+
   {
     slug: "seraphine",
     name: "Seraphine",
