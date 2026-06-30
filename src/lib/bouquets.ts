@@ -227,7 +227,18 @@ export const bouquets: Bouquet[] = [
       "A radiant gathering of golden sunflowers — wide, generous faces with deep amber centers and bold yellow petals that fan out like little suns caught mid-bloom — is laced through with drifting clouds of snow-white baby's breath and crowned with dark, fern-like foliage that frames every petal in deep forest green. The sunflowers turn their heads toward the light the way only sunflowers do, full of warmth, loyalty, and unfiltered joy; in the language of flowers, they stand for adoration, devotion, and the kind of love that follows you the way the bloom follows the sun. The baby's breath softens all that gold with a quiet, snowy hush — innocence and everlasting affection braided gently through the brightness. The whole bouquet is cradled in layers of natural kraft paper folded into a long, architectural cone, lined with a sheer ivory veil that catches the light, and finished at the throat with a wide sage-green organza ribbon tied into a soft, trailing bow. Golden Harmony is the bouquet for the friend who is your sunshine, the partner who has loved you loud, the parent who has always shown up, the new beginning that deserves applause. Earthy, joyful, and impossibly warm — happiness, wrapped.",
     stems: ["Premium fresh sunflowers — full bloom", "Snow-white baby's breath (gypsophila)", "Deep green fern foliage", "Natural kraft paper wrap with sheer ivory veil", "Sage-green organza ribbon bow"],
   },
-
+  {
+    slug: "sunflower-serenity",
+    name: "Sunflower Serenity",
+    tagline: "A single sunflower, simply wrapped",
+    price: 399,
+    category: "Bouquets",
+    image: sunflowerSerenity,
+    emotion: "For the small joys that mean the most",
+    description:
+      "A single, sun-faced sunflower — wide golden-orange petals fanning outward around a deep chocolate-brown center, framed by a few bold, glossy green leaves that look freshly cut from the garden — is wrapped with quiet care in soft brown kraft paper and lined with a vintage book page, its old-print text peeking through like a love note left in a library. The bloom is full and confident, the kind of sunflower that turns a whole room toward the window, and in the language of flowers it stands for warmth, loyalty, adoration, and the simple promise of always showing up. A crisp clear sleeve hugs it lightly to keep every petal pristine, finished at the throat with a slim signature ribbon. Sunflower Serenity is the bouquet for the everyday gestures that matter most — the just-because, the \"thinking of you,\" the first date that wants to feel thoughtful instead of grand, the friend who needs a little sunshine on a quiet afternoon. Small in size, big in feeling — happiness, gift-wrapped in a single bloom.",
+    stems: ["1 premium fresh sunflower — full bloom", "Fresh green sunflower foliage", "Vintage book-page inner liner", "Natural brown kraft paper wrap", "Clear protective sleeve with signature ribbon"],
+  },
 
 
 
