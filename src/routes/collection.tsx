@@ -1,6 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Search, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { Layout } from "@/components/site/Layout";
+
 import { BouquetCard } from "@/components/site/BouquetCard";
 import { bouquets, getProductCode } from "@/lib/bouquets";
 import {
