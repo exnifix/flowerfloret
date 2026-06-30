@@ -112,6 +112,49 @@ export function OrderForm({ initialBouquet = "" }: Props) {
       <Field label="Instagram (optional)" name="instagram" placeholder="@yourhandle" />
 
       <BouquetSelect value={selectedBouquet} onChange={setSelectedBouquet} />
+
+      <div>
+        <span className="text-xs uppercase tracking-[0.18em] text-ink/55">Quantity</span>
+        <div className="mt-2 flex items-center justify-between rounded-2xl bg-cream/60 border border-border px-4 py-3">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => stepQty(-1)}
+              disabled={quantity <= 1}
+              aria-label="Decrease quantity"
+              className="inline-flex items-center justify-center size-9 rounded-full border border-border bg-card hover:bg-blush-soft/60 hover:border-rose/50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              <Minus className="size-4" />
+            </button>
+            <input
+              type="number"
+              min={1}
+              max={MAX_QTY}
+              value={quantity}
+              onChange={(e) => {
+                const n = parseInt(e.target.value, 10);
+                if (Number.isNaN(n)) return setQuantity(1);
+                setQuantity(Math.min(MAX_QTY, Math.max(1, n)));
+              }}
+              aria-label="Quantity"
+              className="w-14 text-center font-serif text-xl text-ink bg-transparent focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            />
+            <button
+              type="button"
+              onClick={() => stepQty(1)}
+              disabled={quantity >= MAX_QTY}
+              aria-label="Increase quantity"
+              className="inline-flex items-center justify-center size-9 rounded-full border border-border bg-card hover:bg-blush-soft/60 hover:border-rose/50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              <Plus className="size-4" />
+            </button>
+          </div>
+          <span className="text-xs text-ink/55 italic">
+            {selected ? `${quantity} × ${fmt(bouquetPrice)}` : "Select a bouquet first"}
+          </span>
+        </div>
+      </div>
+
       <PaymentMethodPicker />
 
       <Field label="Occasion" name="occasion" placeholder="A birthday, an apology, a Tuesday…" />
