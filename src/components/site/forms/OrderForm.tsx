@@ -56,7 +56,16 @@ export function OrderForm({ initialBouquet = "" }: Props) {
         return;
       }
 
-      const res = await submitOrder(built.payload);
+      // Encode quantity into the bouquet field so the order email shows it
+      // without needing a schema change.
+      const payload = {
+        ...built.payload,
+        bouquet: built.payload.bouquet
+          ? `${built.payload.bouquet} × ${quantity}`
+          : built.payload.bouquet,
+      };
+
+      const res = await submitOrder(payload);
       if (!res.ok) {
         setStatus("error");
         setErrorMsg(res.error);
@@ -70,6 +79,7 @@ export function OrderForm({ initialBouquet = "" }: Props) {
       });
       form.reset();
       setSelectedBouquet("");
+      setQuantity(1);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unexpected error. Please try again.";
       setStatus("error");
