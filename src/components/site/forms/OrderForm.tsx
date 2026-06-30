@@ -20,6 +20,7 @@ type Props = {
 /** Full ordering form: customer details, bouquet pick, payment, submit + feedback. */
 export function OrderForm({ initialBouquet = "" }: Props) {
   const [selectedBouquet, setSelectedBouquet] = useState(initialBouquet);
+  const [quantity, setQuantity] = useState(1);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const submittingRef = useRef(false);
@@ -29,7 +30,12 @@ export function OrderForm({ initialBouquet = "" }: Props) {
     [selectedBouquet],
   );
   const bouquetPrice = selected?.price ?? 0;
-  const total = bouquetPrice + DELIVERY_CHARGE;
+  const subtotal = bouquetPrice * quantity;
+  const total = subtotal + DELIVERY_CHARGE;
+
+  const MAX_QTY = 20;
+  const stepQty = (delta: number) =>
+    setQuantity((q) => Math.min(MAX_QTY, Math.max(1, q + delta)));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
