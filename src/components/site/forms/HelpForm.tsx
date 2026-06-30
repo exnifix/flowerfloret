@@ -38,11 +38,11 @@ export function HelpForm() {
           message: `[HELP REQUEST] ${message}`,
           bouquet: null,
           payment_method: "Help / Inquiry",
-          image_url: imageUrl,
+          image_urls: imageUrls,
         },
       });
       form.reset();
-      setImageUrl(null);
+      setImageUrls([]);
       setStatus("sent");
     } catch {
       setStatus("error");
