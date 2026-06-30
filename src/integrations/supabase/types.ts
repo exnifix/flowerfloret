@@ -28,6 +28,8 @@ export type Database = {
           payment_method: string | null
           phone: string | null
           status: Database["public"]["Enums"]["order_status"]
+          status_updated_at: string | null
+          status_updated_by: string | null
         }
         Insert: {
           address?: string | null
@@ -42,6 +44,8 @@ export type Database = {
           payment_method?: string | null
           phone?: string | null
           status?: Database["public"]["Enums"]["order_status"]
+          status_updated_at?: string | null
+          status_updated_by?: string | null
         }
         Update: {
           address?: string | null
@@ -56,6 +60,8 @@ export type Database = {
           payment_method?: string | null
           phone?: string | null
           status?: Database["public"]["Enums"]["order_status"]
+          status_updated_at?: string | null
+          status_updated_by?: string | null
         }
         Relationships: []
       }
