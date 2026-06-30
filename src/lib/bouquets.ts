@@ -20,6 +20,7 @@ import imperialBeautyAsset from "@/assets/imperial-beauty.jpeg.asset.json";
 import softLoveAsset from "@/assets/soft-love.jpeg.asset.json";
 import phoenixBloomAsset from "@/assets/phoenix-bloom.jpeg.asset.json";
 import elaraAsset from "@/assets/elara.jpeg.asset.json";
+import tranquilBloomAsset from "@/assets/tranquil-bloom.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -43,6 +44,7 @@ const imperialBeauty = imperialBeautyAsset.url;
 const softLove = softLoveAsset.url;
 const phoenixBloom = phoenixBloomAsset.url;
 const elara = elaraAsset.url;
+const tranquilBloom = tranquilBloomAsset.url;
 
 
 
@@ -155,6 +157,20 @@ export const bouquets: Bouquet[] = [
       "A delicate cluster of pink Oriental lilies stretches out of a soft blush wrap like a slow, sleepy yawn — petals brushed in dreamy candy-pink with deeper rose veins running through their hearts, edges curling back as if caught mid-stretch. Around them, a generous cloud of baby's breath drifts like tiny stars caught in a veil, softening every line and making the whole bouquet glow as if lit from within. Pink lilies whisper of prosperity, abundance, and a love that's quietly imagining the future; baby's breath has always meant everlasting devotion, the small constant promises that hold the bigger ones together. The wrap is layered — soft matte blush paper on the outside, a sheer veil of organza tucked inside — and finished at the throat with a wispy white ribbon tied into an airy, almost weightless bow. Elara feels like a love letter written on a Sunday morning: gentle, sincere, in no hurry. Send it for a quiet anniversary, a new chapter, a thank-you that means more than it says, or simply because someone deserves to feel softly adored.",
     stems: ["Premium pink Oriental lilies", "Fresh white baby's breath (gypsophila)", "Layered matte blush wrap with sheer organza veil", "Wispy white satin ribbon"],
   },
+  {
+    slug: "tranquil-bloom",
+    name: "Tranquil Bloom",
+    tagline: "A hundred tiny white roses, hushed under sheer veil",
+    price: 1599,
+    category: "Bouquets",
+    image: tranquilBloom,
+    emotion: "For the calm, certain love that doesn't need to prove itself",
+    description:
+      "A breathtaking fan of nearly a hundred miniature white spray roses opens like an unfurled lace fan — each tiny bud caught at that perfect half-bloom moment, ivory petals brushed with the faintest cream at their hearts, pressed together so densely the whole bouquet reads like a single soft cloud. The stems are slim and impossibly long, gathered into a tight throat and sleeved in pleated sheer organza that catches the light like spun glass; a delicate pearl trim runs along the upper edge, framing the roses like the hem of a wedding veil. White spray roses, by tradition, mean purity, deep admiration, and the kind of love that has quietly chosen you again and again — multiplied across every small bud is a promise repeated in soft handwriting. A wide champagne-gold satin ribbon is tied at the base into a luxurious double bow, its sheen warming the cool ivory and the silvery green of the wrap. Tranquil Bloom is the bouquet of grand, quiet occasions — the engagement, the bridal morning, the milestone anniversary, the \"I'd choose you a hundred times over.\" Serene, opulent, unforgettable.",
+    stems: ["~100 premium miniature white spray roses (half-bloom)", "Pleated sheer organza wrap with pearl trim", "Wide champagne-gold satin double-bow ribbon"],
+  },
+
+
 
 
 
