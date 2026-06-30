@@ -21,8 +21,8 @@ export function PaymentMethodPicker() {
         </div>
         <ol className="mt-3 space-y-1 text-xs text-ink/70 leading-relaxed list-decimal list-inside">
           <li>Open bKash → <span className="font-medium">Send Money</span> to <span className="font-mono">{SHOP_BKASH_NUMBER}</span>.</li>
-          <li>Enter the bouquet price as the amount and complete the transfer.</li>
-          <li>Place your order below and add the <span className="font-medium">bKash TrxID</span> in the message field so we can confirm and start preparing your flowers.</li>
+          <li>Send the <span className="font-medium">Total to pay</span> shown in the Order Summary below (bouquet price + ৳80 delivery).</li>
+          <li>Place your order below and paste your <span className="font-medium">bKash TrxID</span> in the message field so we can confirm and start preparing your flowers.</li>
         </ol>
       </div>
     </div>
