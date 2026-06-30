@@ -139,10 +139,6 @@ function CollectionPage() {
               </button>
             )}
 
-              >
-                <X className="size-4" strokeWidth={1.5} />
-              </button>
-            )}
           </div>
         </div>
       </section>
