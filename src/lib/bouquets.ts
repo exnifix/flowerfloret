@@ -24,6 +24,7 @@ import tranquilBloomAsset from "@/assets/tranquil-bloom.jpeg.asset.json";
 import luxeIvoryAsset from "@/assets/luxe-ivory.jpeg.asset.json";
 import crimsonLoveAsset from "@/assets/crimson-love.jpeg.asset.json";
 import pearlRoyaleAsset from "@/assets/pearl-royale.jpeg.asset.json";
+import goldenHarmonyAsset from "@/assets/golden-harmony.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -51,6 +52,7 @@ const tranquilBloom = tranquilBloomAsset.url;
 const luxeIvory = luxeIvoryAsset.url;
 const crimsonLove = crimsonLoveAsset.url;
 const pearlRoyale = pearlRoyaleAsset.url;
+const goldenHarmony = goldenHarmonyAsset.url;
 
 
 
@@ -211,7 +213,18 @@ export const bouquets: Bouquet[] = [
       "A poised gathering of pristine Oriental lilies — wide, star-shaped blooms in pearl-white, each petal brushed with a stroke of blush-pink running down its center like the inside of a seashell — opens generously above slim, half-closed buds that lean upward like notes waiting to be sung. The lilies are full-faced and fragrant, the kind that perfume an entire room within minutes of arriving, framed by deep glossy green leaves that make every petal glow even brighter. In the language of flowers, white lilies speak of purity, devotion, and a love rooted in respect; the soft pink at their heart adds tenderness, admiration, and the warmth of a long, gentle affection — together they say, \"I see you, and I think you are extraordinary.\" The whole bouquet is cradled in layers of cloud-soft, sheer ivory wrap that flares open like the inside of a couture skirt, gathered at the throat with a wide blush-peach satin ribbon tied into a generous, trailing bow. Pearl Royale is the bouquet for the moments that deserve a little ceremony — the milestone birthday, the anniversary that matters, the apology that comes with meaning, the \"thank you for everything.\" Quietly luxurious, deeply romantic, and impossible to forget.",
     stems: ["Premium fresh Oriental lilies (white with pink center) — full bloom and buds", "Deep green lily foliage", "Layered cloud-soft sheer ivory wrap", "Wide blush-peach satin ribbon bow"],
   },
-
+  {
+    slug: "golden-harmony",
+    name: "Golden Harmony",
+    tagline: "Sunflowers and baby's breath in rustic kraft",
+    price: 1899,
+    category: "Bouquets",
+    image: goldenHarmony,
+    emotion: "For the sunshine person who makes everything brighter",
+    description:
+      "A radiant gathering of golden sunflowers — wide, generous faces with deep amber centers and bold yellow petals that fan out like little suns caught mid-bloom — is laced through with drifting clouds of snow-white baby's breath and crowned with dark, fern-like foliage that frames every petal in deep forest green. The sunflowers turn their heads toward the light the way only sunflowers do, full of warmth, loyalty, and unfiltered joy; in the language of flowers, they stand for adoration, devotion, and the kind of love that follows you the way the bloom follows the sun. The baby's breath softens all that gold with a quiet, snowy hush — innocence and everlasting affection braided gently through the brightness. The whole bouquet is cradled in layers of natural kraft paper folded into a long, architectural cone, lined with a sheer ivory veil that catches the light, and finished at the throat with a wide sage-green organza ribbon tied into a soft, trailing bow. Golden Harmony is the bouquet for the friend who is your sunshine, the partner who has loved you loud, the parent who has always shown up, the new beginning that deserves applause. Earthy, joyful, and impossibly warm — happiness, wrapped.",
+    stems: ["Premium fresh sunflowers — full bloom", "Snow-white baby's breath (gypsophila)", "Deep green fern foliage", "Natural kraft paper wrap with sheer ivory veil", "Sage-green organza ribbon bow"],
+  },
 
 
 
