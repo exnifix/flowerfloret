@@ -112,7 +112,12 @@ function ProductPage() {
               <span className="inline-block text-xs px-3 py-1 rounded-full bg-sage/30 text-ink/70 uppercase tracking-[0.18em]">
                 {bouquet.category}
               </span>
-              <h1 className="mt-6 font-serif text-5xl md:text-7xl text-ink leading-[1]">{bouquet.name}</h1>
+              <div className="mt-6 flex items-end justify-between gap-4 flex-wrap">
+                <h1 className="font-serif text-5xl md:text-7xl text-ink leading-[1]">{bouquet.name}</h1>
+                <span className="font-mono text-xs tracking-[0.18em] text-ink/55 border border-ink/15 rounded-full px-3 py-1.5 bg-cream-soft/60">
+                  Code · {getProductCode(bouquet.slug)}
+                </span>
+              </div>
               <p className="mt-3 font-italic italic text-xl text-ink/60">{bouquet.tagline}</p>
 
               <div className="mt-8 flex items-center gap-4">
