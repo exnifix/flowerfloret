@@ -31,7 +31,10 @@ function BouquetCardImpl({
         />
       </div>
       <div className="p-5 md:p-6">
-        <h3 className="font-serif text-xl md:text-2xl text-ink">{bouquet.name}</h3>
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="font-serif text-xl md:text-2xl text-ink">{bouquet.name}</h3>
+          <span className="text-[10px] font-mono tracking-[0.12em] text-ink/45 shrink-0">{getProductCode(bouquet.slug)}</span>
+        </div>
         <p className="text-xs italic text-ink/55 mt-1 font-italic">{bouquet.tagline}</p>
         <p className="text-sm text-muted-foreground mt-3 line-clamp-2 leading-relaxed">
           {bouquet.description}
