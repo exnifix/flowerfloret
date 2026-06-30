@@ -3,6 +3,7 @@ import { ArrowLeft, Check, ShoppingBag, Sparkles } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { bouquets, getBouquet } from "@/lib/bouquets";
 import { BouquetCard } from "@/components/site/BouquetCard";
+import { BuyDialog } from "@/components/site/BuyDialog";
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
@@ -145,14 +146,19 @@ function ProductPage() {
                 ))}
               </div>
 
-              <Link
-                to="/contact"
-                search={{ bouquet: bouquet.slug }}
-                className="mt-10 w-full inline-flex items-center justify-center gap-2 rounded-full bg-rose hover:bg-ink text-cream px-8 py-5 text-sm tracking-wide transition-colors"
-              >
-                <ShoppingBag className="size-4" />
-                Buy Now — ৳{bouquet.price.toLocaleString("en-BD")}
-              </Link>
+              <BuyDialog
+                bouquetName={bouquet.name}
+                trigger={
+                  <button
+                    type="button"
+                    className="mt-10 w-full inline-flex items-center justify-center gap-2 rounded-full bg-rose hover:bg-ink text-cream px-8 py-5 text-sm tracking-wide transition-colors"
+                  >
+                    <ShoppingBag className="size-4" />
+                    Buy Now — ৳{bouquet.price.toLocaleString("en-BD")}
+                  </button>
+                }
+              />
+
 
               <div className="mt-6 rounded-2xl bg-cream-soft/60 p-5 text-sm text-ink/70">
                 <p className="font-serif text-base text-ink mb-1">Need help choosing?</p>
