@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Field } from "./Field";
 import { PaymentMethodPicker } from "./PaymentMethodPicker";
 import { BouquetSelect } from "./BouquetSelect";
+import { ImageUploadField } from "./ImageUploadField";
 import { buildOrderPayload, submitOrder } from "@/lib/order";
 import { bouquets } from "@/lib/bouquets";
 import { DELIVERY_CHARGE } from "@/lib/contact-info";
