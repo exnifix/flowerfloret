@@ -549,13 +549,27 @@ export const bouquets: Bouquet[] = [
 
 
 /** Deterministic 4-digit product code per slug, prefixed FL- (e.g. FL-2841). */
-export function getProductCode(slug: string): string {
+function computeProductCode(slug: string): string {
   let h = 0;
   for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
   const n = (h % 9000) + 1000;
   return `FL-${n}`;
 }
 
+// Precompute once — getProductCode is called per card, per render, per search match.
+const productCodeCache: Map<string, string> = new Map(
+  bouquets.map((b) => [b.slug, computeProductCode(b.slug)]),
+);
+
+export function getProductCode(slug: string): string {
+  const cached = productCodeCache.get(slug);
+  if (cached) return cached;
+  const code = computeProductCode(slug);
+  productCodeCache.set(slug, code);
+  return code;
+}
+
 const bouquetIndex: Map<string, Bouquet> = new Map(bouquets.map((b) => [b.slug, b]));
 export const getBouquet = (slug: string): Bouquet | undefined => bouquetIndex.get(slug);
+
 
