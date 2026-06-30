@@ -251,16 +251,38 @@ function OrdersTable({
   orders,
   selectedId,
   onSelect,
+  checkedIds,
+  onToggle,
+  onToggleAll,
+  allChecked,
+  someChecked,
 }: {
   orders: Order[];
   selectedId: string | null;
   onSelect: (id: string) => void;
+  checkedIds: Set<string>;
+  onToggle: (id: string) => void;
+  onToggleAll: () => void;
+  allChecked: boolean;
+  someChecked: boolean;
 }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-white">
       <table className="w-full text-sm">
         <thead className="bg-blush-soft/50 text-left text-xs uppercase tracking-wider text-ink/70">
           <tr>
+            <th className="px-4 py-3 w-10">
+              <input
+                type="checkbox"
+                aria-label="Select all"
+                checked={allChecked}
+                ref={(el) => {
+                  if (el) el.indeterminate = someChecked;
+                }}
+                onChange={onToggleAll}
+                className="h-4 w-4 cursor-pointer accent-ink"
+              />
+            </th>
             <th className="px-4 py-3">When</th>
             <th className="px-4 py-3">Customer</th>
             <th className="px-4 py-3">Bouquet</th>
@@ -272,14 +294,24 @@ function OrdersTable({
           {orders.map((o) => {
             const active = o.id === selectedId;
             const status = (o.status ?? "new") as OrderStatus;
+            const isChecked = checkedIds.has(o.id);
             return (
               <tr
                 key={o.id}
                 onClick={() => onSelect(o.id)}
                 className={`cursor-pointer border-t border-border/60 transition-colors ${
-                  active ? "bg-blush-soft/40" : "hover:bg-cream"
+                  isChecked ? "bg-blush-soft/60" : active ? "bg-blush-soft/40" : "hover:bg-cream"
                 }`}
               >
+                <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                  <input
+                    type="checkbox"
+                    aria-label={`Select order from ${o.name}`}
+                    checked={isChecked}
+                    onChange={() => onToggle(o.id)}
+                    className="h-4 w-4 cursor-pointer accent-ink"
+                  />
+                </td>
                 <td className="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
                   {new Date(o.created_at).toLocaleString()}
                 </td>
@@ -317,6 +349,7 @@ function OrdersTable({
     </div>
   );
 }
+
 
 function maskEmailInline(email: string | null | undefined) {
   if (!email) return "—";
