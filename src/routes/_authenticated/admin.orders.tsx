@@ -47,13 +47,17 @@ const STATUS_STYLE: Record<OrderStatus, string> = {
 function AdminOrdersPage() {
   const fetchOrders = useServerFn(listAdminOrders);
   const updateStatus = useServerFn(updateOrderStatus);
+  const bulkUpdate = useServerFn(bulkUpdateOrderStatus);
   const navigate = useNavigate();
   const router = useRouter();
   const queryClient = useQueryClient();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
+  const [bulkStatus, setBulkStatus] = useState<OrderStatus>("confirmed");
 
   const { data, isLoading, error, refetch, isFetching } = useQuery({
+
     queryKey: ["admin", "orders"],
     queryFn: () => fetchOrders(),
   });
