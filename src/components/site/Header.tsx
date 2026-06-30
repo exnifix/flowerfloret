@@ -46,13 +46,21 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            onClick={() => setSearchOpen((v) => !v)}
+            aria-label={searchOpen ? "Close search" : "Search bouquets"}
+            aria-expanded={searchOpen}
+            className="size-11 grid place-items-center rounded-full border border-blush/60 text-rose hover:bg-blush-soft transition-colors"
+          >
+            {searchOpen ? <X className="size-4" strokeWidth={1.5} /> : <Search className="size-4" strokeWidth={1.5} />}
+          </button>
           <a
             href="https://www.instagram.com/flo.rettt/"
             target="_blank"
             rel="noreferrer"
             aria-label="Floret on Instagram"
-            className="size-11 grid place-items-center rounded-full border border-blush/60 text-rose hover:bg-blush-soft transition-colors"
+            className="hidden sm:grid size-11 place-items-center rounded-full border border-blush/60 text-rose hover:bg-blush-soft transition-colors"
           >
             <Instagram className="size-4" strokeWidth={1.5} />
           </a>
@@ -65,8 +73,36 @@ export function Header() {
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
         </div>
-
       </div>
+
+      {searchOpen && (
+        <div className="border-t border-border/60 bg-cream/95 backdrop-blur-md animate-fade-in-slow">
+          <form
+            onSubmit={submitSearch}
+            className="mx-auto max-w-3xl px-6 lg:px-10 py-4 flex items-center gap-3"
+          >
+            <div className="relative flex-1">
+              <Search className="size-4 text-ink/50 absolute left-4 top-1/2 -translate-y-1/2" strokeWidth={1.5} />
+              <input
+                autoFocus
+                type="search"
+                inputMode="search"
+                autoComplete="off"
+                placeholder="Search bouquets by name, code, or feeling…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="w-full rounded-full bg-cream border border-blush/70 pl-11 pr-4 py-3 text-sm text-ink placeholder:text-ink/45 focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all"
+              />
+            </div>
+            <button
+              type="submit"
+              className="px-5 py-3 rounded-full bg-rose text-cream text-sm tracking-wide hover:opacity-90 transition-opacity"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+      )}
 
       {open && (
         <div className="md:hidden border-t border-border/60 bg-cream animate-fade-in-slow">
