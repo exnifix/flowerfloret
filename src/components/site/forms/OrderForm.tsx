@@ -169,6 +169,7 @@ export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
           id="message"
           name="message"
           rows={5}
+          defaultValue={customNote ? `Customizations — ${customNote}\n\n` : ""}
           placeholder="Paste your bKash TrxID here, and describe the feeling you want to send — colours, recipient, anything that matters."
           className="mt-2 w-full rounded-2xl bg-cream/60 border border-border px-5 py-4 text-sm focus:outline-none focus:border-rose focus:bg-cream transition-colors resize-none"
         />
