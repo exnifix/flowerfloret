@@ -7,3 +7,6 @@ export const SHOP_INSTA_DISPLAY = "floret";
 export const SHOP_INSTA_URL = `https://www.instagram.com/${SHOP_INSTA_HANDLE}/`;
 export const SHOP_PHONE_INTL = `+880${SHOP_PHONE.replace(/^0/, "")}`;
 export const SHOP_PHONE_TEL_HREF = `tel:${SHOP_PHONE_INTL}`;
+
+/** Flat delivery charge in BDT, applied to every order. */
+export const DELIVERY_CHARGE = 80;
