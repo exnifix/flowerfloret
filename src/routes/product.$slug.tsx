@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Check, ShoppingBag, Sparkles } from "lucide-reac
 import { Layout } from "@/components/site/Layout";
 import { bouquets, getBouquet } from "@/lib/bouquets";
 import { BouquetCard } from "@/components/site/BouquetCard";
-import { BuyDialog } from "@/components/site/BuyDialog";
+
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {

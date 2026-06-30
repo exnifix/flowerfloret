@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as OrderRouteImport } from './routes/order'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CollectionRouteImport } from './routes/collection'
 import { Route as BuildRouteImport } from './routes/build'
@@ -20,6 +21,11 @@ import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderRoute = OrderRouteImport.update({
+  id: '/order',
+  path: '/order',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/build': typeof BuildRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/order': typeof OrderRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/build': typeof BuildRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/order': typeof OrderRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/build': typeof BuildRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/order': typeof OrderRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/build'
     | '/collection'
     | '/contact'
+    | '/order'
     | '/sitemap.xml'
     | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/build'
     | '/collection'
     | '/contact'
+    | '/order'
     | '/sitemap.xml'
     | '/product/$slug'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/build'
     | '/collection'
     | '/contact'
+    | '/order'
     | '/sitemap.xml'
     | '/product/$slug'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   BuildRoute: typeof BuildRoute
   CollectionRoute: typeof CollectionRoute
   ContactRoute: typeof ContactRoute
+  OrderRoute: typeof OrderRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProductSlugRoute: typeof ProductSlugRoute
 }
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order': {
+      id: '/order'
+      path: '/order'
+      fullPath: '/order'
+      preLoaderRoute: typeof OrderRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   BuildRoute: BuildRoute,
   CollectionRoute: CollectionRoute,
   ContactRoute: ContactRoute,
+  OrderRoute: OrderRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProductSlugRoute: ProductSlugRoute,
 }
