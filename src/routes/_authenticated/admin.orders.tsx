@@ -7,9 +7,12 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   listAdminOrders,
   updateOrderStatus,
+  bulkUpdateOrderStatus,
+  ORDER_STATUSES,
   type OrderStatus,
 } from "@/lib/admin-orders.functions";
 import { OrderDetailsDrawer } from "@/components/admin/OrderDetailsDrawer";
+
 
 export const Route = createFileRoute("/_authenticated/admin/orders")({
   head: () => ({
@@ -44,13 +47,17 @@ const STATUS_STYLE: Record<OrderStatus, string> = {
 function AdminOrdersPage() {
   const fetchOrders = useServerFn(listAdminOrders);
   const updateStatus = useServerFn(updateOrderStatus);
+  const bulkUpdate = useServerFn(bulkUpdateOrderStatus);
   const navigate = useNavigate();
   const router = useRouter();
   const queryClient = useQueryClient();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [checkedIds, setCheckedIds] = useState<Set<string>>(new Set());
+  const [bulkStatus, setBulkStatus] = useState<OrderStatus>("confirmed");
 
   const { data, isLoading, error, refetch, isFetching } = useQuery({
+
     queryKey: ["admin", "orders"],
     queryFn: () => fetchOrders(),
   });
@@ -80,11 +87,52 @@ function AdminOrdersPage() {
     },
   });
 
+  const bulkMutation = useMutation({
+    mutationFn: (vars: { ids: string[]; status: OrderStatus }) =>
+      bulkUpdate({ data: vars }),
+    onMutate: ({ ids, status }) => {
+      const prev = queryClient.getQueryData<Order[]>(["admin", "orders"]);
+      const stampedAt = new Date().toISOString();
+      const idSet = new Set(ids);
+      queryClient.setQueryData<Order[]>(["admin", "orders"], (old) =>
+        (old ?? []).map((o) =>
+          idSet.has(o.id) ? { ...o, status, status_updated_at: stampedAt } : o,
+        ),
+      );
+      return { prev };
+    },
+    onError: (err, _vars, ctx) => {
+      if (ctx?.prev) queryClient.setQueryData(["admin", "orders"], ctx.prev);
+      toast.error(err instanceof Error ? err.message : "Bulk update failed");
+    },
+    onSuccess: (res, vars) => {
+      toast.success(`Updated ${res.count} order${res.count === 1 ? "" : "s"} → ${STATUS_LABEL[vars.status]}`);
+      setCheckedIds(new Set());
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin", "orders"] });
+    },
+  });
+
   const orders = data ?? [];
   const selected = useMemo(
     () => orders.find((o) => o.id === selectedId) ?? null,
     [orders, selectedId],
   );
+  const allChecked = orders.length > 0 && checkedIds.size === orders.length;
+  const someChecked = checkedIds.size > 0 && !allChecked;
+
+  function toggleOne(id: string) {
+    setCheckedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+  function toggleAll() {
+    setCheckedIds(allChecked ? new Set() : new Set(orders.map((o) => o.id)));
+  }
 
   async function signOut() {
     await queryClient.cancelQueries();
@@ -98,6 +146,7 @@ function AdminOrdersPage() {
     setSelectedId(id);
     setDrawerOpen(true);
   }
+
 
   return (
     <div className="min-h-screen bg-cream">
@@ -125,7 +174,47 @@ function AdminOrdersPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-6 py-8">
+      <main className="mx-auto max-w-7xl px-6 py-8 space-y-4">
+        {checkedIds.size > 0 && (
+          <div className="sticky top-2 z-10 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-ink/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
+            <p className="text-sm text-ink">
+              <span className="font-medium">{checkedIds.size}</span> selected
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <label className="text-xs uppercase tracking-wider text-muted-foreground">
+                Set status
+              </label>
+              <select
+                value={bulkStatus}
+                onChange={(e) => setBulkStatus(e.target.value as OrderStatus)}
+                className="rounded-full border border-border bg-white px-3 py-1.5 text-xs"
+                disabled={bulkMutation.isPending}
+              >
+                {ORDER_STATUSES.map((s) => (
+                  <option key={s} value={s}>{STATUS_LABEL[s]}</option>
+                ))}
+              </select>
+              <button
+                type="button"
+                onClick={() =>
+                  bulkMutation.mutate({ ids: Array.from(checkedIds), status: bulkStatus })
+                }
+                disabled={bulkMutation.isPending}
+                className="rounded-full bg-ink text-cream px-4 py-1.5 text-xs hover:bg-ink/90 disabled:opacity-60"
+              >
+                {bulkMutation.isPending ? "Applying…" : `Apply to ${checkedIds.size}`}
+              </button>
+              <button
+                type="button"
+                onClick={() => setCheckedIds(new Set())}
+                disabled={bulkMutation.isPending}
+                className="rounded-full border border-border px-3 py-1.5 text-xs hover:bg-blush-soft disabled:opacity-60"
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+        )}
         {isLoading ? (
           <p className="text-sm text-muted-foreground">Loading orders…</p>
         ) : error ? (
@@ -133,9 +222,19 @@ function AdminOrdersPage() {
         ) : orders.length === 0 ? (
           <EmptyState />
         ) : (
-          <OrdersTable orders={orders} selectedId={selectedId} onSelect={openOrder} />
+          <OrdersTable
+            orders={orders}
+            selectedId={selectedId}
+            onSelect={openOrder}
+            checkedIds={checkedIds}
+            onToggle={toggleOne}
+            onToggleAll={toggleAll}
+            allChecked={allChecked}
+            someChecked={someChecked}
+          />
         )}
       </main>
+
 
       <OrderDetailsDrawer
         order={selected}
@@ -152,16 +251,38 @@ function OrdersTable({
   orders,
   selectedId,
   onSelect,
+  checkedIds,
+  onToggle,
+  onToggleAll,
+  allChecked,
+  someChecked,
 }: {
   orders: Order[];
   selectedId: string | null;
   onSelect: (id: string) => void;
+  checkedIds: Set<string>;
+  onToggle: (id: string) => void;
+  onToggleAll: () => void;
+  allChecked: boolean;
+  someChecked: boolean;
 }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-white">
       <table className="w-full text-sm">
         <thead className="bg-blush-soft/50 text-left text-xs uppercase tracking-wider text-ink/70">
           <tr>
+            <th className="px-4 py-3 w-10">
+              <input
+                type="checkbox"
+                aria-label="Select all"
+                checked={allChecked}
+                ref={(el) => {
+                  if (el) el.indeterminate = someChecked;
+                }}
+                onChange={onToggleAll}
+                className="h-4 w-4 cursor-pointer accent-ink"
+              />
+            </th>
             <th className="px-4 py-3">When</th>
             <th className="px-4 py-3">Customer</th>
             <th className="px-4 py-3">Bouquet</th>
@@ -173,14 +294,24 @@ function OrdersTable({
           {orders.map((o) => {
             const active = o.id === selectedId;
             const status = (o.status ?? "new") as OrderStatus;
+            const isChecked = checkedIds.has(o.id);
             return (
               <tr
                 key={o.id}
                 onClick={() => onSelect(o.id)}
                 className={`cursor-pointer border-t border-border/60 transition-colors ${
-                  active ? "bg-blush-soft/40" : "hover:bg-cream"
+                  isChecked ? "bg-blush-soft/60" : active ? "bg-blush-soft/40" : "hover:bg-cream"
                 }`}
               >
+                <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                  <input
+                    type="checkbox"
+                    aria-label={`Select order from ${o.name}`}
+                    checked={isChecked}
+                    onChange={() => onToggle(o.id)}
+                    className="h-4 w-4 cursor-pointer accent-ink"
+                  />
+                </td>
                 <td className="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
                   {new Date(o.created_at).toLocaleString()}
                 </td>
@@ -218,6 +349,7 @@ function OrdersTable({
     </div>
   );
 }
+
 
 function maskEmailInline(email: string | null | undefined) {
   if (!email) return "—";
