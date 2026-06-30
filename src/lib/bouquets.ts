@@ -34,6 +34,7 @@ import artOfUnspokenWordAsset from "@/assets/art-of-unspoken-word.jpeg.asset.jso
 import snowfallAsset from "@/assets/snowfall.jpeg.asset.json";
 import gentleMomentsOfLoveAsset from "@/assets/gentle-moments-of-love.jpeg.asset.json";
 import petalsAndPastriesAsset from "@/assets/petals-and-pastries.jpeg.asset.json";
+import timelessMomentsAsset from "@/assets/timeless-moments.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -71,6 +72,7 @@ const artOfUnspokenWord = artOfUnspokenWordAsset.url;
 const snowfall = snowfallAsset.url;
 const gentleMomentsOfLove = gentleMomentsOfLoveAsset.url;
 const petalsAndPastries = petalsAndPastriesAsset.url;
+const timelessMoments = timelessMomentsAsset.url;
 
 
 
@@ -87,6 +89,18 @@ export type Bouquet = {
 };
 
 export const bouquets: Bouquet[] = [
+  {
+    slug: "timeless-moments",
+    name: "Timeless Moments",
+    tagline: "Red roses in a baby's breath halo, beside a ribbon-wrapped blush cake on a pedestal",
+    price: 1499,
+    category: "Cake & Flower Combo",
+    image: timelessMoments,
+    emotion: "For the candle-lit kind of love that still feels new years later",
+    description:
+      "A deep, romantic cluster of velvet-red roses — petals heavy and slow-opening, the colour of stage curtains and slow songs — set inside a snow-soft halo of fresh baby's breath that drifts around the blooms like quiet music, wrapped in a soft peach-blush tulle collar that falls in sculptural folds across the linen. Paired with a petite round vanilla bento cake in a soft blush-pink buttercream, its sides hand-piped in tall ruffled vertical scallops, the rim finished with a delicate piped crown and two generous scarlet satin bows tied at either side, all lifted up on a sculpted ivory cake pedestal and lit by a single, slow-burning silver candle flickering warm against the dark. Red roses are the oldest, most fearless word for love and devotion; baby's breath is the hush around it; the candle is the wish. Timeless Moments is for anniversaries, milestone birthdays, the quiet first-meeting reruns, and the partner you'd still pick again — delivered together, cinematic, tender, and made to be photographed before the candle goes out.",
+    stems: ["~7 premium velvet-red roses, full-bloom", "Lush fresh baby's breath halo", "Soft peach-blush tulle sculptural wrap", "Petite round blush-pink vanilla bento cake on ivory pedestal", "Hand-piped ruffled vertical scallop sides with crown rim", "Twin scarlet satin side bows", "Single tall silver wish-it candle"],
+  },
   {
     slug: "petals-and-pastries",
     name: "Petals and Pastries",
