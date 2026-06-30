@@ -10,7 +10,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 export function HelpForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,11 +38,11 @@ export function HelpForm() {
           message: `[HELP REQUEST] ${message}`,
           bouquet: null,
           payment_method: "Help / Inquiry",
-          image_url: imageUrl,
+          image_urls: imageUrls,
         },
       });
       form.reset();
-      setImageUrl(null);
+      setImageUrls([]);
       setStatus("sent");
     } catch {
       setStatus("error");
@@ -76,10 +76,10 @@ export function HelpForm() {
       </div>
 
       <ImageUploadField
-        label="Reference photo (optional)"
-        hint="Share a flower design or inspiration you'd love us to recreate."
-        value={imageUrl}
-        onChange={setImageUrl}
+        label="Reference photos (optional)"
+        hint="Share flower designs or inspiration you'd love us to recreate."
+        values={imageUrls}
+        onValuesChange={setImageUrls}
       />
 
 

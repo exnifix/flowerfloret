@@ -24,7 +24,7 @@ type Props = {
 export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
   const [selectedBouquet, setSelectedBouquet] = useState(initialBouquet);
   const [quantity, setQuantity] = useState(1);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const submittingRef = useRef(false);
@@ -67,7 +67,7 @@ export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
         bouquet: built.payload.bouquet
           ? `${built.payload.bouquet} × ${quantity}`
           : built.payload.bouquet,
-        image_url: imageUrl,
+        image_urls: imageUrls,
       };
 
       const res = await submitOrder(payload);
@@ -85,7 +85,7 @@ export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
       form.reset();
       setSelectedBouquet("");
       setQuantity(1);
-      setImageUrl(null);
+      setImageUrls([]);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unexpected error. Please try again.";
       setStatus("error");
@@ -180,10 +180,10 @@ export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
       </div>
 
       <ImageUploadField
-        label="Reference photo (optional)"
-        hint="Share a design you'd like us to recreate — colours, style, inspiration."
-        value={imageUrl}
-        onChange={setImageUrl}
+        label="Reference photos (optional)"
+        hint="Share designs you'd like us to recreate — colours, style, inspiration."
+        values={imageUrls}
+        onValuesChange={setImageUrls}
       />
 
       <div className="rounded-2xl border border-rose/30 bg-cream-soft/70 p-5">
