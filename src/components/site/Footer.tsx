@@ -36,11 +36,11 @@ export function Footer() {
             @floret
           </a>
           <a
-            href="mailto:pusnojawadraiyan@gmail.com"
+            href="mailto:floret@world.com"
             className="flex items-center gap-2 text-sm hover:text-rose transition-colors break-all"
           >
             <Mail className="size-4 shrink-0" strokeWidth={1.5} />
-            pusnojawadraiyan@gmail.com
+            floret@world.com
           </a>
           <a
             href="tel:+8801710538698"
