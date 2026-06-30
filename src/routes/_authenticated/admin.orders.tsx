@@ -174,7 +174,47 @@ function AdminOrdersPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-6 py-8">
+      <main className="mx-auto max-w-7xl px-6 py-8 space-y-4">
+        {checkedIds.size > 0 && (
+          <div className="sticky top-2 z-10 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-ink/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
+            <p className="text-sm text-ink">
+              <span className="font-medium">{checkedIds.size}</span> selected
+            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <label className="text-xs uppercase tracking-wider text-muted-foreground">
+                Set status
+              </label>
+              <select
+                value={bulkStatus}
+                onChange={(e) => setBulkStatus(e.target.value as OrderStatus)}
+                className="rounded-full border border-border bg-white px-3 py-1.5 text-xs"
+                disabled={bulkMutation.isPending}
+              >
+                {ORDER_STATUSES.map((s) => (
+                  <option key={s} value={s}>{STATUS_LABEL[s]}</option>
+                ))}
+              </select>
+              <button
+                type="button"
+                onClick={() =>
+                  bulkMutation.mutate({ ids: Array.from(checkedIds), status: bulkStatus })
+                }
+                disabled={bulkMutation.isPending}
+                className="rounded-full bg-ink text-cream px-4 py-1.5 text-xs hover:bg-ink/90 disabled:opacity-60"
+              >
+                {bulkMutation.isPending ? "Applying…" : `Apply to ${checkedIds.size}`}
+              </button>
+              <button
+                type="button"
+                onClick={() => setCheckedIds(new Set())}
+                disabled={bulkMutation.isPending}
+                className="rounded-full border border-border px-3 py-1.5 text-xs hover:bg-blush-soft disabled:opacity-60"
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+        )}
         {isLoading ? (
           <p className="text-sm text-muted-foreground">Loading orders…</p>
         ) : error ? (
@@ -182,9 +222,19 @@ function AdminOrdersPage() {
         ) : orders.length === 0 ? (
           <EmptyState />
         ) : (
-          <OrdersTable orders={orders} selectedId={selectedId} onSelect={openOrder} />
+          <OrdersTable
+            orders={orders}
+            selectedId={selectedId}
+            onSelect={openOrder}
+            checkedIds={checkedIds}
+            onToggle={toggleOne}
+            onToggleAll={toggleAll}
+            allChecked={allChecked}
+            someChecked={someChecked}
+          />
         )}
       </main>
+
 
       <OrderDetailsDrawer
         order={selected}
