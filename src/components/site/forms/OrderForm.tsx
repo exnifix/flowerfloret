@@ -15,10 +15,12 @@ const fmt = (n: number) => `৳${n.toLocaleString("en-BD")}`;
 type Props = {
   /** Pre-selected bouquet name (e.g. from a deep link). */
   initialBouquet?: string;
+  /** Pre-filled customization summary appended to the order message. */
+  customNote?: string;
 };
 
 /** Full ordering form: customer details, bouquet pick, payment, submit + feedback. */
-export function OrderForm({ initialBouquet = "" }: Props) {
+export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
   const [selectedBouquet, setSelectedBouquet] = useState(initialBouquet);
   const [quantity, setQuantity] = useState(1);
   const [status, setStatus] = useState<Status>("idle");
