@@ -85,7 +85,7 @@ export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
       form.reset();
       setSelectedBouquet("");
       setQuantity(1);
-      setImageUrl(null);
+      setImageUrls([]);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unexpected error. Please try again.";
       setStatus("error");
