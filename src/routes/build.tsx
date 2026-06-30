@@ -1,9 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
+import { z } from "zod";
 import { Layout } from "@/components/site/Layout";
+import { getBouquet } from "@/lib/bouquets";
+
+const buildSearchSchema = z.object({
+  base: z.string().optional(),
+});
 
 export const Route = createFileRoute("/build")({
+  validateSearch: buildSearchSchema,
   head: () => ({
     meta: [
       { title: "Build Your Own Bouquet — Custom Floral Arrangements | Floret" },
@@ -63,6 +70,9 @@ const ribbons: Choice[] = [
 ];
 
 function BuildPage() {
+  const { base: baseSlug } = Route.useSearch();
+  const baseBouquet = baseSlug ? getBouquet(baseSlug) : undefined;
+
   const [picks, setPicks] = useState<string[]>(["rose-pink"]);
   const [wrap, setWrap] = useState<string>("offwhite");
   const [ribbon, setRibbon] = useState<string>("pink");
@@ -77,8 +87,6 @@ function BuildPage() {
     () => flowers.filter((f) => picks.includes(f.id)),
     [picks],
   );
-  const wrapColor = wraps.find((w) => w.id === wrap)?.color ?? "#f3ece0";
-  const ribbonColor = ribbons.find((r) => r.id === ribbon)?.color ?? "#f4a6b8";
 
   const grouped = useMemo(() => {
     const g: Record<string, Choice[]> = {};
@@ -89,6 +97,18 @@ function BuildPage() {
     return g;
   }, []);
 
+  // Build a compact human-readable customization string for the checkout note.
+  const customizationText = useMemo(() => {
+    const parts: string[] = [];
+    if (baseBouquet) parts.push(`Base: ${baseBouquet.name}`);
+    if (previewStems.length) parts.push(`Flowers: ${previewStems.map((s) => s.name).join(", ")}`);
+    parts.push(`Wrap: ${wraps.find((w) => w.id === wrap)?.name ?? wrap}`);
+    parts.push(`Ribbon: ${ribbons.find((r) => r.id === ribbon)?.name ?? ribbon}`);
+    if (customSize.trim()) parts.push(`Size: ${customSize.trim()}`);
+    if (note.trim()) parts.push(`Note: ${note.trim()}`);
+    return parts.join(" · ");
+  }, [baseBouquet, previewStems, wrap, ribbon, customSize, note]);
+
   return (
     <Layout>
       <section className="pt-12 pb-8 text-center">
@@ -97,10 +117,16 @@ function BuildPage() {
             <Sparkles className="size-3.5" /> Bespoke Atelier
           </p>
           <h1 className="font-serif text-5xl md:text-7xl text-ink leading-[1] animate-fade-up delay-100">
-            Build Your Own <span className="italic font-italic text-rose">Bouquet</span>
+            {baseBouquet ? (
+              <>Customize <span className="italic font-italic text-rose">{baseBouquet.name}</span></>
+            ) : (
+              <>Build Your Own <span className="italic font-italic text-rose">Bouquet</span></>
+            )}
           </h1>
           <p className="mt-6 text-ink/70 leading-relaxed animate-fade-up delay-200">
-            Compose your gesture, stem by stem. Pick your flowers, wrap, ribbon and size — we'll bring it to life.
+            {baseBouquet
+              ? `Starting from ${baseBouquet.name} (৳${baseBouquet.price.toLocaleString("en-BD")}). Swap flowers, wrap, ribbon and size — we'll tailor it for you.`
+              : "Compose your gesture, stem by stem. Pick your flowers, wrap, ribbon and size — we'll bring it to life."}
           </p>
         </div>
       </section>
@@ -229,7 +255,12 @@ function BuildPage() {
             <div className="rounded-3xl bg-card border border-border/60 p-6 space-y-4 shadow-[0_30px_80px_-40px_rgba(180,120,120,0.25)]">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-ink/45">Your bouquet</p>
-                <h2 className="font-serif text-2xl">A bespoke gesture</h2>
+                <h2 className="font-serif text-2xl">
+                  {baseBouquet ? `${baseBouquet.name} — customized` : "A bespoke gesture"}
+                </h2>
+                {baseBouquet && (
+                  <p className="text-sm text-rose mt-1">৳{baseBouquet.price.toLocaleString("en-BD")}</p>
+                )}
               </div>
               <ul className="text-sm text-ink/70 space-y-1.5">
                 {previewStems.length === 0 && (
@@ -246,15 +277,28 @@ function BuildPage() {
                 </li>
                 {customSize && <li className="text-ink/50">Size: {customSize}</li>}
               </ul>
-              <Link
-                to="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
-              >
-                Request This Bouquet
-                <ArrowRight className="size-4" />
-              </Link>
+              {baseBouquet ? (
+                <Link
+                  to="/order"
+                  search={{ bouquet: baseBouquet.slug, custom: customizationText }}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
+                >
+                  Continue to Checkout
+                  <ArrowRight className="size-4" />
+                </Link>
+              ) : (
+                <Link
+                  to="/contact"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
+                >
+                  Request This Bouquet
+                  <ArrowRight className="size-4" />
+                </Link>
+              )}
               <p className="text-xs text-ink/50 text-center italic font-italic">
-                Final price confirmed after a quick chat about your selections and delivery.
+                {baseBouquet
+                  ? "Your customizations will be sent with the order — final price confirmed if changes affect cost."
+                  : "Final price confirmed after a quick chat about your selections and delivery."}
               </p>
             </div>
           </aside>

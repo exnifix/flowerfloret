@@ -15,10 +15,12 @@ const fmt = (n: number) => `৳${n.toLocaleString("en-BD")}`;
 type Props = {
   /** Pre-selected bouquet name (e.g. from a deep link). */
   initialBouquet?: string;
+  /** Pre-filled customization summary appended to the order message. */
+  customNote?: string;
 };
 
 /** Full ordering form: customer details, bouquet pick, payment, submit + feedback. */
-export function OrderForm({ initialBouquet = "" }: Props) {
+export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
   const [selectedBouquet, setSelectedBouquet] = useState(initialBouquet);
   const [quantity, setQuantity] = useState(1);
   const [status, setStatus] = useState<Status>("idle");
@@ -167,6 +169,7 @@ export function OrderForm({ initialBouquet = "" }: Props) {
           id="message"
           name="message"
           rows={5}
+          defaultValue={customNote ? `Customizations — ${customNote}\n\n` : ""}
           placeholder="Paste your bKash TrxID here, and describe the feeling you want to send — colours, recipient, anything that matters."
           className="mt-2 w-full rounded-2xl bg-cream/60 border border-border px-5 py-4 text-sm focus:outline-none focus:border-rose focus:bg-cream transition-colors resize-none"
         />
