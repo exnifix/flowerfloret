@@ -33,6 +33,7 @@ import blossomsOfDesireAsset from "@/assets/blossoms-of-desire.jpeg.asset.json";
 import artOfUnspokenWordAsset from "@/assets/art-of-unspoken-word.jpeg.asset.json";
 import snowfallAsset from "@/assets/snowfall.jpeg.asset.json";
 import gentleMomentsOfLoveAsset from "@/assets/gentle-moments-of-love.jpeg.asset.json";
+import petalsAndPastriesAsset from "@/assets/petals-and-pastries.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -69,6 +70,7 @@ const blossomsOfDesire = blossomsOfDesireAsset.url;
 const artOfUnspokenWord = artOfUnspokenWordAsset.url;
 const snowfall = snowfallAsset.url;
 const gentleMomentsOfLove = gentleMomentsOfLoveAsset.url;
+const petalsAndPastries = petalsAndPastriesAsset.url;
 
 
 
@@ -85,6 +87,18 @@ export type Bouquet = {
 };
 
 export const bouquets: Bouquet[] = [
+  {
+    slug: "petals-and-pastries",
+    name: "Petals and Pastries",
+    tagline: "Cherry-red roses in tulle with a pearl-dotted ivory cake and a single wish-it candle",
+    price: 1499,
+    category: "Cake & Flower Combo",
+    image: petalsAndPastries,
+    emotion: "For the small, candle-lit moments that turn into the whole memory",
+    description:
+      "A romantic cluster of cherry-red roses — petals stacked tight and velvety, the colour of stage curtains and slow songs — cradled inside layers of crisp white tulle that fan out like a ballerina's skirt, finished with a hand-tied scarlet satin bow. Set beside a tall, drum-shaped vanilla bento cake in ivory porcelain buttercream, the top swirled in fine concentric ridges and scattered with tiny edible ivory pearls, wrapped in a soft mint-cream collar and finished with a generous scarlet silk bow at the front. Crowned with a single, slow-burning gold spiral wish-it candle, flickering warm against the dark. Red roses are the oldest, most fearless word for love and devotion; the white tulle is the hush around it; the pearl-dotted cake and lone candle are the moment you actually make the wish. Petals and Pastries is for intimate birthdays, quiet anniversaries, late-night surprises and the kind of love you'd rather show than say — delivered together, cinematic, tender, and made to be photographed before it's eaten.",
+    stems: ["~12 premium cherry-red roses, full-bloom", "Layered crisp white tulle wrap with scarlet satin bow", "Tall ivory porcelain-buttercream vanilla bento cake", "Concentric ridge top with edible ivory pearl scatter", "Mint-cream collar with scarlet silk front bow", "Single tall gold spiral wish-it candle"],
+  },
   {
     slug: "gentle-moments-of-love",
     name: "Gentle Moments Of Love",
