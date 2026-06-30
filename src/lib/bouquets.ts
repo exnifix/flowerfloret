@@ -22,6 +22,7 @@ import phoenixBloomAsset from "@/assets/phoenix-bloom.jpeg.asset.json";
 import elaraAsset from "@/assets/elara.jpeg.asset.json";
 import tranquilBloomAsset from "@/assets/tranquil-bloom.jpeg.asset.json";
 import luxeIvoryAsset from "@/assets/luxe-ivory.jpeg.asset.json";
+import crimsonLoveAsset from "@/assets/crimson-love.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -47,6 +48,7 @@ const phoenixBloom = phoenixBloomAsset.url;
 const elara = elaraAsset.url;
 const tranquilBloom = tranquilBloomAsset.url;
 const luxeIvory = luxeIvoryAsset.url;
+const crimsonLove = crimsonLoveAsset.url;
 
 
 
