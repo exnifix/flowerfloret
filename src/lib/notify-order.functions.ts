@@ -11,6 +11,7 @@ type OrderPayload = {
   bouquet?: string | null;
   payment_method?: string | null;
   image_url?: string | null;
+  image_urls?: string[] | null;
 };
 
 const NOTIFY_TO = "pusnojawadraiyan@gmail.com";
