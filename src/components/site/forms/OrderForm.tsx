@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Loader2, Send } from "lucide-react";
 import { Field } from "./Field";
 import { PaymentMethodPicker } from "./PaymentMethodPicker";
 import { BouquetSelect } from "./BouquetSelect";
 import { buildOrderPayload, submitOrder } from "@/lib/order";
+import { bouquets } from "@/lib/bouquets";
+import { DELIVERY_CHARGE } from "@/lib/contact-info";
 
 type Status = "idle" | "sending" | "sent" | "error";
+
+const fmt = (n: number) => `৳${n.toLocaleString("en-BD")}`;
 
 type Props = {
   /** Pre-selected bouquet name (e.g. from a deep link). */
