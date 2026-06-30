@@ -12,9 +12,10 @@ export function HelpForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setStatus("sending");
     setErrorMsg("");
-    const fd = new FormData(e.currentTarget);
+    const fd = new FormData(form);
     const name = String(fd.get("name") || "").trim();
     const email = String(fd.get("email") || "").trim();
     const instagram = String(fd.get("instagram") || "").trim().replace(/^@/, "");
@@ -37,8 +38,8 @@ export function HelpForm() {
           payment_method: "Help / Inquiry",
         },
       });
+      form.reset();
       setStatus("sent");
-      e.currentTarget.reset();
     } catch {
       setStatus("error");
       setErrorMsg("Something went wrong. Please try again, or reach us on Instagram @floret.");
