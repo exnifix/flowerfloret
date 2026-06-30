@@ -150,7 +150,7 @@ function ProductPage() {
                 to="/order"
                 search={{ bouquet: bouquet.slug }}
                 aria-label={`Buy ${bouquet.name} now for ৳${bouquet.price}`}
-                className="group mt-10 block w-full overflow-hidden rounded-2xl border border-ink/15 bg-ink text-cream shadow-[0_18px_40px_-18px_rgba(61,10,5,0.55)] hover:shadow-[0_22px_50px_-18px_rgba(61,10,5,0.7)] active:translate-y-px transition-all"
+                className="group sticky bottom-4 z-30 mt-10 block w-full overflow-hidden rounded-2xl border border-ink/15 bg-ink text-cream shadow-[0_18px_40px_-18px_rgba(61,10,5,0.55)] hover:shadow-[0_22px_50px_-18px_rgba(61,10,5,0.7)] active:translate-y-px transition-all"
               >
                 <div className="flex items-stretch divide-x divide-cream/15">
                   <div className="flex flex-col items-start justify-center px-6 py-5 bg-ink/95">
