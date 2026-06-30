@@ -26,6 +26,7 @@ import crimsonLoveAsset from "@/assets/crimson-love.jpeg.asset.json";
 import pearlRoyaleAsset from "@/assets/pearl-royale.jpeg.asset.json";
 import goldenHarmonyAsset from "@/assets/golden-harmony.jpeg.asset.json";
 import sunflowerSerenityAsset from "@/assets/sunflower-serenity.jpeg.asset.json";
+import pinkDesireAsset from "@/assets/pink-desire.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -55,6 +56,7 @@ const crimsonLove = crimsonLoveAsset.url;
 const pearlRoyale = pearlRoyaleAsset.url;
 const goldenHarmony = goldenHarmonyAsset.url;
 const sunflowerSerenity = sunflowerSerenityAsset.url;
+const pinkDesire = pinkDesireAsset.url;
 
 
 
@@ -239,7 +241,18 @@ export const bouquets: Bouquet[] = [
       "A single, sun-faced sunflower — wide golden-orange petals fanning outward around a deep chocolate-brown center, framed by a few bold, glossy green leaves that look freshly cut from the garden — is wrapped with quiet care in soft brown kraft paper and lined with a vintage book page, its old-print text peeking through like a love note left in a library. The bloom is full and confident, the kind of sunflower that turns a whole room toward the window, and in the language of flowers it stands for warmth, loyalty, adoration, and the simple promise of always showing up. A crisp clear sleeve hugs it lightly to keep every petal pristine, finished at the throat with a slim signature ribbon. Sunflower Serenity is the bouquet for the everyday gestures that matter most — the just-because, the \"thinking of you,\" the first date that wants to feel thoughtful instead of grand, the friend who needs a little sunshine on a quiet afternoon. Small in size, big in feeling — happiness, gift-wrapped in a single bloom.",
     stems: ["1 premium fresh sunflower — full bloom", "Fresh green sunflower foliage", "Vintage book-page inner liner", "Natural brown kraft paper wrap", "Clear protective sleeve with signature ribbon"],
   },
-
+  {
+    slug: "pink-desire",
+    name: "Pink Desire",
+    tagline: "A blush cloud of spray roses in crystal wrap",
+    price: 599,
+    category: "Bouquets",
+    image: pinkDesire,
+    emotion: "For the soft, hopeful kind of love",
+    description:
+      "A generous gathering of soft pink spray roses — dozens of small, perfectly formed blooms in every stage from tight bud to half-open bloom — rises in a tall, airy fan of blush and rose, each cluster branching like a hand-drawn watercolor. The petals shift from cool ballet-pink at the edges to a warmer, deeper rose at the heart, and the stems are long and slender with fresh green sepals that keep every flower looking just-cut. In the language of flowers, pink roses speak of admiration, gentle affection, gratitude, and the kind of love that's still unfolding — sweet, sincere, never showy. The whole bouquet is wrapped in a crisp, crystal-clear cellophane that opens like a tall lantern around the blooms and catches the light from every angle, then gathered at the throat with a wide, blush-pink organza ribbon tied into a soft, trailing double bow. Pink Desire is the bouquet for the new beginning — the first date that's quietly serious, the friendship that's becoming something more, the \"I've been thinking about you,\" the birthday that wants to feel romantic without saying too much. Tender, romantic, and irresistibly pretty.",
+    stems: ["Premium fresh pink spray roses — multi-bloom stems", "Fresh green rose foliage", "Crystal-clear cellophane wrap", "Wide blush-pink organza ribbon double bow"],
+  },
 
 
 
