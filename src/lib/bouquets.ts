@@ -32,6 +32,7 @@ import vanillaAffectionAsset from "@/assets/vanilla-affection.jpeg.asset.json";
 import blossomsOfDesireAsset from "@/assets/blossoms-of-desire.jpeg.asset.json";
 import artOfUnspokenWordAsset from "@/assets/art-of-unspoken-word.jpeg.asset.json";
 import snowfallAsset from "@/assets/snowfall.jpeg.asset.json";
+import gentleMomentsOfLoveAsset from "@/assets/gentle-moments-of-love.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -67,6 +68,7 @@ const vanillaAffection = vanillaAffectionAsset.url;
 const blossomsOfDesire = blossomsOfDesireAsset.url;
 const artOfUnspokenWord = artOfUnspokenWordAsset.url;
 const snowfall = snowfallAsset.url;
+const gentleMomentsOfLove = gentleMomentsOfLoveAsset.url;
 
 
 
@@ -83,6 +85,18 @@ export type Bouquet = {
 };
 
 export const bouquets: Bouquet[] = [
+  {
+    slug: "gentle-moments-of-love",
+    name: "Gentle Moments Of Love",
+    tagline: "A swooning armful of blush-pink roses with a gold-lettered birthday cake in a keepsake box",
+    price: 1999,
+    category: "Cake & Flower Combo",
+    image: gentleMomentsOfLove,
+    emotion: "For the slow, unhurried kind of love that asks for nothing and means everything",
+    description:
+      "An indulgent armful of fully-bloomed blush-pink roses — petals brushed from soft cream at the base into a rich watercolour rose at the tips, faces wide open and unafraid, the kind of bloom that looks photographed even in person — bundled into a generous, sculptural bouquet that spills across the linen like a love poem in slow motion. Paired with a petite round vanilla bento cake nestled inside a crisp ivory keepsake gift-box with a clear scalloped window: smooth porcelain-white buttercream sides, a fine sprinkle of edible gold dust across the top, and 'Happy Birthday' hand-lettered in delicate shimmering gold script, finished with a tiny gold-foil heart pressed beside it. Tied off with a long, glossy dusty-rose satin ribbon trailing across the table. Soft-pink roses are the oldest, gentlest word for tenderness, grace, and admiration spoken without raising the voice; the gold-script cake is the quiet celebration that lives inside it. Gentle Moments Of Love is for birthdays that deserve a little ceremony, for the partner you're still surprised by, for the friend who turns ordinary afternoons into a story — delivered together, soft, romantic, and made to be remembered.",
+    stems: ["~24 premium blush-pink roses, full-bloom", "Petite round vanilla bento cake in ivory keepsake gift-box", "Edible gold-dust shimmer top", "Hand-piped shimmering gold 'Happy Birthday' script with gold-foil heart", "Long dusty-rose satin trailing ribbon", "Sculptural ivory matte wrap"],
+  },
   {
     slug: "snowfall",
     name: "Snowfall",
