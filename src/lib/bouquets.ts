@@ -23,6 +23,7 @@ import elaraAsset from "@/assets/elara.jpeg.asset.json";
 import tranquilBloomAsset from "@/assets/tranquil-bloom.jpeg.asset.json";
 import luxeIvoryAsset from "@/assets/luxe-ivory.jpeg.asset.json";
 import crimsonLoveAsset from "@/assets/crimson-love.jpeg.asset.json";
+import pearlRoyaleAsset from "@/assets/pearl-royale.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -49,6 +50,7 @@ const elara = elaraAsset.url;
 const tranquilBloom = tranquilBloomAsset.url;
 const luxeIvory = luxeIvoryAsset.url;
 const crimsonLove = crimsonLoveAsset.url;
+const pearlRoyale = pearlRoyaleAsset.url;
 
 
 
@@ -196,6 +198,18 @@ export const bouquets: Bouquet[] = [
     description:
       "A perfect dome of deep crimson roses — velvet-red, half-open, faces turned upward like an audience in love — is woven through with delicate sprigs of snow-white baby's breath that drift between the blooms like tiny falling stars. Each rose is full-headed and lush, the kind of red that reads almost black at the edges and ruby at the heart, framed by the soft ivory haze of gypsophila that softens all that fire without dimming it. Red roses speak of devotion, desire, and a love that has stopped pretending to be small; baby's breath answers back with innocence and the promise of forever — together they say everything a card can't. The whole arrangement is cradled in a crisp, architectural fold of matte ivory paper that opens like the petals of a single enormous flower, and finished at the throat with a wide crimson satin ribbon tied into a generous, glossy bow. Tucked at the top, a small ivory card waits for your handwriting. Crimson Love is the bouquet for the milestone confession — the proposal, the anniversary, the \"I should have said this sooner.\" Classic, cinematic, unforgettable.",
     stems: ["Premium deep-red roses (half-bloom)", "Fresh white baby's breath (gypsophila)", "Architectural matte ivory paper wrap", "Wide crimson satin ribbon", "Ivory message card"],
+  },
+  {
+    slug: "pearl-royale",
+    name: "Pearl Royale",
+    tagline: "Oriental lilies wrapped in cloud-soft elegance",
+    price: 1899,
+    category: "Bouquets",
+    image: pearlRoyale,
+    emotion: "For the quiet kind of grandeur — soft, regal, unforgettable",
+    description:
+      "A poised gathering of pristine Oriental lilies — wide, star-shaped blooms in pearl-white, each petal brushed with a stroke of blush-pink running down its center like the inside of a seashell — opens generously above slim, half-closed buds that lean upward like notes waiting to be sung. The lilies are full-faced and fragrant, the kind that perfume an entire room within minutes of arriving, framed by deep glossy green leaves that make every petal glow even brighter. In the language of flowers, white lilies speak of purity, devotion, and a love rooted in respect; the soft pink at their heart adds tenderness, admiration, and the warmth of a long, gentle affection — together they say, \"I see you, and I think you are extraordinary.\" The whole bouquet is cradled in layers of cloud-soft, sheer ivory wrap that flares open like the inside of a couture skirt, gathered at the throat with a wide blush-peach satin ribbon tied into a generous, trailing bow. Pearl Royale is the bouquet for the moments that deserve a little ceremony — the milestone birthday, the anniversary that matters, the apology that comes with meaning, the \"thank you for everything.\" Quietly luxurious, deeply romantic, and impossible to forget.",
+    stems: ["Premium fresh Oriental lilies (white with pink center) — full bloom and buds", "Deep green lily foliage", "Layered cloud-soft sheer ivory wrap", "Wide blush-peach satin ribbon bow"],
   },
 
 
