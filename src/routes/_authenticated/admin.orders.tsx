@@ -60,8 +60,11 @@ function AdminOrdersPage() {
       updateStatus({ data: vars }),
     onMutate: ({ id, status }) => {
       const prev = queryClient.getQueryData<Order[]>(["admin", "orders"]);
+      const stampedAt = new Date().toISOString();
       queryClient.setQueryData<Order[]>(["admin", "orders"], (old) =>
-        (old ?? []).map((o) => (o.id === id ? { ...o, status } : o)),
+        (old ?? []).map((o) =>
+          o.id === id ? { ...o, status, status_updated_at: stampedAt } : o,
+        ),
       );
       return { prev };
     },
