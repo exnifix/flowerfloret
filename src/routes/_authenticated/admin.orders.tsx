@@ -7,9 +7,12 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   listAdminOrders,
   updateOrderStatus,
+  bulkUpdateOrderStatus,
+  ORDER_STATUSES,
   type OrderStatus,
 } from "@/lib/admin-orders.functions";
 import { OrderDetailsDrawer } from "@/components/admin/OrderDetailsDrawer";
+
 
 export const Route = createFileRoute("/_authenticated/admin/orders")({
   head: () => ({
