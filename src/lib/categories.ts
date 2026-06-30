@@ -21,7 +21,7 @@ export const SLUG_BY_CATEGORY: Record<(typeof CATEGORIES)[number], CategorySlug>
 
 /** Returns the category labels a bouquet belongs to. */
 export function bouquetCategories(b: Bouquet): (typeof CATEGORIES)[number][] {
-  if (b.category === "Cake & Flower Combo") return ["Cake", "Cake and Flower"];
+  if (b.category === "Cake & Flower Combo") return ["Birthday", "Cake", "Cake and Flower"];
   // Regular bouquets fit weddings, birthdays, and anniversaries.
   return ["Wedding", "Birthday", "Anniversaries"];
 }
