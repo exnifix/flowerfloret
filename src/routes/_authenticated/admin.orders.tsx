@@ -1,9 +1,15 @@
 import { createFileRoute, Link, useNavigate, useRouter } from "@tanstack/react-router";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { listAdminOrders } from "@/lib/admin-orders.functions";
+import {
+  listAdminOrders,
+  updateOrderStatus,
+  ORDER_STATUSES,
+  type OrderStatus,
+} from "@/lib/admin-orders.functions";
 
 export const Route = createFileRoute("/_authenticated/admin/orders")({
   head: () => ({
@@ -17,8 +23,27 @@ export const Route = createFileRoute("/_authenticated/admin/orders")({
 
 type Order = Awaited<ReturnType<typeof listAdminOrders>>[number];
 
+const STATUS_LABEL: Record<OrderStatus, string> = {
+  new: "New",
+  confirmed: "Confirmed",
+  preparing: "Preparing",
+  out_for_delivery: "Out for delivery",
+  delivered: "Delivered",
+  cancelled: "Cancelled",
+};
+
+const STATUS_STYLE: Record<OrderStatus, string> = {
+  new: "bg-blush-soft text-ink",
+  confirmed: "bg-amber-100 text-amber-900",
+  preparing: "bg-blue-100 text-blue-900",
+  out_for_delivery: "bg-indigo-100 text-indigo-900",
+  delivered: "bg-emerald-100 text-emerald-900",
+  cancelled: "bg-red-100 text-red-900",
+};
+
 function AdminOrdersPage() {
   const fetchOrders = useServerFn(listAdminOrders);
+  const updateStatus = useServerFn(updateOrderStatus);
   const navigate = useNavigate();
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -27,6 +52,28 @@ function AdminOrdersPage() {
   const { data, isLoading, error, refetch, isFetching } = useQuery({
     queryKey: ["admin", "orders"],
     queryFn: () => fetchOrders(),
+  });
+
+  const mutation = useMutation({
+    mutationFn: (vars: { id: string; status: OrderStatus }) =>
+      updateStatus({ data: vars }),
+    onMutate: ({ id, status }) => {
+      const prev = queryClient.getQueryData<Order[]>(["admin", "orders"]);
+      queryClient.setQueryData<Order[]>(["admin", "orders"], (old) =>
+        (old ?? []).map((o) => (o.id === id ? { ...o, status } : o)),
+      );
+      return { prev };
+    },
+    onError: (err, _vars, ctx) => {
+      if (ctx?.prev) queryClient.setQueryData(["admin", "orders"], ctx.prev);
+      toast.error(err instanceof Error ? err.message : "Couldn't update status");
+    },
+    onSuccess: (_data, vars) => {
+      toast.success(`Status set to ${STATUS_LABEL[vars.status]}`);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin", "orders"] });
+    },
   });
 
   const orders = data ?? [];
@@ -79,11 +126,25 @@ function AdminOrdersPage() {
         ) : (
           <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
             <OrdersTable orders={orders} selectedId={selectedId} onSelect={setSelectedId} />
-            <OrderDetail order={selected} />
+            <OrderDetail
+              order={selected}
+              onStatusChange={(id, status) => mutation.mutate({ id, status })}
+              isUpdating={mutation.isPending}
+            />
           </div>
         )}
       </main>
     </div>
+  );
+}
+
+function StatusBadge({ status }: { status: OrderStatus }) {
+  return (
+    <span
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium ${STATUS_STYLE[status]}`}
+    >
+      {STATUS_LABEL[status]}
+    </span>
   );
 }
 
@@ -104,7 +165,7 @@ function OrdersTable({
             <th className="px-4 py-3">When</th>
             <th className="px-4 py-3">Customer</th>
             <th className="px-4 py-3">Bouquet</th>
-            <th className="px-4 py-3">Payment</th>
+            <th className="px-4 py-3">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -126,7 +187,9 @@ function OrdersTable({
                   <div className="text-xs text-muted-foreground">{o.email}</div>
                 </td>
                 <td className="px-4 py-3 text-ink">{o.bouquet ?? "—"}</td>
-                <td className="px-4 py-3 text-xs text-muted-foreground">{o.payment_method ?? "—"}</td>
+                <td className="px-4 py-3">
+                  <StatusBadge status={(o.status ?? "new") as OrderStatus} />
+                </td>
               </tr>
             );
           })}
@@ -136,20 +199,66 @@ function OrdersTable({
   );
 }
 
-function OrderDetail({ order }: { order: Order | null }) {
+function OrderDetail({
+  order,
+  onStatusChange,
+  isUpdating,
+}: {
+  order: Order | null;
+  onStatusChange: (id: string, status: OrderStatus) => void;
+  isUpdating: boolean;
+}) {
   if (!order) {
     return (
       <aside className="rounded-2xl border border-dashed border-border bg-white/60 p-6 text-sm text-muted-foreground">
-        Select an order to see the full details and customer message.
+        Select an order to see the full details and update its status.
       </aside>
     );
   }
+  const status = (order.status ?? "new") as OrderStatus;
   return (
     <aside className="rounded-2xl border border-border bg-white p-6">
-      <h2 className="font-serif text-2xl text-ink">{order.bouquet ?? "Custom order"}</h2>
-      <p className="mt-1 text-xs text-muted-foreground">
-        Received {new Date(order.created_at).toLocaleString()}
-      </p>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h2 className="font-serif text-2xl text-ink">{order.bouquet ?? "Custom order"}</h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Received {new Date(order.created_at).toLocaleString()}
+          </p>
+        </div>
+        <StatusBadge status={status} />
+      </div>
+
+      <div className="mt-5 rounded-xl border border-border bg-cream/60 p-4">
+        <label
+          htmlFor="status-select"
+          className="text-xs uppercase tracking-wider text-muted-foreground"
+        >
+          Update status (admin only)
+        </label>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {ORDER_STATUSES.map((s) => {
+            const isActive = s === status;
+            return (
+              <button
+                key={s}
+                type="button"
+                disabled={isUpdating || isActive}
+                onClick={() => onStatusChange(order.id, s)}
+                className={`rounded-full border px-3 py-1 text-xs transition-colors disabled:opacity-60 ${
+                  isActive
+                    ? "border-ink bg-ink text-cream"
+                    : "border-border bg-white text-ink hover:bg-blush-soft"
+                }`}
+              >
+                {STATUS_LABEL[s]}
+              </button>
+            );
+          })}
+        </div>
+        <p className="mt-2 text-[11px] text-muted-foreground">
+          Only admin accounts can change this. Staff have read-only access.
+        </p>
+      </div>
 
       <dl className="mt-5 grid grid-cols-[max-content_1fr] gap-x-4 gap-y-2 text-sm">
         <Field label="Name" value={order.name} />
