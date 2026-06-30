@@ -1,9 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
+import { z } from "zod";
 import { Layout } from "@/components/site/Layout";
+import { getBouquet } from "@/lib/bouquets";
+
+const buildSearchSchema = z.object({
+  base: z.string().optional(),
+});
 
 export const Route = createFileRoute("/build")({
+  validateSearch: buildSearchSchema,
   head: () => ({
     meta: [
       { title: "Build Your Own Bouquet — Custom Floral Arrangements | Floret" },
