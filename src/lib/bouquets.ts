@@ -18,6 +18,7 @@ import eleganceDesireAsset from "@/assets/elegance-desire.jpeg.asset.json";
 import creamyLoveAsset from "@/assets/creamy-love.jpeg.asset.json";
 import imperialBeautyAsset from "@/assets/imperial-beauty.jpeg.asset.json";
 import softLoveAsset from "@/assets/soft-love.jpeg.asset.json";
+import phoenixBloomAsset from "@/assets/phoenix-bloom.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -39,6 +40,7 @@ const eleganceDesire = eleganceDesireAsset.url;
 const creamyLove = creamyLoveAsset.url;
 const imperialBeauty = imperialBeautyAsset.url;
 const softLove = softLoveAsset.url;
+const phoenixBloom = phoenixBloomAsset.url;
 
 
 
@@ -127,6 +129,20 @@ export const bouquets: Bouquet[] = [
       "A generous gathering of pink Oriental lilies — petals brushed in that dreamlike blush that fades from soft cotton-candy at the tips to a deeper rose at the heart — opens slowly out of a crisp, glossy pink wrap folded into a sculptural cone. Each lily is caught mid-bloom: some still cupped like a held breath, others fully open with their freckled hearts and golden anthers on full display, a few buds still tucked in like secrets waiting their turn. Lush emerald foliage frames every face, making the pink almost glow. Pink lilies, in the old language of flowers, mean prosperity, abundance, and a love that's already imagined the future — they're the bouquet you give when ordinary affection has quietly turned into something bigger. The wrap is tied off with a slim painted ribbon, soft and feminine, and the long bare stems peek out at the base like the bouquet was just lifted from the garden. Soft Love is the grand, unhurried gesture — the anniversary, the proposal-in-waiting, the apology that means it, the \"I've thought about this for a long time.\"",
     stems: ["Premium pink Oriental lilies (multi-bloom, long-stem)", "Fresh emerald lily foliage", "Architectural glossy pink wrap", "Painted ivory ribbon"],
   },
+  {
+    slug: "phoenix-bloom",
+    name: "Phoenix Bloom",
+    tagline: "Crimson gerberas, rising bright from the ash",
+    price: 999,
+    category: "Bouquets",
+    image: phoenixBloom,
+    emotion: "For the comeback, the second chance, the love that refused to die",
+    description:
+      "A dense, perfectly round cluster of deep-crimson gerbera daisies — petals long and lacquer-bright, hearts inked in velvet-black — burst out of a sheer architectural wrap edged in soft blush and dusted with constellations of baby's breath. Each gerbera is caught at full bloom, faces turned up like small suns at their boldest hour, framed by glossy emerald leaves that make the red read almost cinematic. Red gerberas, in the language of flowers, mean fierce love, courage, and a happiness that's been earned — the kind of joy that comes back stronger after it's been tested. Drifts of white gypsophila weave between the heads like sparks, softening all that fire without dimming it. The wrap is folded into a wide, generous shape that frames the bouquet like a painting, with crisp blush and charcoal borders that give the whole thing the air of an editorial portrait. Phoenix Bloom is the bouquet for the milestone after the struggle — the recovery, the promotion, the reconciliation, the \"I knew you'd make it.\" Bold, joyful, and impossible to ignore.",
+    stems: ["Premium deep-red gerbera daisies (full-bloom)", "Fresh white baby's breath (gypsophila)", "Glossy emerald foliage", "Architectural sheer wrap with blush-and-charcoal border"],
+  },
+
+
 
 
 
