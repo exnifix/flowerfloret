@@ -167,16 +167,17 @@ function CollectionPage() {
 
       <section className="pb-24 md:pb-32 pt-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          {q && (
+          {input.trim() && (
             <p className="text-center text-sm text-ink/60 mb-8">
               {filtered.length} {filtered.length === 1 ? "result" : "results"} for{" "}
-              <span className="italic text-ink">"{q}"</span>
+              <span className="italic text-ink">"{input.trim()}"</span>
             </p>
           )}
           {filtered.length === 0 ? (
             <p className="text-center text-ink/60">
-              {q ? "No bouquets match that search. Try another name." : "No bouquets in this category yet — check back soon."}
+              {input.trim() ? "No bouquets match that search. Try another name." : "No bouquets in this category yet — check back soon."}
             </p>
+
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {filtered.map((b, i) => (
