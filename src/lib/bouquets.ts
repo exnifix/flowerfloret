@@ -30,6 +30,7 @@ import pinkDesireAsset from "@/assets/pink-desire.jpeg.asset.json";
 import pinkEleganceAsset from "@/assets/pink-elegance.jpeg.asset.json";
 import vanillaAffectionAsset from "@/assets/vanilla-affection.jpeg.asset.json";
 import blossomsOfDesireAsset from "@/assets/blossoms-of-desire.jpeg.asset.json";
+import artOfUnspokenWordAsset from "@/assets/art-of-unspoken-word.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -63,6 +64,7 @@ const pinkDesire = pinkDesireAsset.url;
 const pinkElegance = pinkEleganceAsset.url;
 const vanillaAffection = vanillaAffectionAsset.url;
 const blossomsOfDesire = blossomsOfDesireAsset.url;
+const artOfUnspokenWord = artOfUnspokenWordAsset.url;
 
 
 
@@ -79,6 +81,18 @@ export type Bouquet = {
 };
 
 export const bouquets: Bouquet[] = [
+  {
+    slug: "art-of-unspoken-word",
+    name: "The Art Of Unspoken Word",
+    tagline: "White gerberas and a scarlet-ribboned cake — everything you couldn't say, said anyway",
+    price: 1139,
+    category: "Cake & Flower Combo",
+    image: artOfUnspokenWord,
+    emotion: "For the feelings that arrive without needing a sentence",
+    description:
+      "An armful of pure-white gerbera daisies — faces wide open, petals fanned like little suns, soft chartreuse-green centres still holding the morning — tucked together with sprigs of silvery-grey eucalyptus that smell faintly of clean rain. The bouquet is sleeved in soft ivory matte paper, calm and unfussy, letting the flowers do every bit of the talking. Beside it sits a petite round vanilla bento cake, its sides piped in tall vertical buttercream pleats like a little ballerina skirt, and its top hand-lettered in glossy scarlet script: 'happy birthday' — finished with a constellation of tiny red fondant hearts and a generous, hand-tied red satin double-bow trailing long ribbons across the table. White gerberas, in the old language of flowers, mean innocence, purity, and a gentleness that doesn't need to explain itself; the splash of scarlet ribbon is the heartbeat underneath. Together, this combo is for the things you wish you'd said sooner — the thank-you, the I-see-you, the I'm-still-here. Perfect for birthdays, quiet apologies, long-awaited reunions, and the kind of love that's always been louder than its words.",
+    stems: ["~9 premium pure-white gerbera daisies", "Fresh silvery-grey eucalyptus accents", "Petite round vanilla bento cake with vertical buttercream pleats", "Hand-piped scarlet 'happy birthday' script with red fondant hearts", "Hand-tied scarlet satin double-bow", "Soft ivory matte paper wrap"],
+  },
   {
     slug: "blossoms-desire",
     name: "Blossoms Desire",
