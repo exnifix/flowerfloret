@@ -52,6 +52,7 @@ const tranquilBloom = tranquilBloomAsset.url;
 const luxeIvory = luxeIvoryAsset.url;
 const crimsonLove = crimsonLoveAsset.url;
 const pearlRoyale = pearlRoyaleAsset.url;
+const goldenHarmony = goldenHarmonyAsset.url;
 
 
 
