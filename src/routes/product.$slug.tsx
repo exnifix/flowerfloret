@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Check, ShoppingBag, Sparkles } from "lucide-reac
 import { Layout } from "@/components/site/Layout";
 import { bouquets, getBouquet } from "@/lib/bouquets";
 import { BouquetCard } from "@/components/site/BouquetCard";
-import { BuyDialog } from "@/components/site/BuyDialog";
+
 
 export const Route = createFileRoute("/product/$slug")({
   loader: ({ params }) => {
@@ -146,37 +146,34 @@ function ProductPage() {
                 ))}
               </div>
 
-              <BuyDialog
-                bouquetName={bouquet.name}
-                trigger={
-                  <button
-                    type="button"
-                    aria-label={`Buy ${bouquet.name} now for ৳${bouquet.price}`}
-                    className="group mt-10 w-full overflow-hidden rounded-2xl border border-ink/15 bg-ink text-cream shadow-[0_18px_40px_-18px_rgba(61,10,5,0.55)] hover:shadow-[0_22px_50px_-18px_rgba(61,10,5,0.7)] active:translate-y-px transition-all"
-                  >
-                    <div className="flex items-stretch divide-x divide-cream/15">
-                      <div className="flex flex-col items-start justify-center px-6 py-5 bg-ink/95">
-                        <span className="text-[10px] uppercase tracking-[0.22em] text-cream/60">Total</span>
-                        <span className="font-serif text-2xl text-cream leading-none mt-1">
-                          ৳{bouquet.price.toLocaleString("en-BD")}
-                        </span>
-                      </div>
-                      <div className="flex-1 flex items-center justify-center gap-3 px-6 py-5 bg-rose text-cream group-hover:bg-rose/90 transition-colors">
-                        <ShoppingBag className="size-5" strokeWidth={1.75} />
-                        <span className="font-serif text-xl tracking-wide">Buy Now</span>
-                        <span className="ml-1 inline-flex size-7 items-center justify-center rounded-full bg-cream/15 group-hover:translate-x-0.5 transition-transform">
-                          <ArrowRight className="size-3.5" />
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between gap-4 bg-cream-soft/90 text-ink/70 px-6 py-2.5 text-[11px] tracking-wide">
-                      <span className="inline-flex items-center gap-1.5"><Check className="size-3 text-rose" strokeWidth={2.5} /> Same-day delivery</span>
-                      <span className="hidden sm:inline-flex items-center gap-1.5"><Check className="size-3 text-rose" strokeWidth={2.5} /> Hand-tied today</span>
-                      <span className="inline-flex items-center gap-1.5"><Check className="size-3 text-rose" strokeWidth={2.5} /> Secure bKash</span>
-                    </div>
-                  </button>
-                }
-              />
+              <Link
+                to="/order"
+                search={{ bouquet: bouquet.slug }}
+                aria-label={`Buy ${bouquet.name} now for ৳${bouquet.price}`}
+                className="group mt-10 block w-full overflow-hidden rounded-2xl border border-ink/15 bg-ink text-cream shadow-[0_18px_40px_-18px_rgba(61,10,5,0.55)] hover:shadow-[0_22px_50px_-18px_rgba(61,10,5,0.7)] active:translate-y-px transition-all"
+              >
+                <div className="flex items-stretch divide-x divide-cream/15">
+                  <div className="flex flex-col items-start justify-center px-6 py-5 bg-ink/95">
+                    <span className="text-[10px] uppercase tracking-[0.22em] text-cream/60">Total</span>
+                    <span className="font-serif text-2xl text-cream leading-none mt-1">
+                      ৳{bouquet.price.toLocaleString("en-BD")}
+                    </span>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center gap-3 px-6 py-5 bg-rose text-cream group-hover:bg-rose/90 transition-colors">
+                    <ShoppingBag className="size-5" strokeWidth={1.75} />
+                    <span className="font-serif text-xl tracking-wide">Buy Now</span>
+                    <span className="ml-1 inline-flex size-7 items-center justify-center rounded-full bg-cream/15 group-hover:translate-x-0.5 transition-transform">
+                      <ArrowRight className="size-3.5" />
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between gap-4 bg-cream-soft/90 text-ink/70 px-6 py-2.5 text-[11px] tracking-wide">
+                  <span className="inline-flex items-center gap-1.5"><Check className="size-3 text-rose" strokeWidth={2.5} /> Same-day delivery</span>
+                  <span className="hidden sm:inline-flex items-center gap-1.5"><Check className="size-3 text-rose" strokeWidth={2.5} /> Hand-tied today</span>
+                  <span className="inline-flex items-center gap-1.5"><Check className="size-3 text-rose" strokeWidth={2.5} /> Secure bKash</span>
+                </div>
+              </Link>
+
 
 
 
