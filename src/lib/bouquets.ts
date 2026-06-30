@@ -31,6 +31,7 @@ import pinkEleganceAsset from "@/assets/pink-elegance.jpeg.asset.json";
 import vanillaAffectionAsset from "@/assets/vanilla-affection.jpeg.asset.json";
 import blossomsOfDesireAsset from "@/assets/blossoms-of-desire.jpeg.asset.json";
 import artOfUnspokenWordAsset from "@/assets/art-of-unspoken-word.jpeg.asset.json";
+import snowfallAsset from "@/assets/snowfall.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -65,6 +66,7 @@ const pinkElegance = pinkEleganceAsset.url;
 const vanillaAffection = vanillaAffectionAsset.url;
 const blossomsOfDesire = blossomsOfDesireAsset.url;
 const artOfUnspokenWord = artOfUnspokenWordAsset.url;
+const snowfall = snowfallAsset.url;
 
 
 
@@ -81,6 +83,18 @@ export type Bouquet = {
 };
 
 export const bouquets: Bouquet[] = [
+  {
+    slug: "snowfall",
+    name: "Snowfall",
+    tagline: "Velvet red roses dusted in baby's breath, beside a love-lettered birthday cake",
+    price: 1599,
+    category: "Cake & Flower Combo",
+    image: snowfall,
+    emotion: "For the kind of love that arrives like winter light — quiet, warm, unforgettable",
+    description:
+      "A deep, cinematic bouquet of velvet-red roses — each bloom heavy with petals the colour of old film and slow-burning candles — set against a snowstorm of fresh baby's breath that drifts through the arrangement like soft falling snow. Wrapped in whisper-thin ivory tissue and finished with a glossy black satin ribbon trailing long across the linen, the whole thing feels caught between a love letter and a December morning. Paired with a petite round vanilla bento cake, piped in tall vertical buttercream scallops, edged in delicate champagne-gold pearls, and hand-lettered in flowing dark script: 'Happy Birthday love' — the kind of cake that looks like it was made by someone who actually means it. Red roses are the oldest, loudest, most honest word for love; baby's breath is the hush around it; the cake is the celebration in the middle. Snowfall is for birthdays that matter, for anniversaries you want to do properly this time, for the person who turns even ordinary Tuesdays into something worth photographing. Delivered together — soft, romantic, a little bit cinematic, exactly the kind of moment people remember.",
+    stems: ["~9 premium velvet-red roses, full-bloom", "Lush fresh baby's breath halo", "Petite round vanilla bento cake with vertical buttercream scallops", "Champagne-gold edible pearl trim", "Hand-piped dark script: 'Happy Birthday love'", "Whisper-ivory tissue wrap with glossy black satin ribbon"],
+  },
   {
     slug: "art-of-unspoken-word",
     name: "The Art Of Unspoken Word",
