@@ -17,6 +17,7 @@ import blushingGraceAsset from "@/assets/blushing-grace.jpeg.asset.json";
 import eleganceDesireAsset from "@/assets/elegance-desire.jpeg.asset.json";
 import creamyLoveAsset from "@/assets/creamy-love.jpeg.asset.json";
 import imperialBeautyAsset from "@/assets/imperial-beauty.jpeg.asset.json";
+import softLoveAsset from "@/assets/soft-love.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -37,6 +38,7 @@ const blushingGrace = blushingGraceAsset.url;
 const eleganceDesire = eleganceDesireAsset.url;
 const creamyLove = creamyLoveAsset.url;
 const imperialBeauty = imperialBeautyAsset.url;
+const softLove = softLoveAsset.url;
 
 
 
@@ -113,6 +115,20 @@ export const bouquets: Bouquet[] = [
       "A close gathering of velvet-deep red roses — petals so darkly saturated they look almost burgundy in low light, almost ruby when the sun catches them — sits at the heart of a crisp, architectural fold of matte white paper. Each rose is caught at that perfect, half-open moment where the bloom is most generous: full, lush, unapologetic. Red roses have always been the language of devotion at its loudest — passion, desire, a love that has stopped pretending to be casual — and Imperial Beauty wears that meaning like a crown. The wrap is folded into a sharp ivory cone, clean and modern, letting the roses speak without competition. Tied at the throat with a wide blush-pink satin ribbon knotted into a soft, generous bow, the bouquet carries a quiet contrast — fierce roses, tender ribbon, the warmth of a confession dressed in restraint. Hand it across a candlelit table, place it on a doorstep at midnight, deliver it on an anniversary that deserves something heavier than words. Imperial Beauty isn't a bouquet — it's a declaration.",
     stems: ["Premium deep-red roses (half-bloom, long-stem)", "Architectural matte white paper wrap", "Wide blush-pink satin ribbon"],
   },
+  {
+    slug: "soft-love",
+    name: "Soft Love",
+    tagline: "Pink lilies, opening like a slow confession",
+    price: 1999,
+    category: "Bouquets",
+    image: softLove,
+    emotion: "For the love that grows quietly, then all at once",
+    description:
+      "A generous gathering of pink Oriental lilies — petals brushed in that dreamlike blush that fades from soft cotton-candy at the tips to a deeper rose at the heart — opens slowly out of a crisp, glossy pink wrap folded into a sculptural cone. Each lily is caught mid-bloom: some still cupped like a held breath, others fully open with their freckled hearts and golden anthers on full display, a few buds still tucked in like secrets waiting their turn. Lush emerald foliage frames every face, making the pink almost glow. Pink lilies, in the old language of flowers, mean prosperity, abundance, and a love that's already imagined the future — they're the bouquet you give when ordinary affection has quietly turned into something bigger. The wrap is tied off with a slim painted ribbon, soft and feminine, and the long bare stems peek out at the base like the bouquet was just lifted from the garden. Soft Love is the grand, unhurried gesture — the anniversary, the proposal-in-waiting, the apology that means it, the \"I've thought about this for a long time.\"",
+    stems: ["Premium pink Oriental lilies (multi-bloom, long-stem)", "Fresh emerald lily foliage", "Architectural glossy pink wrap", "Painted ivory ribbon"],
+  },
+
+
 
 
 
