@@ -87,11 +87,52 @@ function AdminOrdersPage() {
     },
   });
 
+  const bulkMutation = useMutation({
+    mutationFn: (vars: { ids: string[]; status: OrderStatus }) =>
+      bulkUpdate({ data: vars }),
+    onMutate: ({ ids, status }) => {
+      const prev = queryClient.getQueryData<Order[]>(["admin", "orders"]);
+      const stampedAt = new Date().toISOString();
+      const idSet = new Set(ids);
+      queryClient.setQueryData<Order[]>(["admin", "orders"], (old) =>
+        (old ?? []).map((o) =>
+          idSet.has(o.id) ? { ...o, status, status_updated_at: stampedAt } : o,
+        ),
+      );
+      return { prev };
+    },
+    onError: (err, _vars, ctx) => {
+      if (ctx?.prev) queryClient.setQueryData(["admin", "orders"], ctx.prev);
+      toast.error(err instanceof Error ? err.message : "Bulk update failed");
+    },
+    onSuccess: (res, vars) => {
+      toast.success(`Updated ${res.count} order${res.count === 1 ? "" : "s"} → ${STATUS_LABEL[vars.status]}`);
+      setCheckedIds(new Set());
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin", "orders"] });
+    },
+  });
+
   const orders = data ?? [];
   const selected = useMemo(
     () => orders.find((o) => o.id === selectedId) ?? null,
     [orders, selectedId],
   );
+  const allChecked = orders.length > 0 && checkedIds.size === orders.length;
+  const someChecked = checkedIds.size > 0 && !allChecked;
+
+  function toggleOne(id: string) {
+    setCheckedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+  function toggleAll() {
+    setCheckedIds(allChecked ? new Set() : new Set(orders.map((o) => o.id)));
+  }
 
   async function signOut() {
     await queryClient.cancelQueries();
@@ -105,6 +146,7 @@ function AdminOrdersPage() {
     setSelectedId(id);
     setDrawerOpen(true);
   }
+
 
   return (
     <div className="min-h-screen bg-cream">
