@@ -140,7 +140,7 @@ function CollectionPage() {
               <Link
                 key={chip.label}
                 to="/collection"
-                search={(prev) => ({ ...prev, cat: chip.slug })}
+                search={(prev: Search) => ({ ...prev, cat: chip.slug })}
                 className={`px-5 py-2 rounded-full border text-sm tracking-wide transition-all ${
                   active
                     ? "bg-rose text-cream border-rose shadow-sm"
