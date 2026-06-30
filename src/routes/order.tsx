@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Sparkles } from "lucide-react";
 import { z } from "zod";
 import { Layout } from "@/components/site/Layout";
 import { OrderForm } from "@/components/site/forms/OrderForm";
@@ -7,6 +7,7 @@ import { getBouquet } from "@/lib/bouquets";
 
 const searchSchema = z.object({
   bouquet: z.string().optional(),
+  custom: z.string().optional(),
 });
 
 export const Route = createFileRoute("/order")({
@@ -22,9 +23,10 @@ export const Route = createFileRoute("/order")({
 });
 
 function OrderPage() {
-  const { bouquet: slug } = Route.useSearch();
+  const { bouquet: slug, custom } = Route.useSearch();
   const bouquet = slug ? getBouquet(slug) : undefined;
   const initialBouquet = bouquet?.name ?? "";
+  const customNote = custom?.trim() ?? "";
 
   return (
     <Layout>
@@ -45,8 +47,24 @@ function OrderPage() {
             {bouquet ? `You're ordering ${bouquet.name}. ` : ""}Delivery and payment details below.
           </p>
 
+          {customNote && bouquet && (
+            <div className="mt-8 rounded-2xl border border-rose/30 bg-blush-soft/50 p-5 animate-fade-up delay-200">
+              <p className="text-xs uppercase tracking-[0.2em] text-rose mb-2 flex items-center gap-2">
+                <Sparkles className="size-3.5" /> Your customizations
+              </p>
+              <p className="text-sm text-ink/80 leading-relaxed">{customNote}</p>
+              <Link
+                to="/build"
+                search={{ base: bouquet.slug }}
+                className="mt-3 inline-block text-xs text-rose underline hover:no-underline"
+              >
+                Edit customizations
+              </Link>
+            </div>
+          )}
+
           <div className="mt-10 animate-fade-up delay-300">
-            <OrderForm initialBouquet={initialBouquet} />
+            <OrderForm initialBouquet={initialBouquet} customNote={customNote} />
           </div>
         </div>
       </section>
