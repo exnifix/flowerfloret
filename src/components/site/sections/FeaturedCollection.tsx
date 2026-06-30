@@ -24,10 +24,11 @@ export function FeaturedCollection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {bouquets.map((b, i) => (
+          {bouquets.slice(0, 6).map((b, i) => (
             <BouquetCard key={b.slug} bouquet={b} index={i} priority={i < 3} />
           ))}
         </div>
+
 
         <div className="mt-14 flex justify-center">
           <Link
