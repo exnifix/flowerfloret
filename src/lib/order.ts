@@ -14,6 +14,7 @@ export type OrderPayload = {
   bouquet: string | null;
   payment_method: string;
   image_url?: string | null;
+  image_urls?: string[] | null;
 };
 
 export type OrderFormResult =
