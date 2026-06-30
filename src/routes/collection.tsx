@@ -1,6 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Search, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { Layout } from "@/components/site/Layout";
+
 import { BouquetCard } from "@/components/site/BouquetCard";
 import { bouquets, getProductCode } from "@/lib/bouquets";
 import {
@@ -54,8 +56,7 @@ export const Route = createFileRoute("/collection")({
   component: CollectionPage,
 });
 
-function matchesQuery(b: (typeof bouquets)[number], q: string): boolean {
-  const needle = q.toLowerCase();
+function matchesQuery(b: (typeof bouquets)[number], needle: string): boolean {
   return (
     b.name.toLowerCase().includes(needle) ||
     b.slug.toLowerCase().includes(needle) ||
@@ -68,9 +69,32 @@ function matchesQuery(b: (typeof bouquets)[number], q: string): boolean {
 function CollectionPage() {
   const { cat, q } = Route.useSearch() as Search;
   const navigate = useNavigate({ from: "/collection" });
-  const byCat = filterByCategorySlug(bouquets, cat);
-  const filtered = q ? byCat.filter((b) => matchesQuery(b, q)) : byCat;
+
+  // Local input state so each keystroke does not trigger a router navigation + full re-render
+  const [input, setInput] = useState(q ?? "");
+  useEffect(() => {
+    setInput(q ?? "");
+  }, [q]);
+
+  // Debounce URL sync (200ms) so the address bar updates without thrashing
+  useEffect(() => {
+    const trimmed = input.trim();
+    const next = trimmed ? trimmed : undefined;
+    if (next === q) return;
+    const id = setTimeout(() => {
+      navigate({ search: (prev: Search) => ({ ...prev, q: next }), replace: true });
+    }, 200);
+    return () => clearTimeout(id);
+  }, [input, q, navigate]);
+
+  const filtered = useMemo(() => {
+    const byCat = filterByCategorySlug(bouquets, cat);
+    const needle = input.trim().toLowerCase();
+    return needle ? byCat.filter((b) => matchesQuery(b, needle)) : byCat;
+  }, [cat, input]);
+
   const activeLabel: string = cat ? CATEGORY_BY_SLUG[cat] : "Every bloom";
+
 
   return (
     <Layout>
@@ -100,34 +124,21 @@ function CollectionPage() {
               inputMode="search"
               autoComplete="off"
               placeholder="Search by name, code, or feeling…"
-              value={q ?? ""}
-              onChange={(e) => {
-                const value = e.target.value;
-                navigate({
-                  search: (prev: Search) => ({
-                    ...prev,
-                    q: value.trim() ? value : undefined,
-                  }),
-                  replace: true,
-                });
-              }}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
               className="w-full rounded-full bg-cream border border-blush/70 pl-11 pr-11 py-3 text-sm text-ink placeholder:text-ink/45 focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/20 transition-all"
             />
-            {q && (
+            {input && (
               <button
                 type="button"
-                onClick={() =>
-                  navigate({
-                    search: (prev: Search) => ({ ...prev, q: undefined }),
-                    replace: true,
-                  })
-                }
+                onClick={() => setInput("")}
                 aria-label="Clear search"
                 className="absolute right-3 top-1/2 -translate-y-1/2 size-7 grid place-items-center rounded-full text-ink/60 hover:text-rose hover:bg-blush-soft transition-colors"
               >
                 <X className="size-4" strokeWidth={1.5} />
               </button>
             )}
+
           </div>
         </div>
       </section>
@@ -156,16 +167,17 @@ function CollectionPage() {
 
       <section className="pb-24 md:pb-32 pt-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          {q && (
+          {input.trim() && (
             <p className="text-center text-sm text-ink/60 mb-8">
               {filtered.length} {filtered.length === 1 ? "result" : "results"} for{" "}
-              <span className="italic text-ink">"{q}"</span>
+              <span className="italic text-ink">"{input.trim()}"</span>
             </p>
           )}
           {filtered.length === 0 ? (
             <p className="text-center text-ink/60">
-              {q ? "No bouquets match that search. Try another name." : "No bouquets in this category yet — check back soon."}
+              {input.trim() ? "No bouquets match that search. Try another name." : "No bouquets in this category yet — check back soon."}
             </p>
+
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {filtered.map((b, i) => (
