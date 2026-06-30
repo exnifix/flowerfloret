@@ -255,7 +255,12 @@ function BuildPage() {
             <div className="rounded-3xl bg-card border border-border/60 p-6 space-y-4 shadow-[0_30px_80px_-40px_rgba(180,120,120,0.25)]">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-ink/45">Your bouquet</p>
-                <h2 className="font-serif text-2xl">A bespoke gesture</h2>
+                <h2 className="font-serif text-2xl">
+                  {baseBouquet ? `${baseBouquet.name} — customized` : "A bespoke gesture"}
+                </h2>
+                {baseBouquet && (
+                  <p className="text-sm text-rose mt-1">৳{baseBouquet.price.toLocaleString("en-BD")}</p>
+                )}
               </div>
               <ul className="text-sm text-ink/70 space-y-1.5">
                 {previewStems.length === 0 && (
@@ -272,15 +277,28 @@ function BuildPage() {
                 </li>
                 {customSize && <li className="text-ink/50">Size: {customSize}</li>}
               </ul>
-              <Link
-                to="/contact"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
-              >
-                Request This Bouquet
-                <ArrowRight className="size-4" />
-              </Link>
+              {baseBouquet ? (
+                <Link
+                  to="/order"
+                  search={{ bouquet: baseBouquet.slug, custom: customizationText }}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
+                >
+                  Continue to Checkout
+                  <ArrowRight className="size-4" />
+                </Link>
+              ) : (
+                <Link
+                  to="/contact"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream px-6 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
+                >
+                  Request This Bouquet
+                  <ArrowRight className="size-4" />
+                </Link>
+              )}
               <p className="text-xs text-ink/50 text-center italic font-italic">
-                Final price confirmed after a quick chat about your selections and delivery.
+                {baseBouquet
+                  ? "Your customizations will be sent with the order — final price confirmed if changes affect cost."
+                  : "Final price confirmed after a quick chat about your selections and delivery."}
               </p>
             </div>
           </aside>
