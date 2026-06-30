@@ -29,6 +29,7 @@ import sunflowerSerenityAsset from "@/assets/sunflower-serenity.jpeg.asset.json"
 import pinkDesireAsset from "@/assets/pink-desire.jpeg.asset.json";
 import pinkEleganceAsset from "@/assets/pink-elegance.jpeg.asset.json";
 import vanillaAffectionAsset from "@/assets/vanilla-affection.jpeg.asset.json";
+import blossomsOfDesireAsset from "@/assets/blossoms-of-desire.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -61,6 +62,7 @@ const sunflowerSerenity = sunflowerSerenityAsset.url;
 const pinkDesire = pinkDesireAsset.url;
 const pinkElegance = pinkEleganceAsset.url;
 const vanillaAffection = vanillaAffectionAsset.url;
+const blossomsOfDesire = blossomsOfDesireAsset.url;
 
 
 
@@ -77,6 +79,18 @@ export type Bouquet = {
 };
 
 export const bouquets: Bouquet[] = [
+  {
+    slug: "blossoms-desire",
+    name: "Blossoms Desire",
+    tagline: "Powder-pink roses and golden candlelight, hand-delivered",
+    price: 1399,
+    category: "Cake & Flower Combo",
+    image: blossomsOfDesire,
+    emotion: "For the celebrations that taste like cake and feel like love",
+    description:
+      "A swooning armful of powder-pink roses — petals layered like ballet skirts, each bloom caught at that perfect half-open moment where the centre still keeps a secret — bundled into soft ivory matte paper that falls open in dramatic, sculptural curves. Paired with a petite round vanilla bento cake, finished in pale-blush buttercream rimmed with a delicate gold leaf trim, and hand-lettered in shimmering gold script: 'Happy Birthday'. Two tall, twisted golden candles stand proudly at the centre, waiting to be lit. Soft-pink roses are the language of grace, gentleness, and admiration spoken without raising the voice — combined with the cake, Blossoms Desire is the whole golden-hour celebration in one delivery: the gasp at the door, the strike of the match, the slow phone-camera circle, the wish made between two breaths. Perfect for birthdays, anniversaries, surprise office moments, and the kind of love that wants to arrive in person.",
+    stems: ["~16 premium powder-pink roses, half-bloom", "Petite round vanilla bento cake with gold-leaf rim", "Hand-piped shimmering gold 'Happy Birthday' script", "2 tall twisted golden pillar candles", "Sculptural ivory matte wrap with story-print kraft base"],
+  },
   {
     slug: "vanilla-affection",
     name: "Vanilla Affection",
