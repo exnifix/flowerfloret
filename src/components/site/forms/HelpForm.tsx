@@ -76,10 +76,10 @@ export function HelpForm() {
       </div>
 
       <ImageUploadField
-        label="Reference photo (optional)"
-        hint="Share a flower design or inspiration you'd love us to recreate."
-        value={imageUrl}
-        onChange={setImageUrl}
+        label="Reference photos (optional)"
+        hint="Share flower designs or inspiration you'd love us to recreate."
+        values={imageUrls}
+        onValuesChange={setImageUrls}
       />
 
 
