@@ -65,6 +65,36 @@ export type Database = {
         }
         Relationships: []
       }
+      reviews: {
+        Row: {
+          bouquet_slug: string | null
+          comment: string | null
+          created_at: string
+          id: string
+          image_url: string | null
+          name: string
+          rating: number
+        }
+        Insert: {
+          bouquet_slug?: string | null
+          comment?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          name: string
+          rating: number
+        }
+        Update: {
+          bouquet_slug?: string | null
+          comment?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          name?: string
+          rating?: number
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
