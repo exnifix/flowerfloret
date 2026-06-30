@@ -27,6 +27,7 @@ import pearlRoyaleAsset from "@/assets/pearl-royale.jpeg.asset.json";
 import goldenHarmonyAsset from "@/assets/golden-harmony.jpeg.asset.json";
 import sunflowerSerenityAsset from "@/assets/sunflower-serenity.jpeg.asset.json";
 import pinkDesireAsset from "@/assets/pink-desire.jpeg.asset.json";
+import pinkEleganceAsset from "@/assets/pink-elegance.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -57,6 +58,7 @@ const pearlRoyale = pearlRoyaleAsset.url;
 const goldenHarmony = goldenHarmonyAsset.url;
 const sunflowerSerenity = sunflowerSerenityAsset.url;
 const pinkDesire = pinkDesireAsset.url;
+const pinkElegance = pinkEleganceAsset.url;
 
 
 
@@ -73,6 +75,18 @@ export type Bouquet = {
 };
 
 export const bouquets: Bouquet[] = [
+  {
+    slug: "pink-elegance",
+    name: "Pink Elegance",
+    tagline: "Three blush daisies, smiling shyly through cellophane",
+    price: 499,
+    category: "Bouquets",
+    image: pinkElegance,
+    emotion: "For the soft, sunlit kind of happiness",
+    description:
+      "Three perfect blush-pink gerbera daisies stand tall together — petals fanned wide like tiny suns caught mid-bloom, faces tilted as if listening for good news. Their soft peach-pink centres melt into creamy ivory tips, the kind of colour that looks freshly painted by morning light. Cradled in a sculpted fold of pale pink mesh and ivory tissue, the bouquet is sleeved in crystal-clear cellophane shaped into a graceful elongated cone — slender, architectural, almost couture. A small handwritten 'happy' tag swings from a paperclip at the throat, and a long blush-coral satin ribbon is tied into a generous double bow with trailing tails that sway with every step. Gerberas, in the language of flowers, mean cheerfulness, innocence, and the simple, uncomplicated joy of being thought of. Pink Elegance is the bouquet for a first apartment, a passed exam, a sweet 'just because' Tuesday, or the friend who deserves to feel seen. Quiet, graceful, and impossibly sweet.",
+    stems: ["3 premium blush-pink gerbera daisies", "Pale pink mesh and ivory tissue lining", "Architectural clear cellophane cone wrap", "Blush-coral satin double-bow ribbon", "Handwritten 'happy' kraft tag"],
+  },
   {
     slug: "rosetta",
     name: "Rosetta",
