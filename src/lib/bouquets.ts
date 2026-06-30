@@ -21,6 +21,7 @@ import softLoveAsset from "@/assets/soft-love.jpeg.asset.json";
 import phoenixBloomAsset from "@/assets/phoenix-bloom.jpeg.asset.json";
 import elaraAsset from "@/assets/elara.jpeg.asset.json";
 import tranquilBloomAsset from "@/assets/tranquil-bloom.jpeg.asset.json";
+import luxeIvoryAsset from "@/assets/luxe-ivory.jpeg.asset.json";
 
 const seraphine = seraphineAsset.url;
 const fleurRose = fleurRoseAsset.url;
@@ -45,6 +46,7 @@ const softLove = softLoveAsset.url;
 const phoenixBloom = phoenixBloomAsset.url;
 const elara = elaraAsset.url;
 const tranquilBloom = tranquilBloomAsset.url;
+const luxeIvory = luxeIvoryAsset.url;
 
 
 
@@ -169,6 +171,20 @@ export const bouquets: Bouquet[] = [
       "A breathtaking fan of nearly a hundred miniature white spray roses opens like an unfurled lace fan — each tiny bud caught at that perfect half-bloom moment, ivory petals brushed with the faintest cream at their hearts, pressed together so densely the whole bouquet reads like a single soft cloud. The stems are slim and impossibly long, gathered into a tight throat and sleeved in pleated sheer organza that catches the light like spun glass; a delicate pearl trim runs along the upper edge, framing the roses like the hem of a wedding veil. White spray roses, by tradition, mean purity, deep admiration, and the kind of love that has quietly chosen you again and again — multiplied across every small bud is a promise repeated in soft handwriting. A wide champagne-gold satin ribbon is tied at the base into a luxurious double bow, its sheen warming the cool ivory and the silvery green of the wrap. Tranquil Bloom is the bouquet of grand, quiet occasions — the engagement, the bridal morning, the milestone anniversary, the \"I'd choose you a hundred times over.\" Serene, opulent, unforgettable.",
     stems: ["~100 premium miniature white spray roses (half-bloom)", "Pleated sheer organza wrap with pearl trim", "Wide champagne-gold satin double-bow ribbon"],
   },
+  {
+    slug: "luxe-ivory",
+    name: "Luxe Ivory",
+    tagline: "A cloud of baby's breath, cradled in blush",
+    price: 699,
+    category: "Bouquets",
+    image: luxeIvory,
+    emotion: "For the soft, lasting kind of devotion",
+    description:
+      "A generous, snow-white cloud of baby's breath bursts out of a sculptural blush-pink wrap, each tiny bloom catching the light like a constellation of paper stars. The gypsophila is gathered thick and full — hundreds of dainty ivory florets spilling outward in every direction, soft as sea foam, dense enough to feel almost weightless and weighty all at once. Beneath the blooms, a sheer ivory veil tucks inside the wrap, framing the heart of the bouquet like the inner lining of a couture gown. The outer wrap is folded into long, architectural petals of matte rose-pink paper that curl back to reveal the flowers like a slow reveal in a love story. Baby's breath, in the language of flowers, means everlasting love, innocence, and the kind of devotion that doesn't need to be loud to be true — a flower of small constant promises. Finished at the throat with two ribbons — one ivory satin, one blush — tied into an elegant trailing double bow. Luxe Ivory is the bouquet for the moments that don't need many words: the just-because, the soft apology, the new chapter, the quiet \"I'm proud of you.\" Pure, dreamy, and impossibly tender.",
+    stems: ["Premium fresh baby's breath (gypsophila) — generous cloud", "Sheer ivory inner veil", "Architectural matte blush-pink paper wrap", "Ivory and blush satin double-bow ribbon"],
+  },
+
+
 
 
 
