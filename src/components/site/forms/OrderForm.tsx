@@ -24,7 +24,7 @@ type Props = {
 export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
   const [selectedBouquet, setSelectedBouquet] = useState(initialBouquet);
   const [quantity, setQuantity] = useState(1);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const submittingRef = useRef(false);
