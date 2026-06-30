@@ -67,7 +67,7 @@ export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
         bouquet: built.payload.bouquet
           ? `${built.payload.bouquet} × ${quantity}`
           : built.payload.bouquet,
-        image_url: imageUrl,
+        image_urls: imageUrls,
       };
 
       const res = await submitOrder(payload);
