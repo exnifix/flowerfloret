@@ -22,6 +22,13 @@ export function OrderForm({ initialBouquet = "" }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
+  const selected = useMemo(
+    () => bouquets.find((b) => b.name === selectedBouquet),
+    [selectedBouquet],
+  );
+  const bouquetPrice = selected?.price ?? 0;
+  const total = bouquetPrice + DELIVERY_CHARGE;
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
