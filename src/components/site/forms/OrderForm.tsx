@@ -180,10 +180,10 @@ export function OrderForm({ initialBouquet = "", customNote = "" }: Props) {
       </div>
 
       <ImageUploadField
-        label="Reference photo (optional)"
-        hint="Share a design you'd like us to recreate — colours, style, inspiration."
-        value={imageUrl}
-        onChange={setImageUrl}
+        label="Reference photos (optional)"
+        hint="Share designs you'd like us to recreate — colours, style, inspiration."
+        values={imageUrls}
+        onValuesChange={setImageUrls}
       />
 
       <div className="rounded-2xl border border-rose/30 bg-cream-soft/70 p-5">
