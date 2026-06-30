@@ -27,6 +27,7 @@ export type Database = {
           occasion: string | null
           payment_method: string | null
           phone: string | null
+          status: Database["public"]["Enums"]["order_status"]
         }
         Insert: {
           address?: string | null
@@ -40,6 +41,7 @@ export type Database = {
           occasion?: string | null
           payment_method?: string | null
           phone?: string | null
+          status?: Database["public"]["Enums"]["order_status"]
         }
         Update: {
           address?: string | null
@@ -53,6 +55,7 @@ export type Database = {
           occasion?: string | null
           payment_method?: string | null
           phone?: string | null
+          status?: Database["public"]["Enums"]["order_status"]
         }
         Relationships: []
       }
@@ -92,6 +95,13 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "staff" | "user"
+      order_status:
+        | "new"
+        | "confirmed"
+        | "preparing"
+        | "out_for_delivery"
+        | "delivered"
+        | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -220,6 +230,14 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "staff", "user"],
+      order_status: [
+        "new",
+        "confirmed",
+        "preparing",
+        "out_for_delivery",
+        "delivered",
+        "cancelled",
+      ],
     },
   },
 } as const
