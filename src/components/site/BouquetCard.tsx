@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Link } from "@tanstack/react-router";
-import type { Bouquet } from "@/lib/bouquets";
+import { getProductCode, type Bouquet } from "@/lib/bouquets";
 
 function BouquetCardImpl({
   bouquet,
