@@ -13,6 +13,18 @@ const navItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  function submitSearch(e: FormEvent) {
+    e.preventDefault();
+    const q = query.trim();
+    navigate({ to: "/collection", search: q ? { q } : {} });
+    setSearchOpen(false);
+    setOpen(false);
+  }
+
   return (
     <header className="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
