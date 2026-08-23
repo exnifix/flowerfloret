@@ -85,7 +85,7 @@ function CafePage() {
             <AnimatedGroup className="mt-10 flex flex-wrap gap-3" preset="blur-slide">
               <Magnetic strength={10}>
                 <a
-                  href="https://www.instagram.com/flo.rettt/"
+                  href="https://www.instagram.com/flo.rett/"
                   target="_blank"
                   rel="noreferrer"
                   className="group inline-flex items-center gap-2 rounded-full bg-ink text-cream px-8 py-4 text-sm tracking-wide hover:bg-rose transition-colors"
