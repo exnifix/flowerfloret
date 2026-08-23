@@ -1,6 +1,6 @@
 "use client";
 import { motion, useReducedMotion } from "motion/react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Petal = {
   left: number;
@@ -24,6 +24,8 @@ function seeded(i: number, salt: number) {
  */
 export function PetalField({ count = 16 }: { count?: number }) {
   const reduce = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const petals = useMemo<Petal[]>(
     () =>
@@ -39,7 +41,7 @@ export function PetalField({ count = 16 }: { count?: number }) {
     [count],
   );
 
-  if (reduce) return null;
+  if (reduce || !mounted) return null;
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
