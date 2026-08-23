@@ -3,6 +3,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { PetalField } from "./PetalField";
 import { ScrollProgress } from "./ScrollProgress";
+import { PageTransition } from "./PageTransition";
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
