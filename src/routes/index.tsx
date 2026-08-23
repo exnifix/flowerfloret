@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { QuoteCarousel } from "@/components/site/QuoteCarousel";
 import { HomeHero } from "@/components/site/sections/HomeHero";
+import { BloomReveal } from "@/components/site/sections/BloomReveal";
 import { CategoryGrid } from "@/components/site/sections/CategoryGrid";
 import { FeaturedCollection } from "@/components/site/sections/FeaturedCollection";
 import { CakeCombos } from "@/components/site/sections/CakeCombos";
@@ -49,6 +50,7 @@ function HomePage() {
   return (
     <Layout>
       <HomeHero />
+      <BloomReveal />
       <QuoteCarousel />
       <CategoryGrid />
       <FeaturedCollection />
