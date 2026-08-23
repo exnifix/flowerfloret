@@ -1,11 +1,11 @@
 "use client";
-import { motion, type Variants } from "motion/react";
+import { motion, type TargetAndTransition, type Variants } from "motion/react";
 import React from "react";
 import { cn } from "@/lib/utils";
 
 export type PresetType = "fade" | "slide" | "scale" | "blur" | "blur-slide";
 
-const presetVariants: Record<PresetType, { hidden: Variants["hidden"]; visible: Variants["visible"] }> = {
+const presetVariants: Record<PresetType, { hidden: TargetAndTransition; visible: TargetAndTransition }> = {
   fade: { hidden: { opacity: 0 }, visible: { opacity: 1 } },
   slide: { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } },
   scale: { hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 } },
