@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { TextEffect } from "@/components/motion-primitives/text-effect";
 import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
+import { AnimatedContent } from "@/components/motion-primitives/animated-content";
 import { Magnetic } from "@/components/motion-primitives/magnetic";
 import hero from "@/assets/hero-flowers.jpg";
 import ig3 from "@/assets/ig-3.jpg";
@@ -18,60 +19,71 @@ export function HomeHero() {
   const yQuote = useTransform(scrollY, [0, 600], [0, -22]);
 
   return (
-    <section className="relative overflow-hidden">
-      <motion.div
-        aria-hidden
-        className="absolute -top-24 -left-24 size-[420px] rounded-full bg-blush/40 blur-3xl"
-        animate={{ x: [0, 30, -10, 0], y: [0, -28, 18, 0], scale: [1, 1.08, 0.96, 1] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute top-48 -right-24 size-[480px] rounded-full bg-cream-soft blur-3xl"
-        animate={{ x: [0, -24, 14, 0], y: [0, 26, -16, 0], scale: [1, 0.95, 1.06, 1] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-      />
+    <section className="relative overflow-hidden bg-cream">
+      <div className="absolute inset-x-0 top-0 h-px bg-blush/60" aria-hidden />
 
-      <div className="relative mx-auto max-w-7xl px-6 md:px-10 lg:px-16 pt-14 md:pt-20 lg:pt-24 pb-20 md:pb-28">
+      <div className="relative mx-auto max-w-7xl px-6 md:px-10 lg:px-16 pt-10 md:pt-16 lg:pt-20 pb-16 md:pb-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
           <div className="md:col-span-5 z-20">
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE }}
-              className="text-rose uppercase tracking-[0.4em] text-[11px] font-bold mb-6"
+            <AnimatedContent
+              distance={34}
+              direction="horizontal"
+              reverse
+              duration={0.9}
+              ease="power3.out"
+              initialOpacity={0}
+              delay={0.05}
             >
-              <motion.span
-                className="inline-block"
-                animate={{ rotate: [0, 12, -8, 0], scale: [1, 1.15, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <Sparkles className="inline size-3 mr-2 -mt-0.5" aria-hidden />
-              </motion.span>
-              Est. with love · Floret
-            </motion.p>
+              <p className="text-rose uppercase tracking-[0.4em] text-[11px] font-bold mb-6">
+                <motion.span
+                  className="inline-block"
+                  animate={{ rotate: [0, 12, -8, 0], scale: [1, 1.15, 1] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Sparkles className="inline size-3 mr-2 -mt-0.5" aria-hidden />
+                </motion.span>
+                Est. with love · Floret
+              </p>
+            </AnimatedContent>
 
-            <TextEffect
-              as="h1"
-              per="char"
-              preset="blur-slide"
-              speed={0.07}
+            <AnimatedContent
+              distance={60}
+              duration={1.05}
+              ease="power4.out"
+              initialOpacity={0}
+              scale={0.94}
               delay={0.15}
-              className="font-serif italic font-light text-ink text-7xl sm:text-8xl lg:text-[9rem] leading-[0.82] mb-8 tracking-tight"
             >
-              Floret
-            </TextEffect>
+              <TextEffect
+                as="h1"
+                per="char"
+                preset="blur-slide"
+                speed={0.07}
+                delay={0.05}
+                className="font-serif italic font-light text-ink text-7xl sm:text-8xl lg:text-[9rem] leading-[0.82] mb-8"
+              >
+                Floret
+              </TextEffect>
+            </AnimatedContent>
 
-            <TextEffect
-              per="word"
-              preset="fade"
-              speed={0.014}
-              delay={0.8}
-              className="text-ink/85 text-base md:text-lg leading-relaxed max-w-sm font-light"
+            <AnimatedContent
+              distance={38}
+              duration={0.95}
+              ease="power3.out"
+              initialOpacity={0}
+              delay={0.4}
             >
-              Cultivating beauty through heirloom blooms and seasonal stories. Each bouquet is
-              hand-tied as a love letter — from petal to gesture.
-            </TextEffect>
+              <TextEffect
+                per="word"
+                preset="fade"
+                speed={0.014}
+                delay={0.05}
+                className="text-ink/85 text-base md:text-lg leading-relaxed max-w-sm font-light"
+              >
+                Cultivating beauty through heirloom blooms and seasonal stories. Each bouquet is
+                hand-tied as a love letter — from petal to gesture.
+              </TextEffect>
+            </AnimatedContent>
 
             <AnimatedGroup
               preset="blur-slide"
@@ -101,39 +113,63 @@ export function HomeHero() {
             </AnimatedGroup>
           </div>
 
-          <div className="md:col-span-7 relative h-[460px] sm:h-[560px] md:h-[640px] lg:h-[720px] flex items-center justify-center">
-            <motion.div
-              aria-hidden
-              className="absolute -top-12 -right-12 w-56 h-56 bg-cream-soft rounded-full -z-10 opacity-70 blur-2xl"
-              animate={{ scale: [1, 1.12, 1] }}
-              transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-            />
+          <div className="md:col-span-7 relative h-[460px] sm:h-[560px] md:h-[640px] lg:h-[700px] flex items-center justify-center">
+            <AnimatedContent
+              className="absolute right-0 top-0 w-[78%] h-[85%] z-0"
+              distance={90}
+              direction="horizontal"
+              duration={1.35}
+              ease="power4.out"
+              initialOpacity={0}
+              scale={0.9}
+              delay={0.12}
+            >
+              <motion.div
+                className="size-full rounded-sm shadow-xl overflow-hidden"
+                style={{ y: yBig }}
+                initial={{ clipPath: "inset(48% 42% 48% 42% round 48%)", filter: "blur(8px)" }}
+                animate={{ clipPath: "inset(0% 0% 0% 0% round 2px)", filter: "blur(0px)" }}
+                transition={{ duration: 1.65, delay: 0.2, ease: EASE }}
+              >
+                <motion.img
+                  src={hero}
+                  alt="A field of ranunculus in soft morning light"
+                  width={1400}
+                  height={1700}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  className="size-full object-cover"
+                  initial={{ scale: 1.2 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 2.1, delay: 0.15, ease: EASE }}
+                  whileHover={{ scale: 1.035 }}
+                />
+              </motion.div>
+            </AnimatedContent>
 
             <motion.div
-              className="absolute right-0 top-0 w-[78%] h-[85%] z-0 rounded-sm shadow-xl overflow-hidden"
-              style={{ y: yBig }}
-              initial={{ opacity: 0, scale: 1.06, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              transition={{ duration: 1.2, ease: EASE }}
+              aria-hidden
+              className="absolute right-[4%] top-[8%] z-20 size-20 sm:size-28 overflow-hidden rounded-full border-[5px] border-cream shadow-lg"
+              initial={{ opacity: 0, scale: 0.15, rotate: -24 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1.2, delay: 1.05, ease: EASE }}
             >
-              <img
-                src={hero}
-                alt="A field of ranunculus in soft morning light"
-                width={1400}
-                height={1700}
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-                className="size-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-105"
+              <motion.img
+                src={ig3}
+                alt=""
+                className="size-full object-cover"
+                animate={{ scale: [1, 1.08, 1], rotate: [0, 2, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.div>
 
             <motion.div
               className="absolute left-0 bottom-0 w-[58%] sm:w-1/2 aspect-[4/5] z-30 border-[10px] md:border-[12px] border-cream shadow-2xl rounded-sm overflow-hidden"
               style={{ y: ySmall }}
-              initial={{ opacity: 0, y: 60, rotate: -3 }}
-              animate={{ opacity: 1, y: 0, rotate: 0 }}
-              transition={{ duration: 1.1, delay: 0.35, ease: EASE }}
+              initial={{ opacity: 0, x: -65, rotate: -8, clipPath: "ellipse(18% 12% at 50% 70%)" }}
+              animate={{ opacity: 1, x: 0, rotate: 0, clipPath: "ellipse(75% 72% at 50% 50%)" }}
+              transition={{ duration: 1.45, delay: 0.55, ease: EASE }}
             >
               <img
                 src={ig3}
