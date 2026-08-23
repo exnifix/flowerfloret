@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export type PresetType = "fade" | "slide" | "scale" | "blur" | "blur-slide";
 
-const presetVariants: Record<PresetType, { hidden: Record<string, unknown>; visible: Record<string, unknown> }> = {
+const presetVariants: Record<PresetType, { hidden: Variants["hidden"]; visible: Variants["visible"] }> = {
   fade: { hidden: { opacity: 0 }, visible: { opacity: 1 } },
   slide: { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } },
   scale: { hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 } },
