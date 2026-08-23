@@ -31,7 +31,7 @@ export const Route = createFileRoute("/product/$slug")({
     links: loaderData
       ? [
           { rel: "canonical", href: `https://flowerfloret.lovable.app/product/${params.slug}` },
-          { rel: "preload", as: "image", href: loaderData.bouquet.image, fetchpriority: "high" },
+          { rel: "preload", as: "image", href: loaderData.bouquet.image, fetchPriority: "high" },
         ]
       : [],
     scripts: loaderData
