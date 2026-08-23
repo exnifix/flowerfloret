@@ -14,6 +14,7 @@ import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as OrderRouteImport } from './routes/order'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CollectionRouteImport } from './routes/collection'
+import { Route as CafeRouteImport } from './routes/cafe'
 import { Route as BuildRouteImport } from './routes/build'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
@@ -45,6 +46,11 @@ const ContactRoute = ContactRouteImport.update({
 const CollectionRoute = CollectionRouteImport.update({
   id: '/collection',
   path: '/collection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CafeRoute = CafeRouteImport.update({
+  id: '/cafe',
+  path: '/cafe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuildRoute = BuildRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/build': typeof BuildRoute
+  '/cafe': typeof CafeRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
   '/order': typeof OrderRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/build': typeof BuildRoute
+  '/cafe': typeof CafeRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
   '/order': typeof OrderRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/build': typeof BuildRoute
+  '/cafe': typeof CafeRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
   '/order': typeof OrderRoute
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/build'
+    | '/cafe'
     | '/collection'
     | '/contact'
     | '/order'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/build'
+    | '/cafe'
     | '/collection'
     | '/contact'
     | '/order'
@@ -158,6 +169,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/build'
+    | '/cafe'
     | '/collection'
     | '/contact'
     | '/order'
@@ -173,6 +185,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   BuildRoute: typeof BuildRoute
+  CafeRoute: typeof CafeRoute
   CollectionRoute: typeof CollectionRoute
   ContactRoute: typeof ContactRoute
   OrderRoute: typeof OrderRoute
@@ -216,6 +229,13 @@ declare module '@tanstack/react-router' {
       path: '/collection'
       fullPath: '/collection'
       preLoaderRoute: typeof CollectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cafe': {
+      id: '/cafe'
+      path: '/cafe'
+      fullPath: '/cafe'
+      preLoaderRoute: typeof CafeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/build': {
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   BuildRoute: BuildRoute,
+  CafeRoute: CafeRoute,
   CollectionRoute: CollectionRoute,
   ContactRoute: ContactRoute,
   OrderRoute: OrderRoute,

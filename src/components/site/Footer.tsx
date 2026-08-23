@@ -20,6 +20,7 @@ export function Footer() {
           <ul className="space-y-2 text-sm">
             <li><Link to="/collection" className="hover:text-rose transition-colors">Collection</Link></li>
             <li><Link to="/build" className="hover:text-rose transition-colors">Build Your Bouquet</Link></li>
+            <li><Link to="/cafe" className="hover:text-rose transition-colors">Floret Cafe</Link></li>
             <li><Link to="/about" className="hover:text-rose transition-colors">Our Story</Link></li>
             <li><Link to="/contact" className="hover:text-rose transition-colors">Contact</Link></li>
           </ul>
