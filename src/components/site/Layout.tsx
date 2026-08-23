@@ -11,7 +11,9 @@ export function Layout({ children }: { children: ReactNode }) {
       <ScrollProgress />
       <PetalField />
       <Header />
-      <main className="relative z-10 flex-1">{children}</main>
+      <main className="relative z-10 flex-1">
+        <PageTransition>{children}</PageTransition>
+      </main>
       <Footer />
     </div>
   );
