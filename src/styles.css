@@ -162,3 +162,7 @@ a[href*="lovable.dev/?utm"],
     scroll-behavior: auto !important;
   }
 }
+
+@utility font-instrument {
+  font-family: "Instrument Serif", serif;
+}
