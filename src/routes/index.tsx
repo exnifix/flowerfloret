@@ -4,22 +4,24 @@ import { AurevonLanding } from "@/components/site/AurevonLanding";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aurevon — A Carefully Curated Floral Collection" },
+      { title: "Floret — Hand-Tied Bouquets Where Feelings Bloom" },
       {
         name: "description",
         content:
-          "Aurevon is a private floral gallery of carefully curated, hand-tied arrangements. Reserve your place on the waitlist.",
+          "Floret is a floral studio in Dhaka crafting hand-tied bouquets, cake & flower combos and wedding florals. Explore the collection and order online.",
       },
-      { property: "og:title", content: "Aurevon — A Carefully Curated Floral Collection" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Floret — Hand-Tied Bouquets Where Feelings Bloom" },
       {
         property: "og:description",
-        content: "A private floral gallery beyond compare. Reserve your place in our waitlist.",
+        content: "A curated floral collection beyond compare. Explore our bouquets and order online.",
       },
       { property: "og:url", content: "https://flowerfloret.lovable.app/" },
-      { name: "twitter:title", content: "Aurevon — A Carefully Curated Floral Collection" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Floret — Hand-Tied Bouquets Where Feelings Bloom" },
       {
         name: "twitter:description",
-        content: "A private floral gallery beyond compare. Reserve your place in our waitlist.",
+        content: "A curated floral collection beyond compare. Explore our bouquets and order online.",
       },
     ],
     links: [{ rel: "canonical", href: "https://flowerfloret.lovable.app/" }],
