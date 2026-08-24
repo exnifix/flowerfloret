@@ -166,3 +166,8 @@ a[href*="lovable.dev/?utm"],
 @utility font-instrument {
   font-family: "Instrument Serif", serif;
 }
+
+html,
+body {
+  overflow-x: hidden;
+}
