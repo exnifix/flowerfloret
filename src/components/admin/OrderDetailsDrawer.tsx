@@ -109,7 +109,7 @@ export function OrderDetailsDrawer({
         </SheetHeader>
 
         {/* Status updater */}
-        <section className="mt-5 rounded-xl border border-border bg-white p-4">
+        <section className="mt-5 rounded-xl border border-border bg-card p-4">
           <div className="text-xs uppercase tracking-wider text-muted-foreground">
             Update status (admin only)
           </div>
@@ -125,7 +125,7 @@ export function OrderDetailsDrawer({
                   className={`rounded-full border px-3 py-1 text-xs transition-colors disabled:opacity-60 ${
                     isActive
                       ? "border-ink bg-ink text-cream"
-                      : "border-border bg-white text-ink hover:bg-blush-soft"
+                      : "border-border bg-card text-ink hover:bg-blush-soft"
                   }`}
                 >
                   {STATUS_LABEL[s]}
@@ -142,7 +142,7 @@ export function OrderDetailsDrawer({
 
 
         {/* Customer (masked by default) */}
-        <section className="mt-5 rounded-xl border border-border bg-white p-4">
+        <section className="mt-5 rounded-xl border border-border bg-card p-4">
           <div className="flex items-center justify-between">
             <h3 className="text-xs uppercase tracking-wider text-muted-foreground">
               Customer details
@@ -190,7 +190,7 @@ export function OrderDetailsDrawer({
 
         {/* Submitted message — safe rendering */}
         {order.message && (
-          <section className="mt-5 rounded-xl border border-border bg-white p-4">
+          <section className="mt-5 rounded-xl border border-border bg-card p-4">
             <h3 className="text-xs uppercase tracking-wider text-muted-foreground">
               Customer message
             </h3>

@@ -56,7 +56,7 @@ function AuthPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-cream px-4 py-12">
-      <div className="w-full max-w-md rounded-2xl border border-border bg-white/70 backdrop-blur p-8 shadow-sm">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card/70 backdrop-blur p-8 shadow-sm">
         <div className="text-center">
           <Link to="/" className="font-serif text-2xl text-ink">Floret</Link>
           <h1 className="mt-4 font-serif text-3xl text-ink">
@@ -76,7 +76,7 @@ function AuthPage() {
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blush"
+              className="mt-1 w-full rounded-lg border border-border bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blush"
             />
           </label>
           <label className="block text-sm">
@@ -88,7 +88,7 @@ function AuthPage() {
               autoComplete={mode === "signin" ? "current-password" : "new-password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blush"
+              className="mt-1 w-full rounded-lg border border-border bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blush"
             />
           </label>
 

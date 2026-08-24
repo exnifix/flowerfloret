@@ -150,7 +150,7 @@ function AdminOrdersPage() {
 
   return (
     <div className="min-h-screen bg-cream">
-      <header className="border-b border-border bg-white/60 backdrop-blur">
+      <header className="border-b border-border bg-card/60 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div>
             <Link to="/" className="font-serif text-xl text-ink">Floret</Link>
@@ -176,7 +176,7 @@ function AdminOrdersPage() {
 
       <main className="mx-auto max-w-7xl px-6 py-8 space-y-4">
         {checkedIds.size > 0 && (
-          <div className="sticky top-2 z-10 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-ink/10 bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
+          <div className="sticky top-2 z-10 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-ink/10 bg-card/95 px-4 py-3 shadow-sm backdrop-blur">
             <p className="text-sm text-ink">
               <span className="font-medium">{checkedIds.size}</span> selected
             </p>
@@ -187,7 +187,7 @@ function AdminOrdersPage() {
               <select
                 value={bulkStatus}
                 onChange={(e) => setBulkStatus(e.target.value as OrderStatus)}
-                className="rounded-full border border-border bg-white px-3 py-1.5 text-xs"
+                className="rounded-full border border-border bg-card px-3 py-1.5 text-xs"
                 disabled={bulkMutation.isPending}
               >
                 {ORDER_STATUSES.map((s) => (
@@ -267,7 +267,7 @@ function OrdersTable({
   someChecked: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-white">
+    <div className="overflow-hidden rounded-2xl border border-border bg-card">
       <table className="w-full text-sm">
         <thead className="bg-blush-soft/50 text-left text-xs uppercase tracking-wider text-ink/70">
           <tr>
@@ -360,7 +360,7 @@ function maskEmailInline(email: string | null | undefined) {
 
 function EmptyState() {
   return (
-    <div className="rounded-2xl border border-dashed border-border bg-white/60 p-10 text-center">
+    <div className="rounded-2xl border border-dashed border-border bg-card/60 p-10 text-center">
       <p className="font-serif text-2xl text-ink">No orders yet</p>
       <p className="mt-2 text-sm text-muted-foreground">
         When customers place an order, it'll appear here. If you expected orders and see none,

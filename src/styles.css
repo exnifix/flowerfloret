@@ -64,38 +64,39 @@ a[href*="lovable.dev/?utm"],
 }
 
 :root {
+  color-scheme: dark;
   --radius: 0.75rem;
 
-  /* Cherry Blossom palette */
-  --cream: oklch(0.985 0.008 350);         /* #fffdfa warm paper */
-  --cream-soft: oklch(0.965 0.018 350);    /* #fef0f5 petal mist */
-  --blush: oklch(0.88 0.06 350);           /* #f8c8d8 blossom */
-  --blush-soft: oklch(0.93 0.035 350);     /* light blush */
-  --rose: oklch(0.62 0.16 0);              /* #c45c7c deep rose */
-  --sage: oklch(0.78 0.07 0);              /* #e88aab mid rose */
-  --ink: oklch(0.22 0.08 25);              /* #2d0a0a deep burgundy */
-  --burgundy: oklch(0.22 0.08 25);
+  /* Midnight Bloom palette — smooth black canvas, soft rose accents */
+  --cream: oklch(0.14 0.006 350);          /* page canvas — near black */
+  --cream-soft: oklch(0.19 0.008 350);     /* raised surface */
+  --blush: oklch(0.34 0.02 350);           /* soft dark blush surface / border */
+  --blush-soft: oklch(0.25 0.014 350);     /* subtle hover surface */
+  --rose: oklch(0.84 0.075 350);           /* luminous rose accent */
+  --sage: oklch(0.30 0.018 350);           /* muted dark tint */
+  --ink: oklch(0.97 0.006 350);            /* primary text — soft white */
+  --burgundy: oklch(0.97 0.006 350);
 
 
   /* shadcn semantic mapping */
   --background: var(--cream);
   --foreground: var(--ink);
-  --card: oklch(1 0 0);
+  --card: oklch(0.185 0.008 350);
   --card-foreground: var(--ink);
-  --popover: var(--cream);
+  --popover: oklch(0.185 0.008 350);
   --popover-foreground: var(--ink);
   --primary: var(--rose);
-  --primary-foreground: var(--cream);
+  --primary-foreground: oklch(0.14 0.006 350);
   --secondary: var(--blush-soft);
   --secondary-foreground: var(--ink);
   --muted: var(--cream-soft);
-  --muted-foreground: oklch(0.45 0.04 20);
+  --muted-foreground: oklch(0.72 0.012 350);
+  --destructive: oklch(0.62 0.19 25);
+  --destructive-foreground: oklch(0.99 0 0);
   --accent: var(--blush);
   --accent-foreground: var(--ink);
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.02 350);
-  --input: oklch(0.93 0.018 350);
+  --border: oklch(0.28 0.012 350);
+  --input: oklch(0.24 0.012 350);
   --ring: var(--rose);
 }
 
