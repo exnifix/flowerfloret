@@ -21,14 +21,14 @@ export const Route = createFileRoute("/home")({
       { name: "description", content: "Floret crafts hand-tied bouquets that speak the language of feelings. Explore our seasonal collection or compose a bespoke arrangement." },
       { property: "og:title", content: "Floret — Hand-Tied Bouquets Where Emotions Bloom" },
       { property: "og:description", content: "Hand-tied bouquets composed as gestures by a small floral studio. Shop the collection or build your own." },
-      { property: "og:url", content: "https://flowerfloret.lovable.app/" },
+      { property: "og:url", content: "https://flowerfloret.lovable.app/home" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:title", content: "Floret — Hand-Tied Bouquets Where Emotions Bloom" },
       { name: "twitter:description", content: "Hand-tied bouquets composed as gestures by a small floral studio." },
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
-      { rel: "canonical", href: "https://flowerfloret.lovable.app/" },
+      { rel: "canonical", href: "https://flowerfloret.lovable.app/home" },
       { rel: "preload", as: "image", href: hero, fetchPriority: "high" },
     ],
     scripts: [

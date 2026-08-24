@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as OrderRouteImport } from './routes/order'
+import { Route as HomeRouteImport } from './routes/home'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CollectionRouteImport } from './routes/collection'
 import { Route as CafeRouteImport } from './routes/cafe'
@@ -36,6 +37,11 @@ const ReviewsRoute = ReviewsRouteImport.update({
 const OrderRoute = OrderRouteImport.update({
   id: '/order',
   path: '/order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -97,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/cafe': typeof CafeRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/home': typeof HomeRoute
   '/order': typeof OrderRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/cafe': typeof CafeRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/home': typeof HomeRoute
   '/order': typeof OrderRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -127,6 +135,7 @@ export interface FileRoutesById {
   '/cafe': typeof CafeRoute
   '/collection': typeof CollectionRoute
   '/contact': typeof ContactRoute
+  '/home': typeof HomeRoute
   '/order': typeof OrderRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/cafe'
     | '/collection'
     | '/contact'
+    | '/home'
     | '/order'
     | '/reviews'
     | '/sitemap.xml'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/cafe'
     | '/collection'
     | '/contact'
+    | '/home'
     | '/order'
     | '/reviews'
     | '/sitemap.xml'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '/cafe'
     | '/collection'
     | '/contact'
+    | '/home'
     | '/order'
     | '/reviews'
     | '/sitemap.xml'
@@ -188,6 +200,7 @@ export interface RootRouteChildren {
   CafeRoute: typeof CafeRoute
   CollectionRoute: typeof CollectionRoute
   ContactRoute: typeof ContactRoute
+  HomeRoute: typeof HomeRoute
   OrderRoute: typeof OrderRoute
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -215,6 +228,13 @@ declare module '@tanstack/react-router' {
       path: '/order'
       fullPath: '/order'
       preLoaderRoute: typeof OrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -310,6 +330,7 @@ const rootRouteChildren: RootRouteChildren = {
   CafeRoute: CafeRoute,
   CollectionRoute: CollectionRoute,
   ContactRoute: ContactRoute,
+  HomeRoute: HomeRoute,
   OrderRoute: OrderRoute,
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
