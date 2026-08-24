@@ -242,7 +242,7 @@ function ReviewsPage() {
                 </div>
               </div>
 
-              <form onSubmit={submit} className="rounded-2xl bg-white p-6 border border-border/60 space-y-4">
+              <form onSubmit={submit} className="rounded-2xl bg-card p-6 border border-border/60 space-y-4">
                 <h2 className="font-serif text-2xl">Leave a review</h2>
 
                 <div>
@@ -326,7 +326,7 @@ function ReviewsPage() {
                 reviews.map((r) => (
                   <article
                     key={r.id}
-                    className="rounded-2xl bg-white border border-border/60 p-6 animate-fade-up"
+                    className="rounded-2xl bg-card border border-border/60 p-6 animate-fade-up"
                   >
                     <header className="flex items-center justify-between gap-3">
                       <div>
