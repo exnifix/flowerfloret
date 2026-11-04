@@ -1,14 +1,15 @@
-import { describe, expect, test } from "bun:test";
+import { describe, test } from "node:test";
+import assert from "node:assert/strict";
 import { SITE_OFFLINE, offlineResponse } from "./site-availability";
 
 describe("temporary website shutdown", () => {
   test("website stays offline until restored", () => {
-    expect(SITE_OFFLINE).toBe(true);
+    assert.equal(SITE_OFFLINE, true);
   });
   test("requests receive HTTP 404", async () => {
     const response = offlineResponse();
-    expect(response.status).toBe(404);
-    expect(response.headers.get("cache-control")).toBe("no-store");
-    expect(await response.text()).toContain("<h1>404</h1>");
+    assert.equal(response.status, 404);
+    assert.equal(response.headers.get("cache-control"), "no-store");
+    assert.ok((await response.text()).includes("<h1>404</h1>"));
   });
 });
