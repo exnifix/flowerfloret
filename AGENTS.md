@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Temporary shutdown is controlled by SITE_OFFLINE in src/lib/site-availability.ts and enforced by request middleware before page or server-function handling; restoring it preserves all existing site content and data.
